@@ -53,3 +53,4 @@ nginx:
 
       proxy_pass             https://blazarartifactsroutes;
     }
+

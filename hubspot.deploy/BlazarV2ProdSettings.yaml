@@ -69,3 +69,4 @@ logging:
     - type: sentry
       sentryDsn: https://bd961d5ec8ab4343bab62d569c962fe0:cbff3099aa3e47a2b9ca25888813028a@sentry.io/106295
       blazarRelease: "PROD"
+

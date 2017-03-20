@@ -26,3 +26,4 @@ nginx:
             beta.authWithBetaGroupCookie("BLAZAR_ACCESS", "perm-blazar-beta", "hs_blazar_beta")
         ';
  
+
