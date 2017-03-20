@@ -1,0 +1,28 @@
+team: hs-paas-build-deploy
+owners: [ahuang@hubspot.com]
+buildName: git.hubteam.com-HubSpot-BlazarUI-master-BlazarUI
+
+slack:
+ - "#paas-b-d-notifs"
+
+type: staticjsapp
+
+loadBalancers:
+  - privatehubteam
+
+staticRoutes:
+  - destination: images/custom-icons.svg
+    route: /blazar/images/custom-icons.svg
+  - destination: index.html
+    route: /blazar
+    forceTrailingSlash: true
+
+nginx:
+  skipIfModifiedHeaders: true
+  extraProxyConfigs:
+    - |
+        rewrite_by_lua '
+            local beta = require("betagroupcookie")
+            beta.authWithBetaGroupCookie("BLAZAR_ACCESS", "perm-blazar-beta", "hs_blazar_beta")
+        ';
+ 

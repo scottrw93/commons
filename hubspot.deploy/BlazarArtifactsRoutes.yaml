@@ -1,0 +1,55 @@
+# This config allows builds to upload build results to an s3 bucket (hubspot-blazar-artifacts)
+# And have those served so that they can be read in a browser.
+
+type: load_balancer
+appRoot: /blazar-artifacts
+team: hs-faas-infra
+
+owners:
+  - rberdeen@hubspot.com
+
+loadBalancers:
+  - privatehubteam
+
+servers:
+  qa:
+    - s3.amazonaws.com:443
+  prod:
+    - s3.amazonaws.com:443
+
+nginx:
+  proxyConfig: |
+
+    location ~* ^/blazar-artifacts/(.*) {
+      set $url_full "$hs_env/$1";
+
+      proxy_pass_header Server;
+      proxy_set_header Host hubspot-blazar-artifacts.s3.amazonaws.com;
+      proxy_redirect off;
+
+      set $bucket           'hubspot-blazar-artifacts';
+
+      # read-only keys. https://ss.hubspotcentral.net/SecretView.aspx?secretid=9436
+      set $aws_access '';
+      set_by_lua $aws_secret '
+        if ngx.var.hs_env == "qa" then
+          ngx.var.aws_access = "AKIAIMUXWUCNBZL3R3LQ"
+          return "5vGZgjM8wBT0E+djn7E5Dv2FQoQqYtM7PuQJw56r"
+        else
+          ngx.var.aws_access = "AKIAIHPZYGAUGZOLDN6Q"
+          return "jR0WcbqdM7VOOF75ucfL9YqjZx1Q7nsYy+vpcYty"
+        end
+      ';
+
+      set_by_lua $now       "return ngx.cookie_time(ngx.time())";
+      set $string_to_sign   "$request_method\n\n\n\nx-amz-date:${now}\n/$bucket/$url_full";
+      set_hmac_sha1          $aws_signature $aws_secret $string_to_sign;
+      set_encode_base64      $aws_signature $aws_signature;
+
+      rewrite .* /$url_full break;
+
+      proxy_set_header       Authorization "AWS $aws_access:$aws_signature";
+      proxy_set_header       x-amz-date $now;
+
+      proxy_pass             https://blazarartifactsroutes;
+    }

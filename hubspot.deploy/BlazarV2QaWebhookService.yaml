@@ -1,0 +1,20 @@
+# HubSpot Deploy Settings
+type: procfile
+loadBalancers:
+  - hubapi
+
+includeConfigs:
+  - BlazarV2QaSettings
+
+procfile:
+  web: 
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
+    type: SERVICE
+
+servers:
+  qa:
+    - mesos
+  prod: []
+
+# Blazar Specific Settings
+webhookOnly: true

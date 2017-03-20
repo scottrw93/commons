@@ -1,0 +1,39 @@
+# HubSpot Deploy Settings
+loadBalancers:
+  - bootstrap
+  - privateapi
+  - privatehubteam
+
+type: procfile
+includeConfigs:
+  - BlazarV2QaSettings
+
+procfile:
+  web:
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
+    type: SERVICE
+
+  # This has been run - no longer required.
+  # versionBackfill:
+  #   type: ON_DEMAND
+  #   cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService version_backfill $CONFIG_YAML
+
+  # Cleans archived repos
+  cleanMetadataCommand:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService clean_repo_metadata $CONFIG_YAML
+
+servers:
+  qa:
+    - mesos:
+        instances: 1 
+  prod: []
+
+forcePorts: [5757]
+
+postDeployTests:
+  all:
+    mesos:
+      - BlazarAcceptanceTests
+
+# Blazar Specific Settings
