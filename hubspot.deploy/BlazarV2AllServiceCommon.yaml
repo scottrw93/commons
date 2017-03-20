@@ -30,4 +30,4 @@ env:
   all:
     JVM_MAX_HEAP: 3072m
     JVM_EXTRA_MEMORY: 1024m
-    EXTRA_ARGS: '"-Ddw.server.connector.port=$PORT -Djute.maxbuffer=6291456 -Djava.net.preferIPv4Stack=true"'
+    EXTRA_ARGS:  -Djute.maxbuffer=6291456 -Djava.net.preferIPv4Stack=true

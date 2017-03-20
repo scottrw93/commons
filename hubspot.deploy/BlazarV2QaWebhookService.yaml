@@ -8,7 +8,7 @@ includeConfigs:
 
 procfile:
   web: 
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_ARGS -Ddw.server.connector.port=5758 -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
     type: SERVICE
 
 servers:
