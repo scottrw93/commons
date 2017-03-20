@@ -16,5 +16,6 @@ servers:
     - mesos
   prod: []
 
+forcePorts: [5758]
 # Blazar Specific Settings
 webhookOnly: true
