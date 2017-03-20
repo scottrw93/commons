@@ -25,8 +25,8 @@ procfile:
 
 servers:
   qa:
-    - mesos:
-        instances: 1 
+    - stale-goose
+    - lucky-dingo
   prod: []
 
 forcePorts: [5757]
