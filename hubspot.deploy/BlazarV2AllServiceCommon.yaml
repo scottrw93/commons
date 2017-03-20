@@ -2,6 +2,9 @@
 type: mixin
 team: hs-paas-build-deploy
 appRoot: /blazar/v2
+owners:
+  - jgoodwin@hubspot.com
+  - gchomatas@hubspot.com
 
 trafficSplittingEnabled: false
 
@@ -9,6 +12,7 @@ slack:
  - "#paas-b-d-notifs"
 
 # Blazar specific settings
+
 server:
   type: simple
   applicationContextPath: /blazar/v2
