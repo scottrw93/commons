@@ -13,11 +13,6 @@ procfile:
     cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
     type: SERVICE
 
-  # This has been run - no longer required.
-  # versionBackfill:
-  #   type: ON_DEMAND
-  #   cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService version_backfill $CONFIG_YAML
-
   # Cleans archived repos
   cleanMetadataCommand:
     type: SCHEDULED_JOB
@@ -32,4 +27,3 @@ servers:
       numCpus: 4
 
 forcePorts: [5757]
-# Blazar Specific Settings

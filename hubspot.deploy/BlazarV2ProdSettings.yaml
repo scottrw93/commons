@@ -10,58 +10,6 @@ buildResolution:
   prod:
     strategy: LATEST_BUILD
 
-# Blazar Specific Settings
-github:
-  git.hubteam.com:
-    oauthToken: 23804c65e210905e2b23bc4fd9c54aa4b3207e05
-    organizations:
-      - HubSpot
-      - HubSpotProtected
-      - Signals
-      - BizOps
-      - PaaS
-      - NewHireProject
-  github.com:
-    oauthToken: 5e4c95ee74924889ee778935050a0aa6aa769c6e
-    setCommitStatus: false
-    organizations:
-      - HubSpot
-
-zookeeper:
-  quorum: zk1.mesos_qa.iad02.hubinfraqa.com:2181,zk2.mesos_qa.iad02.hubinfraqa.com:2181,zk3.mesos_qa.iad02.hubinfraqa.com:2181
-  namespace: "blazarv2"
-  sessionTimeoutMillis: 60000
-  connectTimeoutMillis: 5000
-
-database:
-  driverClass: com.mysql.jdbc.Driver
-  user: app_blazar
-  password: "(uwwsbMb15H8"
-  url: jdbc:mysql://db.blazarv2.hubteam.com:3306/BlazarV2
-
-ui:
-  baseUrl: https://private.hubteam.com/blazar
-
-singularity:
-  host: bootstrap.hubteamqa.com
-  path: /singularity/v2/api
-  request: BlazarExecutorJava-blazar-executor-java
-  slaveHttpPort: 5051
-  credentials:
-    headerName: X-HubSpot-User
-    token: hsblazar
-
-slack_blazar:
-  # creds for PI-BOT
-  feedbackRoom: paas-b-d-feedback
-  slackApiBaseUrl: https://slack.com/api
-  slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
-  username: blazar-bot
-  imWhitelist: ["jgoodwin@hubspot.com", "wsorenson@hubspot.com", "pgandhi@hubspot.com"]
-
-# Repos to not build
-blacklist: []
-
 logging:
   level: INFO
   appenders:
@@ -69,4 +17,57 @@ logging:
     - type: sentry
       sentryDsn: https://bd961d5ec8ab4343bab62d569c962fe0:cbff3099aa3e47a2b9ca25888813028a@sentry.io/106295
       blazarRelease: "PROD"
+
+blazarConfiguration:
+  # Blazar Specific Settings
+  github:
+    git.hubteam.com:
+      oauthToken: 23804c65e210905e2b23bc4fd9c54aa4b3207e05
+      organizations:
+        - HubSpot
+        - HubSpotProtected
+        - Signals
+        - BizOps
+        - PaaS
+        - NewHireProject
+    github.com:
+      oauthToken: 5e4c95ee74924889ee778935050a0aa6aa769c6e
+      setCommitStatus: false
+      organizations:
+        - HubSpot
+
+  zookeeper:
+    quorum: zk1.mesos_qa.iad02.hubinfraqa.com:2181,zk2.mesos_qa.iad02.hubinfraqa.com:2181,zk3.mesos_qa.iad02.hubinfraqa.com:2181
+    namespace: "blazarv2"
+    sessionTimeoutMillis: 60000
+    connectTimeoutMillis: 5000
+
+  database:
+    driverClass: com.mysql.jdbc.Driver
+    user: app_blazar
+    password: "(uwwsbMb15H8"
+    url: jdbc:mysql://db.blazarv2.hubteam.com:3306/BlazarV2
+
+  ui:
+    baseUrl: https://private.hubteam.com/blazar
+
+  singularity:
+    host: bootstrap.hubteamqa.com
+    path: /singularity/v2/api
+    request: BlazarExecutorJava-blazar-executor-java
+    slaveHttpPort: 5051
+    credentials:
+      headerName: X-HubSpot-User
+      token: hsblazar
+
+  slack_blazar:
+    # creds for PI-BOT
+    feedbackRoom: paas-b-d-feedback
+    slackApiBaseUrl: https://slack.com/api
+    slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
+    username: blazar-bot
+    imWhitelist: ["jgoodwin@hubspot.com", "wsorenson@hubspot.com", "pgandhi@hubspot.com"]
+
+  # Repos to not build
+  blacklist: []
 

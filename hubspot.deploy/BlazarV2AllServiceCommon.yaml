@@ -12,7 +12,6 @@ slack:
  - "#paas-b-d-notifs"
 
 # Blazar specific settings
-
 server:
   type: simple
   applicationContextPath: /blazar/v2
@@ -20,9 +19,10 @@ server:
     type: http
 
 # Executor defaults
-executor:
-  defaultBuildUser: hs-build
-  buildTimeoutMillis: 1800000  # 30mins in millis
+blazarConfiguration:
+  executor:
+    defaultBuildUser: hs-build
+    buildTimeoutMillis: 1800000  # 30mins in millis
 
 healthcheckUrl: /admin/healthcheck
 

@@ -10,42 +10,6 @@ buildResolution:
   prod:
     strategy: NO_BUILD
 
-# Blazar Specific Settings
-github:
-  git.hubteam.com:
-    oauthToken: 23804c65e210905e2b23bc4fd9c54aa4b3207e05
-    setCommitStatus: false
-    organizations:
-      - HubSpot
-
-zookeeper:
-  quorum: zk1.mesos_qa.iad02.hubinfraqa.com:2181,zk2.mesos_qa.iad02.hubinfraqa.com:2181,zk3.mesos_qa.iad02.hubinfraqa.com:2181
-  namespace: "blazarv2qa"
-  sessionTimeoutMillis: 60000
-  connectTimeoutMillis: 5000
-
-database:
-  driverClass: com.mysql.jdbc.Driver
-  user: app_blazar
-  password: "jYfuLb3qa#Yw"
-  url: jdbc:mysql://db.blazarv2.hubteamqa.com:3306/BlazarV2
-
-ui:
-  baseUrl: https://private.hubteamqa.com/blazar
-
-singularity:
-  host: bootstrap.hubteamqa.com
-  path: /singularity/v2/api
-  request: BlazarExecutorJavaTest-blazar-executor-java
-  slaveHttpPort: 5051
-  credentials:
-    headerName: X-HubSpot-User
-    token: jgoodwin
-
-# Only build certain projects in QA
-whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms']
-blacklist: [] 
-
 logging:
   level: INFO
   appenders:
@@ -53,4 +17,41 @@ logging:
     - type: sentry
       sentryDsn: https://2f002ad0745546b5b2b529461ca62349:a17da6ad912a4eec926c51a969925863@sentry.io/99138
       blazarRelease: "QA"
+
+blazarConfiguration:
+  # Only build certain projects in QA
+  whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms']
+  blacklist: [] 
+
+  github:
+    git.hubteam.com:
+      oauthToken: 23804c65e210905e2b23bc4fd9c54aa4b3207e05
+      setCommitStatus: false
+      organizations:
+        - HubSpot
+
+  zookeeper:
+    quorum: zk1.mesos_qa.iad02.hubinfraqa.com:2181,zk2.mesos_qa.iad02.hubinfraqa.com:2181,zk3.mesos_qa.iad02.hubinfraqa.com:2181
+    namespace: "blazarv2qa"
+    sessionTimeoutMillis: 60000
+    connectTimeoutMillis: 5000
+
+  database:
+    driverClass: com.mysql.jdbc.Driver
+    user: app_blazar
+    password: "jYfuLb3qa#Yw"
+    url: jdbc:mysql://db.blazarv2.hubteamqa.com:3306/BlazarV2
+
+  ui:
+    baseUrl: https://private.hubteamqa.com/blazar
+
+  singularity:
+    host: bootstrap.hubteamqa.com
+    path: /singularity/v2/api
+    request: BlazarExecutorJavaTest-blazar-executor-java
+    slaveHttpPort: 5051
+    credentials:
+      headerName: X-HubSpot-User
+      token: jgoodwin
+
 

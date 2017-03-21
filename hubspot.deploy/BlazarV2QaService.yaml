@@ -13,11 +13,6 @@ procfile:
     cmd: java-wrapper $EXTRA_ARGS -Ddw.server.connector.port=5757 -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
     type: SERVICE
 
-  # This has been run - no longer required.
-  # versionBackfill:
-  #   type: ON_DEMAND
-  #   cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService version_backfill $CONFIG_YAML
-
   # Cleans archived repos
   cleanMetadataCommand:
     type: ON_DEMAND
@@ -35,5 +30,3 @@ postDeployTests:
   all:
     mesos:
       - BlazarAcceptanceTests
-
-# Blazar Specific Settings
