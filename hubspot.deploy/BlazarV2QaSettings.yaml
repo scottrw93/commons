@@ -23,6 +23,15 @@ blazarConfiguration:
   whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms']
   blacklist: [] 
 
+  slack_blazar:
+    # creds for PI-BOT
+    feedbackRoom: paas-b-d-feedback
+    slackApiBaseUrl: https://slack.com/api
+    slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
+    username: blazar-bot
+    imWhitelist: ["jgoodwin@hubspot.com"]
+
+
   github:
     git.hubteam.com:
       oauthToken: 23804c65e210905e2b23bc4fd9c54aa4b3207e05
