@@ -14,8 +14,9 @@ procfile:
 servers:
   qa: []
   prod:
-    - mesos:
-        instances: 2
+    - high-dream
+    - lively-wildflower
+    - tan-leaf
 
 forcePorts: [5758]
 # Blazar Specific Settings

@@ -22,8 +22,8 @@ procfile:
 servers:
   qa: []
   prod:
-  - mesos:
-      instances: 3
-      numCpus: 4
+    - high-dream
+    - lively-wildflower
+    - tan-leaf
 
 forcePorts: [5757]
