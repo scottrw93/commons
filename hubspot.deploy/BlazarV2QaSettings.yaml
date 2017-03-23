@@ -13,7 +13,7 @@ buildResolution:
 logging:
   level: INFO
   appenders:
-    - type: console
+    # - type: console # was seeing dupliacted logs on stdout
     - type: sentry
       sentryDsn: https://2f002ad0745546b5b2b529461ca62349:a17da6ad912a4eec926c51a969925863@sentry.io/99138
       blazarRelease: "QA"
@@ -21,7 +21,7 @@ logging:
 blazarConfiguration:
   # Only build certain projects in QA
   whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms']
-  blacklist: [] 
+  blacklist: []
 
   slack_blazar:
     # creds for PI-BOT
