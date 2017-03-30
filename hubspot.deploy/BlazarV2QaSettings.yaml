@@ -29,7 +29,7 @@ blazarConfiguration:
     slackApiBaseUrl: https://slack.com/api
     slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
     username: blazar-bot
-    imWhitelist: ["jgoodwin@hubspot.com"]
+    imWhitelist: []
 
 
   github:
