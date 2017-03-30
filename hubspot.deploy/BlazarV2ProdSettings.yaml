@@ -66,7 +66,7 @@ blazarConfiguration:
     slackApiBaseUrl: https://slack.com/api
     slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
     username: blazar-bot
-    imWhitelist: ["jgoodwin@hubspot.com", "wsorenson@hubspot.com", "pgandhi@hubspot.com"]
+    imWhitelist: []
 
   # Repos to not build
   blacklist: []
