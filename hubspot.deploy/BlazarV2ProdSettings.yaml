@@ -67,6 +67,7 @@ blazarConfiguration:
     slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
     username: blazar-bot
     imWhitelist: []
+    imBlacklist: [stuart@hubspot.com, akrim@hubspot.com, rberdeen@hubspot.com]
 
   # Repos to not build
   blacklist: []
