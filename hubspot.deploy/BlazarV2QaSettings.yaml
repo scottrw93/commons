@@ -54,6 +54,7 @@ blazarConfiguration:
   ui:
     baseUrl: https://private.hubteamqa.com/blazar
 
+
   singularityClusters:
     Singularity3x3:
       host: bootstrap.hubteamqa.com
