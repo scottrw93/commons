@@ -54,13 +54,13 @@ blazarConfiguration:
   ui:
     baseUrl: https://private.hubteamqa.com/blazar
 
-  singularity:
-    host: bootstrap.hubteamqa.com
-    path: /singularity/v2/api
-    request: BlazarExecutorJavaTest-blazar-executor-java
-    slaveHttpPort: 5051
-    credentials:
-      headerName: X-HubSpot-User
-      token: jgoodwin
-
+  singularityClusters:
+    Singularity3x3:
+      host: bootstrap.hubteamqa.com
+      path: /singularity/v2/api
+      request: BlazarExecutorJavaTest-blazar-executor-java
+      slaveHttpPort: 5051
+      credentials:
+        headerName: X-HubSpot-User
+        token: jgoodwin
 
