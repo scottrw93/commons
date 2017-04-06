@@ -12,8 +12,9 @@ buildResolution:
 
 logging:
   level: INFO
-  "com.hubspot.blazar":
-    level: DEBUG
+  loggers:
+    "com.hubspot.blazar":
+      level: DEBUG
   appenders:
     - type: console
     - type: sentry
