@@ -58,7 +58,7 @@ blazarConfiguration:
     Singularity3x3:
       host: bootstrap.hubteamqa.com
       path: /singularity/v2/api
-      request: BlazarExecutorJavaTest-blazar-executor-java
+      request: BlazarExecutorJava-blazar-executor-java
       slaveHttpPort: 5051
       credentials:
         headerName: X-HubSpot-User
