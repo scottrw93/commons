@@ -63,6 +63,17 @@ blazarConfiguration:
       credentials:
         headerName: X-HubSpot-User
         token: jgoodwin
+    SingularityProd3x4:
+      host: bootstrap.hubteam.com
+      path: /singularity/v3/api
+      request: BlazarExecutorJava-blazar-executor-java
+      slaveHttpPort: 5051
+      buildStrategy: WHITELIST
+      repositories:
+        - BlazarSmokeTests
+      credentials:
+        headerName: X-HubSpot-User
+        token: jgoodwin
 
 
   slack_blazar:
