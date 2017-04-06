@@ -1,6 +1,6 @@
 # HubSpot Deploy Settings
 type: mixin
-buildName: github.com-HubSpot-Blazar-hs-master-BlazarService
+buildName: github.com-HubSpot-Blazar-handle_singularity_outage-BlazarService
 includeConfigs:
   - BlazarV2AllServiceCommon
 
@@ -12,6 +12,9 @@ buildResolution:
 
 logging:
   level: INFO
+  loggers:
+    "com.hubspot.blazar":
+      level: DEBUG
   appenders:
     - type: console
     - type: sentry
@@ -51,14 +54,16 @@ blazarConfiguration:
   ui:
     baseUrl: https://private.hubteam.com/blazar
 
-  singularity:
-    host: bootstrap.hubteamqa.com
-    path: /singularity/v2/api
-    request: BlazarExecutorJava-blazar-executor-java
-    slaveHttpPort: 5051
-    credentials:
-      headerName: X-HubSpot-User
-      token: hsblazar
+  singularityClusters:
+    Singularity3x3:
+      host: bootstrap.hubteamqa.com
+      path: /singularity/v2/api
+      request: BlazarExecutorJavaTest-blazar-executor-java
+      slaveHttpPort: 5051
+      credentials:
+        headerName: X-HubSpot-User
+        token: jgoodwin
+
 
   slack_blazar:
     # creds for PI-BOT
