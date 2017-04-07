@@ -1,0 +1,23 @@
+type: procfile
+includeConfigs:
+  - BlazarV2QaSettings
+
+procfile:
+  migrationStatus:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db status $CONFIG_YAML
+  migrationRun:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db migrate $CONFIG_YAML
+
+servers:
+  qa:
+    - mesos
+  prod: []
+
+blazarConfiguration:
+  database:
+    driverClass: com.mysql.jdbc.Driver
+    user: app_migration_bl
+    password: "uy!W@i2dkdL3"
+    url: jdbc:mysql://db.blazarv2.hubteamqa.com:3306/BlazarV2
