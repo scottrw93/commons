@@ -70,7 +70,7 @@ blazarConfiguration:
       slaveHttpPort: 5051
       buildStrategy: WHITELIST
       repositories:
-        - git.hubteam.com-HubSpot-BlazarSmokeTests
+        - none
       credentials:
         headerName: X-HubSpot-User
         token: jgoodwin
