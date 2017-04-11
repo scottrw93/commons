@@ -34,8 +34,8 @@ blazarConfiguration:
     username: blazar-bot
     directMessageConfiguration:
       ignoredBranches: ["guava-moreobjects"]
-      whitelistedUserEmails: [jgoodwin@hubspot.com]
-      blacklistedUserEmails: []
+      whitelistedUserEmails: []
+      blacklistedUserEmails: [jgoodwin@hubspot.com]
 
   github:
     git.hubteam.com:
