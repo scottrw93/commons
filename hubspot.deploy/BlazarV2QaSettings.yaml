@@ -32,8 +32,10 @@ blazarConfiguration:
     slackApiBaseUrl: https://slack.com/api
     slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
     username: blazar-bot
-    imWhitelist: []
-
+    directMessageConfiguration:
+      ignoredBranches: ["guava-moreobjects"]
+      whitelistedUserEmails: [jgoodwin@hubspot.com]
+      blacklistedUserEmails: []
 
   github:
     git.hubteam.com:
