@@ -1,6 +1,7 @@
 # HubSpot Deploy Settings
 loadBalancers:
   - bootstrap
+  - build
   - privateapi
   - privatehubteam
 
