@@ -35,7 +35,7 @@ blazarConfiguration:
     directMessageConfiguration:
       ignoredBranches: ["guava-moreobjects"]
       whitelistedUserEmails: []
-      blacklistedUserEmails: []
+      blacklistedUserEmails: ['rberdeen@hubspot.com']
 
   github:
     git.hubteam.com:
