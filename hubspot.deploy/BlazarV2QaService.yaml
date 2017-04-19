@@ -11,7 +11,7 @@ includeConfigs:
 
 procfile:
   web:
-    cmd: java-wrapper $EXTRA_ARGS -Ddw.server.connector.port=5757 -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_ARGS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Ddw.server.connector.port=5757 -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
     type: SERVICE
 
   # Cleans archived repos
