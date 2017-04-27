@@ -87,7 +87,7 @@ blazarConfiguration:
     slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
     username: blazar-bot
     directMessageConfiguration:
-      ignoredBranches: ["guava-moreobjects"]
+      ignoredBranches: ["guava-moreobjects", "runner-getguicemodule"]
       whitelistedUserEmails: []
       blacklistedUserEmails: [stuart@hubspot.com, akrim@hubspot.com, rberdeen@hubspot.com, lbryant@hubspot.com, mprior@hubspot.com, dkulla@hubspot.com, blodge@hubspot.com]
 
