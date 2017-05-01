@@ -89,7 +89,16 @@ blazarConfiguration:
     directMessageConfiguration:
       ignoredBranches: ["guava-moreobjects", "runner-getguicemodule"]
       whitelistedUserEmails: []
-      blacklistedUserEmails: [stuart@hubspot.com, akrim@hubspot.com, rberdeen@hubspot.com, lbryant@hubspot.com, mprior@hubspot.com, dkulla@hubspot.com, blodge@hubspot.com, fjahanmir@hubspot.com]
+      blacklistedUserEmails: 
+        - stuart@hubspot.com
+        - akrim@hubspot.com
+        - rberdeen@hubspot.com
+        - lbryant@hubspot.com
+        - mprior@hubspot.com
+        - dkulla@hubspot.com
+        - blodge@hubspot.com
+        - fjahanmir@hubspot.com
+        - zklapow@hubspot.com
 
   # Repos to not build
   blacklist: []
