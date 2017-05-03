@@ -16,12 +16,13 @@ servers:
 
 nginx:
   proxyConfig: |
-    set $vaultUri https://vault.iad02.hubinfra.com:443/v1/;
+    set $vaultUri https://vault.iad02.hubinfra.com:443/;
     if ($hs_env = "qa") {
-        set $vaultUri https://vault.iad03.hubinfraqa.com:443/v1/;
+        set $vaultUri https://vault.iad03.hubinfraqa.com:443/;
     }
 
     location /vault {
+      rewrite ^/vault/(/.*)$ /v1/$1 break;
       proxy_pass_header Server;
       proxy_set_header Host $http_host;
       proxy_redirect off;
