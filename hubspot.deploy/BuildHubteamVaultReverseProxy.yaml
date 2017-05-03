@@ -28,7 +28,7 @@ nginx:
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Scheme $scheme;
       
-      rewrite ^/vault(/.*)$ /v1/$1/ break;
+      rewrite ^/vault(.*)$ /v1$1 last;
       proxy_redirect off;
       proxy_pass https://$vaultHost;
       proxy_connect_timeout 55;
