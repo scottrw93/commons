@@ -16,9 +16,9 @@ servers:
 
 nginx:
   proxyConfig: |
-    set $vaultUri https://vault.iad02.hubinfra.com:443/;
+    set $vaultHost vault.iad02.hubinfra.com;
     if ($hs_env = "qa") {
-        set $vaultUri https://vault.iad03.hubinfraqa.com:443/;
+        set $vaultHost vault.iad03.hubinfraqa.com;
     }
 
     location /vault {
@@ -29,7 +29,7 @@ nginx:
       proxy_set_header X-HubSpot-Trace $x_hubspot_trace;
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Scheme $scheme;
-      proxy_pass $vaultUri;
+      proxy_pass https://$vaultHost;
       proxy_connect_timeout 55;
       proxy_read_timeout 60;
       keepalive_timeout 0;
