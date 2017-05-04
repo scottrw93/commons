@@ -1,7 +1,25 @@
 # HubSpot Deploy Settings
 type: procfile
+buildName: github.com-HubSpot-Blazar-hs-master-BlazarService
 includeConfigs:
   - BlazarV2AllServiceCommon
+
+buildResolution:
+  qa:
+    strategy: NO_BUILD
+  prod:
+    strategy: LATEST_BUILD
+
+logging:
+  level: INFO
+  loggers:
+    "com.hubspot.blazar":
+      level: DEBUG
+  appenders:
+    - type: console
+    - type: sentry
+      sentryDsn: https://bd961d5ec8ab4343bab62d569c962fe0:cbff3099aa3e47a2b9ca25888813028a@sentry.io/106295
+      blazarRelease: "PROD"
 
 procfile:
   migrationStatus:
