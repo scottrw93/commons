@@ -17,7 +17,7 @@ servers:
 nginx:
   proxyConfig: |
     set $nexusHost james-bond.iad02.hubspot-networks.net:8081;
-    location /npm-nexus {
+    location /nexus {
       proxy_pass_header Server;
       proxy_set_header Host $http_host;
       proxy_set_header X-HubSpot-Trace $x_hubspot_trace;
