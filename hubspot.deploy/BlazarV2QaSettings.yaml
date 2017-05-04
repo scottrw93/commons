@@ -1,6 +1,6 @@
 # HubSpot Deploy Settings
 type: mixin
-buildName: github.com-HubSpot-Blazar-hs-master-BlazarService
+buildName: github.com-HubSpot-Blazar-hs-staging-BlazarService
 includeConfigs:
   - BlazarV2AllServiceCommon
 
