@@ -1,7 +1,7 @@
 # HubSpot Deploy Settings
 type: procfile
 includeConfigs:
-  - BlazarV2ProdSettings
+  - BlazarV2AllServiceCommon
 
 procfile:
   migrationStatus:

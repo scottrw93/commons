@@ -1,6 +1,6 @@
 type: procfile
 includeConfigs:
-  - BlazarV2QaSettings
+  - BlazarV2AllServiceCommon
 
 procfile:
   migrationStatus:
