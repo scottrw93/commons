@@ -1,0 +1,33 @@
+team: hs-paas-build-deploy
+type: load_balancer
+appRoot: /vault
+
+description: Proxies requests from build.hubteam(qa).com/vault/ to vault
+
+loadBalancers:
+ - build
+
+owners:
+ - paas@hubspot.com
+
+servers:
+ qa: []
+ prod: []
+
+nginx:
+  proxyConfig: |
+    set $nexusHost james-bond.iad02.hubspot-networks.net:8081
+    location /npm-nexus {
+      proxy_pass_header Server;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-HubSpot-Trace $x_hubspot_trace;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Scheme $scheme;
+
+      rewrite ^/npm-nexus(.*)$ /nexus$1 break;
+      proxy_redirect off;
+      proxy_pass https://$nexusHost;
+      proxy_connect_timeout 55;
+      proxy_read_timeout 60;
+      keepalive_timeout 0;
+    }
