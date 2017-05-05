@@ -24,7 +24,6 @@ nginx:
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Scheme $scheme;
 
-      rewrite ^/npm-nexus(.*)$ /nexus$1 break;
       proxy_redirect off;
       proxy_pass http://$nexusHost;
       proxy_connect_timeout 55;
