@@ -14,7 +14,7 @@ procfile:
 servers:
   qa:
     - stale-goose
-    - lucky-dingo
+#    - lucky-dingo
   prod: []
 
 forcePorts: [5758]

@@ -22,7 +22,7 @@ procfile:
 
 servers:
   qa:
-    - stale-goose
+#    - stale-goose
     - lucky-dingo
   prod: []
 
