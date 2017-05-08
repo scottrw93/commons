@@ -17,6 +17,7 @@ servers:
 #    - lucky-dingo
   prod: []
 
+singleProcessRunning: true
 forcePorts: [5758]
 # Blazar Specific Settings
 blazarConfiguration:
