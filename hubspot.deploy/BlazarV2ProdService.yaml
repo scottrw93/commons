@@ -27,4 +27,5 @@ servers:
     - lively-wildflower
     - tan-leaf
 
+singleProcessRunning: true
 forcePorts: [5757]
