@@ -18,6 +18,7 @@ servers:
     - lively-wildflower
     - tan-leaf
 
+singleProcessRunning: true
 forcePorts: [5758]
 # Blazar Specific Settings
 blazarConfiguration:
