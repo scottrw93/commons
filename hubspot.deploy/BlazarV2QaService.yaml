@@ -26,4 +26,5 @@ servers:
     - lucky-dingo
   prod: []
 
+singleProcessRunning: true
 forcePorts: [5757]
