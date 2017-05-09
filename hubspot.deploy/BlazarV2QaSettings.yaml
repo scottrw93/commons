@@ -75,10 +75,6 @@ blazarConfiguration:
       host: bootstrap.hubteam.com
       path: /singularity/v3/api
       request: BlazarExecutorJavaTest-blazar-executor-java
-      buildStrategy: WHITELIST
-      repositories:
-        - git.hubteam.com-hubspot-BlazarSmokeTests
-        - git.hubteam.com-hubspot-jgoodwin-test-poms
       slaveHttpPort: 5051
       credentials:
         headerName: X-HubSpot-User
