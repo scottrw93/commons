@@ -23,6 +23,8 @@ logging:
 
 blazarConfiguration:
   # Blazar Specific Settings
+  blacklist: ['BlazarSmokeTests', 'jgoodwin-test-poms', 'blazar-test-hs-static', 'blazar-test-asset-bender']
+  
   github:
     git.hubteam.com:
       oauthToken: 23804c65e210905e2b23bc4fd9c54aa4b3207e05

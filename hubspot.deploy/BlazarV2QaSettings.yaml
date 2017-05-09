@@ -25,7 +25,7 @@ logging:
 
 blazarConfiguration:
   # Only build certain projects in QA
-  whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms']
+  whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms', 'blazar-test-hs-static', 'blazar-test-asset-bender']
   blacklist: []
 
   slack_blazar:
