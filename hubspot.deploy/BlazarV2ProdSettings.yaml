@@ -102,6 +102,4 @@ blazarConfiguration:
         - fjahanmir@hubspot.com
         - zklapow@hubspot.com
 
-  # Repos to not build
-  blacklist: []
 
