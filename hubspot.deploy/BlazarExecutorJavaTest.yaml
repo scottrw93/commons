@@ -43,7 +43,6 @@ env:
   all:
     HOST_PWD: "$PWD"
     CGROUP_PARENT: "mesos/$CGROUPS_GUID"
-    DRY_RUN_REPOS: 'jgoodwin-test-poms,content4j,Email,sprocket4j,Orion,contacts,batchemail,COSEmail'
     HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-paas-build-deploy)"
 
 dockerParamaters:
