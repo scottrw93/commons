@@ -1,5 +1,5 @@
 type: procfile
-buildName: git.hubteam.com-HubSpotProtected-Blazar-master-BlazarExecutor
+buildName: git.hubteam.com-HubSpotProtected-Blazar-staging-BlazarExecutor
 accessGroup: hs-paas-build-deploy
 
 team: hs-paas-build-deploy
