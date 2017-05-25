@@ -47,6 +47,7 @@ env:
 
 dockerParamaters:
  privileged: true
+ cap-add: NET_ADMIN
 
 servers:
   qa:
