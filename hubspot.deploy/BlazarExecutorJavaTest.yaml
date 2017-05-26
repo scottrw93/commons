@@ -45,7 +45,7 @@ env:
     CGROUP_PARENT: "mesos/$CGROUPS_GUID"
     HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-paas-build-deploy)"
 
-dockerParamaters:
+dockerParameters:
  privileged: true
  cap-add: NET_ADMIN
 
