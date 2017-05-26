@@ -14,6 +14,9 @@ docker:
     daemon: false
     image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:latest
     addDefaultVolumes: false
+    dockerParameters:
+      privileged: true
+      cap-add: NET_ADMIN
     volumes:
       - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
         containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
@@ -45,9 +48,7 @@ env:
     CGROUP_PARENT: "mesos/$CGROUPS_GUID"
     HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-paas-build-deploy)"
 
-dockerParameters:
- privileged: true
- cap-add: NET_ADMIN
+
 
 servers:
   qa:
