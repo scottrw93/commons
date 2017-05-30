@@ -69,7 +69,7 @@ blazarConfiguration:
     SingularityProd3x4:
       host: bootstrap.hubteam.com
       path: /singularity/v3/api
-      request: BlazarExecutorJavaTest-blazar-executor-java
+      request: BlazarExecutorJava-blazar-executor-java
       slaveHttpPort: 5051
       buildStrategy: WHITELIST
       repositories:
