@@ -1,5 +1,5 @@
 type: procfile
-buildName: git.hubteam.com-HubSpotProtected-Blazar-master-BlazarExecutor
+buildName: git.hubteam.com-HubSpotProtected-Blazar-staging-BlazarExecutor
 accessGroup: hs-paas-build-deploy
 team: hs-paas-build-deploy
 
@@ -12,11 +12,14 @@ owners:
 
 docker:
   blazar-executor-java:
-    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-1.0-SNAPSHOT-shaded.jar $EXTRA_EXECUTOR_ARGS"
+    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-1.0-SNAPSHOT-shaded.jar --blazarApiDomain https://build.hubteam.com --ipTablesLockProd=true --ipTablesLockQa=true $EXTRA_EXECUTOR_ARGS"
     network: BRIDGE
     daemon: false
     image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:199
     addDefaultVolumes: false
+    dockerParameters:
+      privileged: true
+      cap-add: NET_ADMIN
     volumes:
       - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
         containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
