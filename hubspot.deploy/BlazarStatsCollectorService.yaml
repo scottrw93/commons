@@ -1,0 +1,16 @@
+type: procfile
+buildName: git.hubteam.com-HubSpot-BlazarStatsCollector-master-BlazarStatsCollectorService
+appRoot: /blazar-stats/v1
+team: hs-paas-build-deploy
+loadBalancers:
+  - privatehubteam
+  - build
+
+servers:
+  qa:
+    - mesos
+  prod:
+    - mesos
+
+procfile:
+  web: java-wrapper -jar ./target/BlazarStatsCollectorService-executable.jar server $CONFIG_YAML
