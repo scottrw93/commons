@@ -78,6 +78,7 @@ blazarConfiguration:
         - git.hubteam.com-hubspot-Orion
         - git.hubteam.com-hubspotprotected-Blazar
         - git.hubteam.com-hubspot-BlazarUI
+        - git.hubteam.com-hubspot-BlazarSmokeTests
       credentials:
         headerName: X-HubSpot-User
         token: jgoodwin
