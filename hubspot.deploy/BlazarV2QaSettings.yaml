@@ -26,7 +26,7 @@ logging:
 
 blazarConfiguration:
   executor:
-    blazarApiDomain: "https://bootstrap.hubteamqa.com"
+    blazarApiDomain: "https://build.hubteamqa.com"
     blazarApiContextPath: "/blazar/v2"
   # Only build certain projects in QA
   whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms', 'blazar-test-hs-static', 'blazar-test-asset-bender']
