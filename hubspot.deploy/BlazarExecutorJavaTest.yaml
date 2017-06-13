@@ -9,7 +9,7 @@ owners:
 
 docker:
   blazar-executor-java:
-    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-1.0-staging-SNAPSHOT-shaded.jar --blazarApiDomain https://build.hubteamqa.com --ipTablesLockProd=true --ipTablesLockQa=true $EXTRA_EXECUTOR_ARGS"
+    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-1.0-staging-SNAPSHOT-shaded.jar --ipTablesLockProd=true --ipTablesLockQa=true $EXTRA_EXECUTOR_ARGS"
     network: BRIDGE
     daemon: false
     image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:latest
