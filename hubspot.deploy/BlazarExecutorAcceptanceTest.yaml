@@ -11,7 +11,6 @@ docker:
     network: BRIDGE
     daemon: false
     image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:latest
-    addDefaultVolumes: false
     dockerParameters:
       privileged: true
       cap-add: NET_ADMIN
