@@ -5,6 +5,7 @@ team: hs-paas-build-deploy
 owners:
  - jgoodwin@hubspot.com
 
+zkGroup: BlazarAcceptanceTests
 tests:
   test1:
     testType: USER_DEFINED
