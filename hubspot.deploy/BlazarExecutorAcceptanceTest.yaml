@@ -8,7 +8,7 @@ owners:
 tests:
   test1:
     testType: USER_DEFINED
-    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:latest
+    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-acceptancetests:latest
     cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutorAcceptanceTests-1.0-staging-SNAPSHOT-shaded.jar"
     # network: BRIDGE
     # daemon: false
