@@ -1,0 +1,17 @@
+buildName: git.hubteam.com-hubspot-paas-build-depoy-master-network-opt-out
+
+type: procfile
+
+description: Take out the rubbish
+
+owners:
+  - jgoodwin@hubspot.com
+
+procfile:
+  clean:
+    cmd: .deploy_virtualenv/bin/opt-out
+    type: ON_DEMAND
+
+servers:
+  qa:
+    - mesos
