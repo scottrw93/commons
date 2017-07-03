@@ -9,7 +9,7 @@ owners:
   - jgoodwin@hubspot.com
 
 procfile:
-  clean:
+  opt-out:
     cmd: .deploy_virtualenv/bin/opt-out
     type: ON_DEMAND
 
