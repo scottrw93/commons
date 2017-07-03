@@ -23,6 +23,7 @@ def main():
         repoId = repoData[repoName]
         r  = requests.post(BLAZAR_ROOT_URL + '/repositories-without-net-lock-down', json={'repositoryId': repoId, 'repositoryName': repoName, 'expiresAtMillis': expiresAt})
         r.raise_for_status()
+        print "opted-out ", repoName
 
 if __name__ == '__main__':
     main()
