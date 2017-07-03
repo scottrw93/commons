@@ -1,6 +1,7 @@
 buildName: git.hubteam.com-hubspot-PaaS-Build-Deploy-master-network-opt-out
 
 type: procfile
+team: hs-paas-build-deploy
 
 description: Take out the rubbish
 
