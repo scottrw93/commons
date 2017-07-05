@@ -60,13 +60,13 @@ servers:
     - mesos:
         numCpus: 2
         memoryMb: 2560
-        placement: GREEDY
+        placement: OPTIMISTIC
 
   prod:
     - mesos:
         numCpus: 2
         memoryMb: 2560
-        placement: GREEDY
+        placement: OPTIMISTIC
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
