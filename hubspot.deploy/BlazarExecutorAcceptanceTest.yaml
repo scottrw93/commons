@@ -1,7 +1,14 @@
 type: acceptance_test
-buildName: git.hubteam.com-HubSpotProtected-Blazar-staging-BlazarExecutorAcceptanceTests
+
+artifactBuildMetadata:
+  organization: HubSpotProtected
+  repository: Blazar
+  module: BlazarExecutorAcceptanceTests
+  branch: staging
+
 accessGroup: hs-paas-build-deploy
 team: hs-paas-build-deploy
+
 owners:
  - jgoodwin@hubspot.com
 

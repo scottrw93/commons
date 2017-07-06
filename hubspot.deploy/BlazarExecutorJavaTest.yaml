@@ -1,5 +1,11 @@
 type: procfile
-buildName: git.hubteam.com-HubSpotProtected-Blazar-staging-BlazarExecutor
+
+artifactBuildMetadata:
+  organization: HubSpotProtected
+  repository: Blazar
+  module: BlazarExecutor
+  branch: staging
+
 accessGroup: hs-paas-build-deploy
 
 team: hs-paas-build-deploy

@@ -1,6 +1,9 @@
 team: hs-paas-build-deploy
 owners: [ahuang@hubspot.com]
-buildName: git.hubteam.com-HubSpot-BlazarUI-master-BlazarUI
+
+artifactBuildMetadata:
+  repository: BlazarUI
+  module: BlazarUI
 
 slack:
  - "#paas-b-d-notifs"
