@@ -1,5 +1,11 @@
 type: procfile
-buildName: git.hubteam.com-HubSpotProtected-Blazar-staging-BlazarService
+
+artifactBuildMetadata:
+  organization: HubSpotProtected
+  repository: Blazar
+  module: BlazarService
+  branch: staging
+
 includeConfigs:
   - BlazarV2AllServiceCommon
 
