@@ -82,14 +82,14 @@ blazarConfiguration:
       credentials:
         headerName: X-HubSpot-User
         token: jgoodwin
-    Singularity-GCP-chs01:
-      host: bootstrap.hubteamqa.com
-      path: /singularity/gcp-chs01/api
-      request: BlazarExecutorJavaTest-chs01-blazar-executor-java
-      slaveHttpPort: 5051
-      credentials:
-        headerName: X-HubSpot-User
-        token: jgoodwin
+    # Singularity-GCP-chs01:
+    #   host: bootstrap.hubteamqa.com
+    #   path: /singularity/gcp-chs01/api
+    #   request: BlazarExecutorJavaTest-chs01-blazar-executor-java
+    #   slaveHttpPort: 5051
+    #   credentials:
+    #     headerName: X-HubSpot-User
+    #     token: jgoodwin
     SingularityProd3x4:
       host: bootstrap.hubteam.com
       path: /singularity/v3/api
