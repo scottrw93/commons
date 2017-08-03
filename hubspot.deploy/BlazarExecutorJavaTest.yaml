@@ -18,7 +18,7 @@ docker:
     cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-1.0-staging-SNAPSHOT-shaded.jar"
     network: BRIDGE
     daemon: false
-    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:latest
+    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-better-maven-logging-v3-executor:latest
     addDefaultVolumes: false
     dockerParameters:
       privileged: true
