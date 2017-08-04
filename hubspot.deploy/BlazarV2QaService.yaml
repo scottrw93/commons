@@ -14,18 +14,6 @@ procfile:
     cmd: java-wrapper $EXTRA_ARGS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Ddw.server.connector.port=5757 -cp ./target/\* com.hubspot.blazar.BlazarService server $CONFIG_YAML
     type: SERVICE
 
-  # Cleans archived repos
-  cleanMetadataCommand:
-    type: SCHEDULED_JOB
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService clean_repo_metadata $CONFIG_YAML
-    schedule: "0 2 * * *"
-  
-  # Deletes old queue items
-  eventQueueCleanCommand:
-    type: SCHEDULED_JOB
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService event_queue_clean $CONFIG_YAML
-    schedule: "0 0 * * *"
-
 servers:
   qa:
 #    - stale-goose
