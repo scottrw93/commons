@@ -19,5 +19,3 @@ servers:
   qa:
     - mesos
   prod: []
-
-singleProcessRunning: true
