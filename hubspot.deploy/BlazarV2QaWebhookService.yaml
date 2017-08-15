@@ -8,12 +8,13 @@ includeConfigs:
 
 procfile:
   web: 
-    cmd: java-wrapper $EXTRA_ARGS -Ddw.server.connector.port=5758 -cp $JAR com.hubspot.blazar.BlazarService server $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_ARGS -jar $JAR server $CONFIG_YAML
     type: SERVICE
 
 env:
   qa:
     JAR: target/BlazarService-1.0-staging-SNAPSHOT-shaded.jar
+    EXTRA_ARGS: -Ddw.server.connector.port=5758
 
 
 servers:
