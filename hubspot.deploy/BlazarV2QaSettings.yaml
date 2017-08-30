@@ -37,6 +37,11 @@ blazarConfiguration:
   # Only build certain projects in QA
   whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms', 'blazar-test-hs-static', 'blazar-test-asset-bender']
   blacklist: []
+  signalFx:
+    authToken: RCvMukb4vXpVhKo_kI0HrQ
+    defaultDataSourceName: BlazarV2QaService
+    defaultDimensions:
+      env: qa
 
   slack_blazar:
     # creds for PI-BOT
