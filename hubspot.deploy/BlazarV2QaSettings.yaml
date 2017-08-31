@@ -42,7 +42,7 @@ blazarConfiguration:
     defaultDataSourceName: BlazarV2QaService
     defaultDimensions:
       env: qa
-      service: Blazar
+      project: BlazarService
 
   slack_blazar:
     # creds for PI-BOT
