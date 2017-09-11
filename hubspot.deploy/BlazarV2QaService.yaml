@@ -16,7 +16,7 @@ procfile:
 
 env:
   qa:
-    JAR: target/BlazarService-1.0-staging-SNAPSHOT-shaded.jar
+    JAR: target/BlazarService-executable.jar
     EXTRA_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Ddw.server.connector.port=5757
 
 servers:
