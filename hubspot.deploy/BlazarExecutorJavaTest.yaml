@@ -27,6 +27,9 @@ docker:
       - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
         containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
         mode: RO
+      - hostPath: /usr/share/hubspot/vault/hs-bizops
+        containerPath: /usr/share/hubspot/vault/hs-bizops.real
+        mode: RO
       - hostPath: /etc/hubspot.bootstrap.properties
         containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
         mode: RO
