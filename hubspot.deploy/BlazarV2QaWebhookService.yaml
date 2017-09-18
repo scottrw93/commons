@@ -13,7 +13,7 @@ procfile:
 
 env:
   qa:
-    JAR: target/BlazarService-1.0-staging-SNAPSHOT-shaded.jar
+    JAR: target/BlazarService-executable.jar
     EXTRA_ARGS: -Ddw.server.connector.port=5758
 
 
