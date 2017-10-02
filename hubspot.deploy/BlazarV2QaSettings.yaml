@@ -55,6 +55,8 @@ blazarConfiguration:
       setCommitStatus: false
       organizations:
         - HubSpot
+      ignoredUsers:
+        - tlee@hubspot.com
 
   zookeeper:
     quorum: zk1.mesos_qa.iad02.hubinfraqa.com:2181,zk2.mesos_qa.iad02.hubinfraqa.com:2181,zk3.mesos_qa.iad02.hubinfraqa.com:2181
