@@ -15,7 +15,7 @@ owners:
 
 docker:
   blazar-executor-java:
-    cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-1.0-staging-SNAPSHOT-shaded.jar"
+    cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
     network: BRIDGE
     daemon: false
     image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-ubuntu-executor:latest
@@ -72,7 +72,7 @@ servers:
     - mesos:
         numCpus: 2
         memoryMb: 2560
-        placement: GREEDY
+        placement: OPTIMISTIC
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []

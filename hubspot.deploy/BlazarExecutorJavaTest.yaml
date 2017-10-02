@@ -15,7 +15,7 @@ owners:
 
 docker:
   blazar-executor-java:
-    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-1.0-staging-SNAPSHOT-shaded.jar"
+    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
     network: BRIDGE
     daemon: false
     image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:latest
@@ -26,6 +26,9 @@ docker:
     volumes:
       - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
         containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
+        mode: RO
+      - hostPath: /usr/share/hubspot/vault/hs-apollo
+        containerPath: /usr/share/hubspot/vault/hs-apollo.real
         mode: RO
       - hostPath: /etc/hubspot.bootstrap.properties
         containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
@@ -72,7 +75,7 @@ servers:
     - mesos:
         numCpus: 2
         memoryMb: 2560
-        placement: GREEDY
+        placement: OPTIMISTIC
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []

@@ -17,7 +17,7 @@ tests:
   test1:
     testType: USER_DEFINED
     image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-acceptancetests:209
-    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutorAcceptanceTests-1.0-staging-SNAPSHOT-shaded.jar"
+    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutorAcceptanceTests-executable.jar"
     schedule: 0/5 * * * *
     # network: BRIDGE
     # daemon: false

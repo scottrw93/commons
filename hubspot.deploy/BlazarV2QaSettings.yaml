@@ -37,6 +37,12 @@ blazarConfiguration:
   # Only build certain projects in QA
   whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms', 'blazar-test-hs-static', 'blazar-test-asset-bender']
   blacklist: []
+  signalFx:
+    authToken: RCvMukb4vXpVhKo_kI0HrQ
+    defaultDataSourceName: BlazarV2QaService
+    defaultDimensions:
+      env: qa
+      project: BlazarService
 
   slack_blazar:
     # creds for PI-BOT
@@ -84,14 +90,14 @@ blazarConfiguration:
       credentials:
         headerName: X-HubSpot-User
         token: jgoodwin
-    Singularity-GCP-chs01:
-      host: bootstrap.hubteamqa.com
-      path: /singularity/gcp-chs01/api
-      request: BlazarExecutorJavaTest-chs01-blazar-executor-java
-      slaveHttpPort: 5051
-      credentials:
-        headerName: X-HubSpot-User
-        token: jgoodwin
+    # Singularity-GCP-chs01:
+    #   host: bootstrap.hubteamqa.com
+    #   path: /singularity/gcp-chs01/api
+    #   request: BlazarExecutorJavaTest-chs01-blazar-executor-java
+    #   slaveHttpPort: 5051
+    #   credentials:
+    #     headerName: X-HubSpot-User
+    #     token: jgoodwin
     SingularityProd3x4:
       host: bootstrap.hubteam.com
       path: /singularity/v3/api
