@@ -44,7 +44,7 @@ docker:
         mode: RW
       - hostPath: '$PWD/var-lib-docker'
         containerPath: /var/lib/docker
-        mode: RW
+        mode: RO
       - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
         containerPath: '/mnt/mesos/tmp/'
         mode: RW
