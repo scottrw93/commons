@@ -1,5 +1,7 @@
 type: procfile
 
+appRoot: /orion/v3-staging
+
 artifactBuildMetadata:
   repository: Orion
   module: OrionService
