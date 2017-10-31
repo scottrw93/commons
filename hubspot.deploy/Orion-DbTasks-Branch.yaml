@@ -1,0 +1,30 @@
+type: procfile
+
+artifactBuildMetadata:
+  repository: Orion
+  module: OrionService
+  branch: staging
+
+slack:
+  - channelName: "#paas-b-d-notifs"
+
+env:
+  all:
+    JAR_NAME: ./target/OrionService-executable.jar
+    JVM_MAX_HEAP: 1024m
+
+zkGroup: mesos:deploy:hs_staging:v3
+
+team: hs-paas-build-deploy
+
+owners:
+ - gchomatas@hubspot.com
+ - paas-build-deploy-notifications-groups@hubspot.com
+
+procfile:
+  dbmigrate:
+    type: ON_DEMAND
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME db migrate $CONFIG_YAML
+  dbstatus:
+    type: ON_DEMAND
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME db status $CONFIG_YAML
