@@ -1,0 +1,45 @@
+type: procfile
+
+includeConfigs:
+  - Orion-common
+
+appRoot: /orion/v3-staging
+
+loadBalancers:
+ - bootstrap
+ - build
+ - privatehubteam
+
+artifactBuildMetadata:
+  repository: Orion
+  module: OrionService
+  branch: staging
+
+servers:
+  qa:
+    - ratty-yak.iad03.hubspot-networks.net
+  prod:
+    - empty-grass.iad02.hubspot-networks.net
+    - little-rice.iad02.hubspot-networks.net
+    - weary-tetra.iad02.hubspot-networks.net
+
+env:
+  all:
+    JAR_NAME: ./target/OrionService-executable.jar
+    JVM_MAX_HEAP: 1024m
+    HS_ACCESS_GROUP: hs-paas
+
+accessGroup: hs-paas
+
+zkGroup: mesos:deploy:hs_staging:v3
+
+procfile:
+  web: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
+
+logging:
+  level: DEBUG
+  loggers:
+    com.hubspot.orion.poller: DEBUG
+
+http:
+  maxIdleTime: 200s
