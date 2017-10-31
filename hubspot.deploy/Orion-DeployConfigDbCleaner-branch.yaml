@@ -1,0 +1,23 @@
+type: procfile
+
+includeConfigs:
+  - Orion-common
+
+artifactBuildMetadata:
+  repository: Orion
+  module: OrionDeployConfigDbCleaner
+  branch: staging
+  
+env:
+  all:
+    JAR_NAME: ./target/OrionDeployConfigDbCleaner-executable.jar
+    JVM_MAX_HEAP: 1024m
+
+zkGroup: mesos:deploy:hs_staging:v3
+
+procfile:
+  cleanerJob:
+    type: SCHEDULED_JOB
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME
+    quartzSchedule: "0 40 */1 * * ?"
+
