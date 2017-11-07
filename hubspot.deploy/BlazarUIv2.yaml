@@ -1,4 +1,4 @@
-team: hs-paas-build-deploy
+team: hs-paas-ui
 owners: [ahuang@hubspot.com]
 
 artifactBuildMetadata:
