@@ -18,7 +18,7 @@ docker:
     cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
     network: BRIDGE
     daemon: false
-    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-add-artifactory-executor:latest
+    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:latest
     addDefaultVolumes: false
     dockerParameters:
       privileged: true
