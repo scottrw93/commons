@@ -8,8 +8,15 @@ artifactBuildMetadata:
 accessGroup: hs-paas-build-deploy
 team: hs-paas-build-deploy
 
+slack:
+  - channelName: "#paas-b-d-notifs"
+
 owners:
  - paas-build-deploy-notifications-groups@hubspot.com
+ 
+blazarConfiguration:
+  signalFx:
+    authToken: RCvMukb4vXpVhKo_kI0HrQ
 
 zkGroup: BlazarAcceptanceTests
 tests:
