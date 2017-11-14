@@ -58,8 +58,8 @@ env:
     HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-paas-build-deploy)"
 
 postDeployTests:
-  mesos:
-    all:
+  all:
+    mesos:
       - BlazarExecutorAcceptanceTest
 
 
