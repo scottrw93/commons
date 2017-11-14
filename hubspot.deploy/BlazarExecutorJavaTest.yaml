@@ -36,8 +36,8 @@ docker:
       - hostPath: /usr/share/hubspot/mesos/blazar_cache
         containerPath: /usr/share/hubspot/mesos/blazar_cache
         mode: RW
-      - hostPath: '$PWD/app/build-workspace'		
-        containerPath: /usr/share/hubspot/build/workspace		
+      - hostPath: '$PWD/app/build-workspace'
+        containerPath: /usr/share/hubspot/build/workspace
         mode: RW
       - hostPath: /var/run/docker.sock
         containerPath: /var/run/host-docker.sock
