@@ -17,6 +17,7 @@ owners:
 blazarConfiguration:
   signalFx:
     authToken: RCvMukb4vXpVhKo_kI0HrQ
+    defaultDataSourceName: BlazarExecutorAcceptanceTests
 
 zkGroup: BlazarAcceptanceTests
 tests:
