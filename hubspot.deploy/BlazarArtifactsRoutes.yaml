@@ -5,20 +5,17 @@ type: load_balancer
 appRoot: /blazar-artifacts
 team: hs-faas-infra
 
-owners:
-  - rberdeen@hubspot.com
-
 loadBalancers:
-  - privatehubteam
+- privatehubteam
 
 servers:
   qa:
-    - s3.amazonaws.com:443
+  - s3.amazonaws.com:443
   prod:
-    - s3.amazonaws.com:443
+  - s3.amazonaws.com:443
 
 nginx:
-  proxyConfig: |
+  proxyConfig: |2
 
     location ~* ^/blazar-artifacts/(.*) {
       set $url_full "$hs_env/$1";

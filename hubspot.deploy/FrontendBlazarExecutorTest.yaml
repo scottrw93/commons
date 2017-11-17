@@ -10,9 +10,6 @@ accessGroup: hs-paas-build-deploy
 
 team: hs-paas-build-deploy
 
-owners:
- - jgoodwin@hubspot.com
-
 docker:
   blazar-executor-java:
     cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
@@ -24,27 +21,27 @@ docker:
       privileged: true
       cap-add: NET_ADMIN
     volumes:
-      - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
-        containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
-        mode: RO
-      - hostPath: /etc/hubspot.bootstrap.properties
-        containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
-        mode: RO
-      - hostPath: /usr/share/hubspot/mesos/blazar_cache
-        containerPath: /usr/share/hubspot/mesos/blazar_cache
-        mode: RW
-      - hostPath: '$PWD/app/build-workspace'
-        containerPath: /usr/share/hubspot/build/workspace
-        mode: RW
-      - hostPath: /var/run/docker.sock
-        containerPath: /var/run/host-docker.sock
-        mode: RW
-      - hostPath: '$PWD/var-lib-docker'
-        containerPath: /var/lib/docker
-        mode: RO
-      - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
-        containerPath: '/mnt/mesos/tmp/'
-        mode: RW
+    - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
+      containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
+      mode: RO
+    - hostPath: /etc/hubspot.bootstrap.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
+      mode: RO
+    - hostPath: /usr/share/hubspot/mesos/blazar_cache
+      containerPath: /usr/share/hubspot/mesos/blazar_cache
+      mode: RW
+    - hostPath: '$PWD/app/build-workspace'
+      containerPath: /usr/share/hubspot/build/workspace
+      mode: RW
+    - hostPath: /var/run/docker.sock
+      containerPath: /var/run/host-docker.sock
+      mode: RW
+    - hostPath: '$PWD/var-lib-docker'
+      containerPath: /var/lib/docker
+      mode: RO
+    - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
+      containerPath: '/mnt/mesos/tmp/'
+      mode: RW
 
 # makes the log stay as service.log 5ever
 skipLogrotateAndCompress: true
@@ -57,22 +54,25 @@ env:
 postDeployTests:
   mesos:
     all:
-      - BlazarExecutorAcceptanceTest
+    - BlazarExecutorAcceptanceTest
 
 
 
 servers:
   qa:
-    - mesos:
-        numCpus: 2
-        memoryMb: 2560
-        placement: OPTIMISTIC
+  - mesos:
+      numCpus: 2
+      memoryMb: 2560
+      placement: OPTIMISTIC
 
   prod:
-    - mesos:
-        numCpus: 2
-        memoryMb: 2560
-        placement: OPTIMISTIC
+  - mesos:
+      numCpus: 2
+      memoryMb: 2560
+      placement: OPTIMISTIC
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
+
+contributors:
+- jgoodwin@hubspot.com

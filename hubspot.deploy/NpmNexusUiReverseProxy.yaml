@@ -5,14 +5,11 @@ appRoot: /npm-nexus
 description: Proxies requests from build.hubteam(qa).com/vault/ to vault
 
 loadBalancers:
- - build
-
-owners:
- - paas@hubspot.com
+- build
 
 servers:
- qa: []
- prod: []
+  qa: []
+  prod: []
 
 nginx:
   proxyConfig: |
