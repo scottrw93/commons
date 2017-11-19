@@ -43,6 +43,4 @@ logging:
 
 http:
   maxIdleTime: 200s
-
-owners:
-  - mrambeloarison@hubspot.com
+  
