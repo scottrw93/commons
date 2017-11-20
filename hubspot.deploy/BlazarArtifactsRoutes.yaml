@@ -15,7 +15,7 @@ servers:
   - s3.amazonaws.com:443
 
 nginx:
-  proxyConfig: |2
+  proxyConfig: |
 
     location ~* ^/blazar-artifacts/(.*) {
       set $url_full "$hs_env/$1";
