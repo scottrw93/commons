@@ -8,7 +8,7 @@ artifactBuildMetadata:
   branch: staging
 
 slack:
-  - channelName: "#paas-b-d-notifs"
+- channelName: "#paas-b-d-notifs"
 
 env:
   all:
@@ -18,10 +18,6 @@ env:
 zkGroup: mesos:deploy:hs_staging:v3
 
 team: hs-paas-build-deploy
-
-owners:
- - gchomatas@hubspot.com
- - paas-build-deploy-notifications-groups@hubspot.com
 
 procfile:
   dbmigrate:

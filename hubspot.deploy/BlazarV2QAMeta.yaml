@@ -1,9 +1,10 @@
 type: meta
 
 team: hs-paas-build-deploy
-owners: [jgoodwin@hubspot.com]
 
 projects:
-  - BlazarV2QaService
-  - BlazarV2QaWebhookService
+- BlazarV2QaService
+- BlazarV2QaWebhookService
 
+contributors:
+- jgoodwin@hubspot.com

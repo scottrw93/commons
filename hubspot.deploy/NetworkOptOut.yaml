@@ -5,9 +5,6 @@ team: hs-paas-build-deploy
 
 description: Take out the rubbish
 
-owners:
-  - jgoodwin@hubspot.com
-
 procfile:
   opt-out:
     cmd: .deploy_virtualenv/bin/opt-out
@@ -15,4 +12,7 @@ procfile:
 
 servers:
   qa:
-    - mesos
+  - mesos
+
+contributors:
+- jgoodwin@hubspot.com
