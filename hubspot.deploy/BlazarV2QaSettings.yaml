@@ -35,7 +35,7 @@ blazarConfiguration:
     blazarApiDomain: "https://build.hubteamqa.com"
     blazarApiContextPath: "/blazar/v2"
   # Only build certain projects in QA
-  whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms', 'blazar-test-hs-static', 'blazar-test-asset-bender']
+  whitelist: ['BlazarSmokeTests', 'jgoodwin-test-poms', 'blazar-test-hs-static', 'blazar-test-asset-bender', 'Blazar-IPB-Root', 'Blazar-IPB-Child1', 'Blazar-IPB-Child2']
   blacklist: []
   signalFx:
     authToken: RCvMukb4vXpVhKo_kI0HrQ
