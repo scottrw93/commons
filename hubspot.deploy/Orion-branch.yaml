@@ -21,7 +21,7 @@ servers:
   prod:
     - empty-grass.iad02.hubspot-networks.net
     - little-rice.iad02.hubspot-networks.net
-    - weary-tetra.iad02.hubspot-networks.net
+    - loose-lizard.iad02.hubspot-networks.net
 
 env:
   all:
