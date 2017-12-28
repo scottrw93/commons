@@ -19,7 +19,7 @@ servers:
   qa:
     - ratty-yak.iad03.hubspot-networks.net
   prod:
-    - empty-grass.iad02.hubspot-networks.net
+    - cute-snail.iad02.hubspot-networks.net
     - little-rice.iad02.hubspot-networks.net
     - loose-lizard.iad02.hubspot-networks.net
 
