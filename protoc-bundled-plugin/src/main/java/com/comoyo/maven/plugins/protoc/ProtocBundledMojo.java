@@ -460,4 +460,44 @@ public class ProtocBundledMojo extends AbstractMojo
             project.addTestCompileSourceRoot(testOutputDirectory.getAbsolutePath());
         }
     }
+
+    public void setPluginDescriptor(PluginDescriptor pluginDescriptor) {
+        this.pluginDescriptor = pluginDescriptor;
+    }
+
+    public void setProject(MavenProject project) {
+        this.project = project;
+    }
+
+    public void setRepositorySystem(RepositorySystem repositorySystem) {
+        this.repositorySystem = repositorySystem;
+    }
+
+    public void setRemoteRepositories(List<ArtifactRepository> remoteRepositories) {
+        this.remoteRepositories = remoteRepositories;
+    }
+
+    public void setProtobufVersion(String protobufVersion) {
+        this.protobufVersion = protobufVersion;
+    }
+
+    public void setInputDirectories(File[] inputDirectories) {
+        this.inputDirectories = inputDirectories;
+    }
+
+    public void setOutputDirectory(File outputDirectory) {
+        this.outputDirectory = outputDirectory;
+    }
+
+    public void setTestInputDirectories(File[] testInputDirectories) {
+        this.testInputDirectories = testInputDirectories;
+    }
+
+    public void setTestOutputDirectory(File testOutputDirectory) {
+        this.testOutputDirectory = testOutputDirectory;
+    }
+
+    public void setProtocExec(File protocExec) {
+        this.protocExec = protocExec;
+    }
 }
