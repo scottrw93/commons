@@ -1,6 +1,6 @@
 env:
   SET_VERSION_OVERRIDE: 1.4-hubspot-SNAPSHOT
-  MAVEN_ARGS: -am -pl protoc-bundled-plugin
+  MAVEN_ARGS: -Dmaven.gitcommitid.skip=true -am -pl protoc-bundled-plugin
 
 buildpack:
   host: git.hubteam.com
