@@ -27,9 +27,10 @@ env:
   all:
     JAR_NAME: ./target/OrionService-executable.jar
     JVM_MAX_HEAP: 1024m
-    HS_ACCESS_GROUP: hs-paas
+    HS_ACCESS_GROUP: hs-paas-build-deploy
+    VAULT_ACCESS_GROUP: hs-paas-build-deploy
 
-accessGroup: hs-paas
+vaultAccessGroup: hs-paas-build-deploy
 
 zkGroup: mesos:deploy:hs_staging:v3
 
