@@ -378,6 +378,10 @@ public class ProtocBundledMojo extends AbstractMojo
             command.add(protocExec.toString());
             command.add("--proto_path=" + inputDir.getAbsolutePath());
             for (File importDir : importDirs) {
+                if (!importDir.exists()) {
+                    continue;
+                }
+
                 command.add("--proto_path=" + importDir.getAbsolutePath());
             }
             command.add("--java_out=" + outputDir);
