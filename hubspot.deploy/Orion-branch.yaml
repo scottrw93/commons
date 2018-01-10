@@ -29,9 +29,8 @@ env:
     JVM_MAX_HEAP: 1024m
     HS_ACCESS_GROUP: hs-paas-build-deploy
     VAULT_ACCESS_GROUP: hs-paas-build-deploy
-    disable_healthchecks: True
 
-accessGroup: hs-paas-build-deploy
+vaultAccessGroup: hs-paas-build-deploy
 
 zkGroup: mesos:deploy:hs_staging:v3
 
