@@ -30,7 +30,7 @@ env:
     HS_ACCESS_GROUP: hs-paas-build-deploy
     VAULT_ACCESS_GROUP: hs-paas-build-deploy
 
-vaultAccessGroup: hs-paas-build-deploy
+accessGroup: hs-paas-build-deploy
 
 zkGroup: mesos:deploy:hs_staging:v3
 
