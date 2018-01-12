@@ -17,7 +17,7 @@ artifactBuildMetadata:
 
 servers:
   qa:
-    - ratty-yak.iad03.hubspot-networks.net
+    - shy-giraffe.iad03.hubspot-networks.net
   prod:
     - cute-snail.iad02.hubspot-networks.net
     - little-rice.iad02.hubspot-networks.net
