@@ -73,6 +73,3 @@ servers:
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
-
-contributors:
-- jgoodwin@hubspot.com
