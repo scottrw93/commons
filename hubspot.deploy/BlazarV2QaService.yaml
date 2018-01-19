@@ -18,6 +18,7 @@ env:
   qa:
     JAR: target/BlazarService-executable.jar
     VAULT_ACCESS_GROUP: hs-paas-build-deploy
+    HS_ACCESS_GROUP: hs-paas-build-deploy
     EXTRA_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Ddw.server.connector.port=5757
 
 servers:
