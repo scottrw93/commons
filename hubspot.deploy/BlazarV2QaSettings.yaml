@@ -30,6 +30,8 @@ logging:
       sentryDsn: https://2f002ad0745546b5b2b529461ca62349:a17da6ad912a4eec926c51a969925863@sentry.io/99138
       blazarRelease: "QA"
 
+vaultAccessGroup: hs-paas-build-deploy
+
 blazarConfiguration:
   executor:
     blazarApiDomain: "https://build.hubteamqa.com"
