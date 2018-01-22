@@ -20,6 +20,7 @@ env:
 servers:
   qa:
     - stale-goose
+    # - juicy-bongo
   prod: []
 
 singleProcessRunning: true
