@@ -20,7 +20,6 @@ env:
 servers:
   qa:
     - stale-goose
-#    - lucky-dingo
   prod: []
 
 singleProcessRunning: true
