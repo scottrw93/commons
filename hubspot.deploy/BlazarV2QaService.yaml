@@ -24,7 +24,7 @@ env:
 servers:
   qa:
 #    - stale-goose
-    - lucky-dingo
+    - juicy-bongo
   prod: []
 
 singleProcessRunning: true
