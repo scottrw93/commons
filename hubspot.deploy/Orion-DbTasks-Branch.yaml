@@ -23,6 +23,9 @@ procfile:
   dbmigrate:
     type: ON_DEMAND
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME db migrate $CONFIG_YAML
+  fast-forward:
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME db fast-forward $CONFIG_YAML
+    type: ON_DEMAND
   dbstatus:
     type: ON_DEMAND
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME db status $CONFIG_YAML
