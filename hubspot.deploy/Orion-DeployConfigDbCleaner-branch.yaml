@@ -8,6 +8,10 @@ artifactBuildMetadata:
   module: OrionDeployConfigDbCleaner
   branch: staging
   
+buildResolution:
+  qa: "LATEST_BUILD"
+  prod: "NO_BUILD"
+  
 env:
   all:
     JAR_NAME: ./target/OrionDeployConfigDbCleaner-executable.jar
