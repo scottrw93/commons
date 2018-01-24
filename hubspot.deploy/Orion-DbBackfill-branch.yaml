@@ -9,6 +9,10 @@ artifactBuildMetadata:
   repository: Orion
   module: OrionService
   branch: staging
+  
+buildResolution:
+  qa: "LATEST_BUILD"
+  prod: "NO_BUILD"
 
 env:
   all:
