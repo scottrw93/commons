@@ -1,14 +1,14 @@
 type: procfile
 
 includeConfigs:
-  - Orion-common
+- Orion-common
 
 appRoot: /orion/v3-staging
 
 loadBalancers:
- - bootstrap
- - build
- - privatehubteam
+- bootstrap
+- build
+- privatehubteam
 
 artifactBuildMetadata:
   repository: Orion
@@ -17,11 +17,11 @@ artifactBuildMetadata:
 
 servers:
   qa:
-    - shy-giraffe.iad03.hubspot-networks.net
+  - shy-giraffe.iad03.hubspot-networks.net
   prod:
-    - cute-snail.iad02.hubspot-networks.net
-    - little-rice.iad02.hubspot-networks.net
-    - loose-lizard.iad02.hubspot-networks.net
+  - cute-snail.iad02.hubspot-networks.net
+  - little-rice.iad02.hubspot-networks.net
+  - loose-lizard.iad02.hubspot-networks.net
 
 env:
   all:
@@ -35,8 +35,9 @@ vaultAccessGroup: hs-paas-build-deploy
 zkGroup: mesos:deploy:hs_staging:v3
 
 procfile:
-  web: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
-
+  web:
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
+    type: SERVICE
 logging:
   level: DEBUG
   loggers:
@@ -44,4 +45,4 @@ logging:
 
 http:
   maxIdleTime: 200s
-  
+
