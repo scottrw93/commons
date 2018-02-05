@@ -34,6 +34,9 @@ procfile:
   migrationRun:
     type: ON_DEMAND
     cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db migrate $CONFIG_YAML
+  migrationDryRun:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db migrate -n -i run $CONFIG_YAML
 
 servers:
   qa:
