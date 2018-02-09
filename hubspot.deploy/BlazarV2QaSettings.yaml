@@ -79,7 +79,8 @@ blazarConfiguration:
   ui:
     baseUrl: https://private.hubteamqa.com/blazar
 
-
+  mavenServiceUrl: https://private.hubapi.com/maven/v1/execute
+ 
   singularityClusters:
     Singularity3x3:
       safeToBuildWithoutNetworkLockDown: true
