@@ -79,7 +79,7 @@ blazarConfiguration:
   ui:
     baseUrl: https://private.hubteamqa.com/blazar
 
-  mavenServiceUrl: https://private.hubapi.com/maven/v1/execute
+  mavenServiceUrl: https://private.hubapiqa.com/maven/v1/execute
  
   singularityClusters:
     Singularity3x3:
