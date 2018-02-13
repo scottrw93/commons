@@ -4,7 +4,7 @@
   <parent>
     <artifactId>comoyo-commons-parent</artifactId>
     <groupId>com.hubspot</groupId>
-    <version>1.4</version>
+    <version>1.5-SNAPSHOT</version>
   </parent>
 
   <groupId>com.hubspot.maven.plugins</groupId>
