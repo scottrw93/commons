@@ -14,8 +14,8 @@
   </properties>
 
   <name>Comoyo Commons Multi-Module POM</name>
-  <groupId>com.comoyo</groupId>
-  <artifactId>commons</artifactId>
+  <groupId>com.hubspot</groupId>
+  <artifactId>comoyo-commons-parent</artifactId>
   <version>1.4-SNAPSHOT</version>
   <description>Collection of utility components</description>
 
@@ -219,15 +219,7 @@
       <id>release</id>
 
       <modules>
-        <module>pb-json</module>
         <module>protoc-bundled-plugin</module>
-        <module>amazonaws-utils</module>
-        <module>logging-context</module>
-        <module>logging-context-gelf</module>
-        <module>logging-context-json</module>
-        <module>logging-utilities</module>
-        <module>emjar</module>
-        <module>emjar-maven-plugin</module>
       </modules>
 
       <build>

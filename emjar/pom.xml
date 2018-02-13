@@ -6,8 +6,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <artifactId>commons</artifactId>
-    <groupId>com.comoyo</groupId>
+    <artifactId>comoyo-commons-parent</artifactId>
+    <groupId>com.hubspot</groupId>
     <version>1.4-SNAPSHOT</version>
   </parent>
 
