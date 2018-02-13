@@ -32,13 +32,13 @@
 
   <scm>
     <url>
-      https://github.com/comoyo/commons
+      https://github.com/HubSpot/commons
     </url>
     <developerConnection>
-      scm:git:ssh://git@github.com/comoyo/commons
+      scm:git:ssh://git@github.com/HubSpot/commons
     </developerConnection>
     <connection>
-      scm:git:ssh://git@github.com/comoyo/commons
+      scm:git:ssh://git@github.com/HubSpot/commons
     </connection>
   </scm>
 
