@@ -16,6 +16,24 @@
 
 package com.comoyo.maven.plugins.protoc;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.IOFileFilter;
+import org.apache.commons.io.filefilter.SuffixFileFilter;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.artifact.resolver.ArtifactResolutionRequest;
@@ -25,21 +43,6 @@ import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.repository.RepositorySystem;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.IOFileFilter;
-import org.apache.commons.io.filefilter.SuffixFileFilter;
-import org.apache.commons.io.filefilter.TrueFileFilter;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.List;
 
 
 /**
@@ -148,12 +151,12 @@ public class ProtocBundledMojo extends AbstractMojo
     private File[] inputDirectories;
 
     /**
-     * Directories containing *.proto files available to import.
+     * Dependencies containing *.proto files available to import.
      *
      * @parameter
-     *     property="importDirectories"
+     *     property="importDependencies"
      */
-    private File[] importDirectories;
+    private String[] importDependencies;
 
     /**
      * Output directory for generated Java class files.
@@ -173,12 +176,12 @@ public class ProtocBundledMojo extends AbstractMojo
     private File[] testInputDirectories;
 
     /**
-     * Directories containing *.proto files available to import for test.
+     * Dependencies containing *.proto files available to import for test.
      *
      * @parameter
-     *     property="testImportDirectories"
+     *     property="testImportDependencies"
      */
-    private File[] testImportDirectories;
+    private String[] testImportDependencies;
 
     /**
      * Output directory for generated Java class files.
@@ -453,6 +456,12 @@ public class ProtocBundledMojo extends AbstractMojo
         if (inputDirectories.length == 0) {
             inputDirectories = new File[]{new File(project.getBasedir(), "src/main/protobuf")};
         }
+        final File[] importDirectories;
+        if (importDependencies.length > 0) {
+            importDirectories = extractDependencyProtos(importDependencies);
+        } else {
+            importDirectories = new File[0];
+        }
         if (compileAllFiles("main", inputDirectories, importDirectories, outputDirectory)) {
             project.addCompileSourceRoot(outputDirectory.getAbsolutePath());
         }
@@ -460,9 +469,28 @@ public class ProtocBundledMojo extends AbstractMojo
         if (testInputDirectories.length == 0) {
             testInputDirectories = new File[]{new File(project.getBasedir(), "src/test/protobuf")};
         }
+        final File[] testImportDirectories;
+        getLog().info("Test import dependencies: " + Arrays.toString(testImportDependencies));
+        if (testImportDependencies.length > 0) {
+            testImportDirectories = extractDependencyProtos(testImportDependencies);
+        } else {
+            testImportDirectories = new File[0];
+        }
         if (compileAllFiles("test", testInputDirectories, testImportDirectories, testOutputDirectory)) {
             project.addTestCompileSourceRoot(testOutputDirectory.getAbsolutePath());
         }
+    }
+
+    private File[] extractDependencyProtos(String[] dependencies) throws MojoExecutionException {
+        getLog().debug("Extracting protos for dependencies: " + Arrays.toString(dependencies));
+        File outputDirectory = Paths
+                .get(project.getBuild().getDirectory())
+                .resolve("generated-resources")
+                .resolve("dependency-protobufs")
+                .toFile();
+        getLog().debug("Output directory: " + outputDirectory);
+        Set<String> artifactPatterns = new HashSet<>(Arrays.asList(dependencies));
+        return new DependencyProtobufExtractor(project, outputDirectory, artifactPatterns, getLog()).extract();
     }
 
     public void setPluginDescriptor(PluginDescriptor pluginDescriptor) {
