@@ -39,7 +39,7 @@
       </plugin>
 
       <plugin>
-        <groupId>com.comoyo.maven.plugins</groupId>
+        <groupId>com.hubspot.maven.plugins</groupId>
         <artifactId>protoc-bundled-plugin</artifactId>
         <version>1.4-SNAPSHOT</version>
         <executions>
