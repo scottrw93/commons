@@ -28,7 +28,7 @@ docker:
       containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
       mode: RO
     - hostPath: /etc/hubspot.protected.properties
-      containerPath: /usr/share/hubspot/internal/hubspot.protected.properties.real
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.protected.real
       mode: RO
     - hostPath: /usr/share/hubspot/mesos/blazar_cache
       containerPath: /usr/share/hubspot/mesos/blazar_cache
