@@ -470,7 +470,6 @@ public class ProtocBundledMojo extends AbstractMojo
             testInputDirectories = new File[]{new File(project.getBasedir(), "src/test/protobuf")};
         }
         final File[] testImportDirectories;
-        getLog().info("Test import dependencies: " + Arrays.toString(testImportDependencies));
         if (testImportDependencies.length > 0) {
             testImportDirectories = extractDependencyProtos(testImportDependencies);
         } else {
