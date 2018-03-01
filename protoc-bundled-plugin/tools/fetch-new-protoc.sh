@@ -4,7 +4,7 @@
 
 set -e
 
-export PB_VERSION=3.3.0
+export PB_VERSION=3.5.1
 export BUNDLE_BIN_DIR="$PWD"/protoc-bundled-plugin/src/main/binaries/"$PB_VERSION"
 
 echo "Fetching $PB_VERSION into $BUNDLE_BIN_DIR"
