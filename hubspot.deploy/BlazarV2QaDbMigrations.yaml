@@ -30,10 +30,13 @@ logging:
 procfile:
   migrationStatus:
     type: ON_DEMAND
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db status $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db status -i run $CONFIG_YAML
   migrationRun:
     type: ON_DEMAND
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db migrate $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db migrate -i run $CONFIG_YAML
+  migrationDryRun:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db migrate -n -i run $CONFIG_YAML
 
 servers:
   qa:
