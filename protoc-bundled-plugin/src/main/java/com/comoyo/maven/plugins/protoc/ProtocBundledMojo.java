@@ -488,7 +488,7 @@ public class ProtocBundledMojo extends AbstractMojo
                 .resolve("dependency-protobufs")
                 .toFile();
         getLog().debug("Output directory: " + outputDirectory);
-        Set<String> artifactPatterns = new HashSet<>(Arrays.asList(dependencies));
+        List<String> artifactPatterns = Arrays.asList(dependencies);
         return new DependencyProtobufExtractor(project, outputDirectory, artifactPatterns, getLog()).extract();
     }
 
