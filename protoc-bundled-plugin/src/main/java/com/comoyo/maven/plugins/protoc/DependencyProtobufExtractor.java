@@ -11,9 +11,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
@@ -31,10 +34,10 @@ import com.google.common.base.Predicate;
 public class DependencyProtobufExtractor {
   private final MavenProject project;
   private final File outputDirectory;
-  private final Set<String> artifactPatterns;
+  private final Collection<String> artifactPatterns;
   private final Log log;
 
-  public DependencyProtobufExtractor(MavenProject project, File outputDirectory, Set<String> artifactPatterns, Log log) {
+  public DependencyProtobufExtractor(MavenProject project, File outputDirectory, Collection<String> artifactPatterns, Log log) {
     this.project = project;
     this.outputDirectory = outputDirectory;
     this.artifactPatterns = artifactPatterns;
@@ -62,7 +65,12 @@ public class DependencyProtobufExtractor {
   ) throws MojoExecutionException {
     ClassLoader classLoader = URLClassLoader.newInstance(urls.toArray(new URL[urls.size()]));
 
-    Set<File> importDirectories = new HashSet<>();
+    Map<String, Set<File>> orderedImportPaths = new LinkedHashMap<>();
+    // initialize based on artifactPatterns collection so LinkedHashMap has the right iteration order
+    for (String artifactPattern : artifactPatterns) {
+      orderedImportPaths.put(artifactPattern, new LinkedHashSet<File>());
+    }
+
     for (String proto : protos) {
       try {
         List<URL> protoUrls = Collections.list(classLoader.getResources(proto));
@@ -79,7 +87,10 @@ public class DependencyProtobufExtractor {
           Artifact artifact = findArtifactWithFile(project.getArtifacts(), jar);
           if (artifact == null) {
             throw new MojoExecutionException("Unable to find artifact for JAR " + jar);
-          } else if (!matchesAnyPattern(artifact)) {
+          }
+
+          String matchedArtifactPattern = matchingPattern(artifact);
+          if (matchedArtifactPattern == null) {
             log.debug("Skipping proto " + proto + " from artifact " + artifact + " because it doesn't match any patterns");
             continue;
           }
@@ -89,7 +100,7 @@ public class DependencyProtobufExtractor {
             target = target.resolve(part);
           }
           target = target.resolve(artifact.getArtifactId());
-          importDirectories.add(target.toFile());
+          orderedImportPaths.get(matchedArtifactPattern).add(target.toFile());
           target = target.resolve(proto);
 
           Files.createDirectories(target.getParent());
@@ -100,17 +111,21 @@ public class DependencyProtobufExtractor {
       }
     }
 
-    return importDirectories.toArray(new File[importDirectories.size()]);
+    List<File> flattenedImportPaths = new ArrayList<>();
+    for (Set<File> artifactPatternImportPaths : orderedImportPaths.values()) {
+      flattenedImportPaths.addAll(artifactPatternImportPaths);
+    }
+    return flattenedImportPaths.toArray(new File[flattenedImportPaths.size()]);
   }
 
-  private boolean matchesAnyPattern(Artifact artifact) {
+  private String matchingPattern(Artifact artifact) {
     String artifactKey = artifact.getGroupId() + ":" + artifact.getArtifactId();
     for (String artifactPattern : artifactPatterns) {
       if (SelectorUtils.match(artifactPattern, artifactKey)) {
-        return true;
+        return artifactPattern;
       }
     }
-    return false;
+    return null;
   }
 
   private static List<URL> toUrls(List<String> paths) throws MojoExecutionException {
