@@ -85,7 +85,7 @@ blazarConfiguration:
     Singularity3x3:
       safeToBuildWithoutNetworkLockDown: true
       host: singularity-iad.hubteamqa.com
-      path: /singularity/v2/api
+      path: /singularity-iad/api
       request: BlazarExecutorJavaTest-blazar-executor-java
       slaveHttpPort: 5051
     # Singularity-GCP-chs01:
@@ -98,6 +98,6 @@ blazarConfiguration:
     #     token: jgoodwin
     SingularityProd3x4:
       host: singularity-iad.hubteam.com
-      path: /singularity/v3/api
+      path: /singularity-iad/api
       request: BlazarExecutorJavaTest-blazar-executor-java
       slaveHttpPort: 5051
