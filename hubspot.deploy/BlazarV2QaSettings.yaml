@@ -84,7 +84,7 @@ blazarConfiguration:
   singularityClusters:
     Singularity3x3:
       safeToBuildWithoutNetworkLockDown: true
-      host: bootstrap.hubteamqa.com
+      host: singularity-iad.hubteamqa.com
       path: /singularity/v2/api
       request: BlazarExecutorJavaTest-blazar-executor-java
       slaveHttpPort: 5051
@@ -97,7 +97,7 @@ blazarConfiguration:
     #     headerName: X-HubSpot-User
     #     token: jgoodwin
     SingularityProd3x4:
-      host: bootstrap.hubteam.com
+      host: singularity-iad.hubteam.com
       path: /singularity/v3/api
       request: BlazarExecutorJavaTest-blazar-executor-java
       slaveHttpPort: 5051
