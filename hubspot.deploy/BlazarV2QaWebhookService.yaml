@@ -13,7 +13,7 @@ procfile:
 
 env:
   qa:
-    JVM_MAX_HEAP: 1024m
+    JVM_MAX_HEAP: 3120m
     JAR: target/BlazarService-executable.jar
     EXTRA_ARGS: -Ddw.server.connector.port=5758
 
