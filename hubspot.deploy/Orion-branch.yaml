@@ -36,7 +36,7 @@ zkGroup: mesos:deploy:hs_staging:v3
 
 procfile:
   web:
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
+    cmd: java-wrapper -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
     type: SERVICE
 logging:
   level: DEBUG
