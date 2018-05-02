@@ -86,7 +86,7 @@ blazarConfiguration:
       safeToBuildWithoutNetworkLockDown: true
       host: singularity-iad.hubteamqa.com
       path: /singularity-iad/api
-      request: BlazarExecutorJavaTest-blazar-executor-java
+      request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
       slaveHttpPort: 5051
     # Singularity-GCP-chs01:
     #   host: bootstrap.hubteamqa.com
@@ -99,5 +99,5 @@ blazarConfiguration:
     SingularityProd3x4:
       host: singularity-iad.hubteam.com
       path: /singularity-iad/api
-      request: BlazarExecutorJavaTest-blazar-executor-java
+      request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
       slaveHttpPort: 5051
