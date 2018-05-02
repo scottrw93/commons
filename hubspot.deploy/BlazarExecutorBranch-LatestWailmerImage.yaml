@@ -1,0 +1,80 @@
+type: procfile
+
+artifactBuildMetadata:
+  organization: HubSpotProtected
+  repository: Blazar
+  module: BlazarExecutor
+
+accessGroup: hs-paas-build-deploy
+
+team: hs-paas-build-deploy
+
+docker:
+  blazar-executor-java:
+    type: ON_DEMAND
+    cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
+    network: BRIDGE
+    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-executor:latest
+    addDefaultVolumes: false
+    dockerParameters:
+      privileged: true
+      cap-add: NET_ADMIN
+    volumes:
+    - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
+      containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
+      mode: RO
+    - hostPath: /usr/share/hubspot/vault/hs-apollo
+      containerPath: /usr/share/hubspot/vault/hs-apollo.real
+      mode: RO
+    - hostPath: /etc/hubspot.bootstrap.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
+      mode: RO
+    - hostPath: /etc/hubspot.protected.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.protected.real
+      mode: RO
+    - hostPath: /usr/share/hubspot/mesos/blazar_cache
+      containerPath: /usr/share/hubspot/mesos/blazar_cache
+      mode: RW
+    - hostPath: '$PWD/app/build-workspace'
+      containerPath: /usr/share/hubspot/build/workspace
+      mode: RW
+    - hostPath: /var/run/docker.sock
+      containerPath: /var/run/host-docker.sock
+      mode: RW
+    - hostPath: '$PWD/var-lib-docker'
+      containerPath: /var/lib/docker
+      mode: RO
+    - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
+      containerPath: '/mnt/mesos/tmp/'
+      mode: RW
+
+# makes the log stay as service.log 5ever
+skipLogrotateAndCompress: true
+env:
+  all:
+    HOST_PWD: "$PWD"
+    CGROUP_PARENT: "mesos/$CGROUPS_GUID"
+    HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-paas-build-deploy)"
+
+postDeployTests:
+  all:
+    mesos:
+    - BlazarExecutorAcceptanceTest
+
+
+
+servers:
+  qa:
+  - mesos:
+      numCpus: 2
+      memoryMb: 2560
+      placement: OPTIMISTIC
+
+  prod:
+  - mesos:
+      numCpus: 2
+      memoryMb: 2560
+      placement: OPTIMISTIC
+
+emailSettings:
+  DEPLOYABLE_INSTANCE_FINISHED: []
