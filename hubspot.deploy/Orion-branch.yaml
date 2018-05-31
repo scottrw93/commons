@@ -21,7 +21,7 @@ servers:
   prod:
     - cute-snail.iad02.hubspot-networks.net
     - little-rice.iad02.hubspot-networks.net
-    - loose-lizard.iad02.hubspot-networks.net
+    - proud-fly.iad02.hubspot-networks.net
 
 env:
   all:
