@@ -78,5 +78,3 @@ servers:
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
-
-zkGroup: blazar

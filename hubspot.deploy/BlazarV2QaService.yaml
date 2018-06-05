@@ -29,3 +29,5 @@ servers:
 
 singleProcessRunning: true
 forcePorts: [5757]
+
+zkGroup: blazar
