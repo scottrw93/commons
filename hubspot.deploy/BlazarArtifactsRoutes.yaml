@@ -24,28 +24,14 @@ nginx:
       proxy_set_header Host hubspot-blazar-artifacts.s3.amazonaws.com;
       proxy_redirect off;
 
-      set $bucket           'hubspot-blazar-artifacts';
-
-      # read-only keys. https://ss.hubspotcentral.net/SecretView.aspx?secretid=9436
-      set $aws_access '';
-      set_by_lua $aws_secret '
-        if ngx.var.hs_env == "qa" then
-          ngx.var.aws_access = "AKIAIMUXWUCNBZL3R3LQ"
-          return "5vGZgjM8wBT0E+djn7E5Dv2FQoQqYtM7PuQJw56r"
-        else
-          ngx.var.aws_access = "AKIAIHPZYGAUGZOLDN6Q"
-          return "jR0WcbqdM7VOOF75ucfL9YqjZx1Q7nsYy+vpcYty"
-        end
-      ';
-
       set_by_lua $now       "return ngx.cookie_time(ngx.time())";
-      set $string_to_sign   "$request_method\n\n\n\nx-amz-date:${now}\n/$bucket/$url_full";
-      set_hmac_sha1          $aws_signature $aws_secret $string_to_sign;
+      set $string_to_sign   "$request_method\n\n\n\nx-amz-date:${now}\n/$s3_hubspot_blazar_artifacts_bucket/$url_full";
+      set_hmac_sha1          $aws_signature $s3_hubspot_blazar_artifacts_secret_key $string_to_sign;
       set_encode_base64      $aws_signature $aws_signature;
 
       rewrite .* /$url_full break;
 
-      proxy_set_header       Authorization "AWS $aws_access:$aws_signature";
+      proxy_set_header       Authorization "AWS $s3_hubspot_blazar_artifacts_access_key:$aws_signature";
       proxy_set_header       x-amz-date $now;
 
       proxy_pass             https://blazarartifactsroutes;
