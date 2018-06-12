@@ -85,7 +85,7 @@ blazarConfiguration:
  
   singularityClusters:
     Singularity3x3:
-      safeToBuildWithoutNetworkLockDown: true
+      safeToBuildWithoutNetworkLockDown: false
       host: singularity-iad.hubteamqa.com
       path: /singularity-iad/api
       request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
