@@ -96,7 +96,7 @@ blazarConfiguration:
       path: /singularity-iad/api
       request: BlazarExecutorJava-blazar-executor-java
       slaveHttpPort: 5051
-      repositories: ['BlazarSmokeTests']
+      repositories: ['git.hubteam.com-HubSpot-BlazarSmokeTests']
       buildStrategy: EXCLUSIVE_WHITELIST
     # Singularity-GCP-chs01:
     #   host: bootstrap.hubteamqa.com
