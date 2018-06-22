@@ -27,7 +27,6 @@ servers:
     - juicy-bongo
   prod: []
 
-singleProcessRunning: true
 forcePorts: [5757]
 
 zkGroup: blazar
