@@ -28,6 +28,9 @@ tests:
     dockerParameters:
       privileged: true
       cap-add: NET_ADMIN
+    override:
+      qa:
+        allowSpotInstances: true
     #volumes:
     #  - hostPath: '$PWD/app/build-workspace'
     #    containerPath: /usr/share/hubspot/build/workspace
