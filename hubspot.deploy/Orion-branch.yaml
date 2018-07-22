@@ -20,7 +20,7 @@ servers:
     - shy-giraffe.iad03.hubspot-networks.net
   prod:
     - cute-snail.iad02.hubspot-networks.net
-    - little-rice.iad02.hubspot-networks.net
+    - dizzy-liger.iad02.hubspot-networks.net
     - proud-fly.iad02.hubspot-networks.net
 
 env:
