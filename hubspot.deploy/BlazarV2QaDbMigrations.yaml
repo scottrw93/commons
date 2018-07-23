@@ -38,9 +38,6 @@ procfile:
     type: ON_DEMAND
     cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService db migrate -n -i run $CONFIG_YAML
 
-    override:
-      qa:
-        allowSpotInstances: true
 servers:
   qa:
   - mesos
