@@ -7,7 +7,7 @@ artifactBuildMetadata:
   branch: staging
 
 includeConfigs:
-  - BlazarV2AllServiceCommon
+- BlazarV2AllServiceCommon
 
 buildResolution:
   qa:
@@ -21,10 +21,10 @@ logging:
     "com.hubspot.blazar":
       level: DEBUG
   appenders:
-    - type: console
-    - type: sentry
-      sentryDsn: https://2f002ad0745546b5b2b529461ca62349:a17da6ad912a4eec926c51a969925863@sentry.io/99138
-      blazarRelease: "QA"
+  - type: console
+  - type: sentry
+    sentryDsn: https://2f002ad0745546b5b2b529461ca62349:a17da6ad912a4eec926c51a969925863@sentry.io/99138
+    blazarRelease: "QA"
 
 
 procfile:
@@ -40,7 +40,7 @@ procfile:
 
 servers:
   qa:
-    - mesos
+  - mesos
   prod: []
 
 blazarConfiguration:
