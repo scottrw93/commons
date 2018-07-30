@@ -32,6 +32,9 @@ docker:
     - hostPath: /etc/hubspot.protected.properties
       containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.protected.real
       mode: RO
+    - hostPath: /etc/slimfast.properties
+      containerPath: /etc/slimfast.properties                                    
+      mode: RO
     - hostPath: /usr/share/hubspot/mesos/blazar_cache
       containerPath: /usr/share/hubspot/mesos/blazar_cache
       mode: RW
