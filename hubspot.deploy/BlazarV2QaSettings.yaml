@@ -74,8 +74,6 @@ blazarConfiguration:
 
   database:
     driverClass: com.mysql.jdbc.Driver
-    user: app_blazar
-    url: jdbc:mysql://db.blazarv2.hubteamqa.com:3306/BlazarV2
 
   ui:
     baseUrl: https://private.hubteamqa.com/blazar
