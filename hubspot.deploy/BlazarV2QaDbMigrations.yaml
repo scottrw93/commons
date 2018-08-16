@@ -46,6 +46,3 @@ servers:
 blazarConfiguration:
   database:
     driverClass: com.mysql.jdbc.Driver
-    user: app_migration_bl
-    password: "uy!W@i2dkdL3"
-    url: jdbc:mysql://db.blazarv2.hubteamqa.com:3306/BlazarV2
