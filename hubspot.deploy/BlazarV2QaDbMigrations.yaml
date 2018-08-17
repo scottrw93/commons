@@ -30,13 +30,13 @@ logging:
 procfile:
   migrationStatus:
     type: ON_DEMAND
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob status -i run
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob status
   migrationRun:
     type: ON_DEMAND
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob migrate -i run
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob migrate
   migrationDryRun:
     type: ON_DEMAND
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob migrate -n -i run
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob migrate -n
 
 servers:
   qa:
