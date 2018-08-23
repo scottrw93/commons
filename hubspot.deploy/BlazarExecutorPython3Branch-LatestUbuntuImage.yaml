@@ -10,7 +10,7 @@ accessGroup: hs-paas-build-deploy
 team: hs-paas-build-deploy
 
 docker:
-  blazar-executor-java:
+  blazar-executor-python3:
     type: ON_DEMAND
     cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
     network: BRIDGE
