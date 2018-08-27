@@ -14,7 +14,7 @@ docker:
     type: ON_DEMAND
     cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
     network: BRIDGE
-    image: docker.hubteam.com/wailmer/blazar-executor-python3-ubuntu/blazar-executor-python3-ubuntu:latest
+    image: docker.hubteam.com/wailmer/blazar-executor-python3-ubuntu/master:latest
     addDefaultVolumes: false
     dockerParameters:
       privileged: true
