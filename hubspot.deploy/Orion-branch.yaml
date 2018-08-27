@@ -19,9 +19,9 @@ servers:
   qa:
     - shy-giraffe.iad03.hubspot-networks.net
   prod:
-    - cute-snail.iad02.hubspot-networks.net
-    - dizzy-liger.iad02.hubspot-networks.net
-    - proud-fly.iad02.hubspot-networks.net
+    - able-lynx.iad02.hubspot-networks.net
+    - fat-poodle.iad02.hubspot-networks.net
+    - raspy-calf.iad02.hubspot-networks.net
 
 env:
   all:
