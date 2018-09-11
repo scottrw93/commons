@@ -1,21 +1,27 @@
 type: procfile
 
-includeConfigs:
-  - Orion-common
-
-appRoot: /orion/v3
+appRoot: /orion/v3-staging
 
 artifactBuildMetadata:
   repository: Orion
   module: OrionService
+  branch: staging
 
+buildResolution:	
+  qa: "LATEST_BUILD"	
+  prod: "NO_BUILD"	
+
+slack:	
+- channelName: "#paas-b-d-notifs"	
+ 
 env:
   all:
     JAR_NAME: ./target/OrionService-executable.jar
     JVM_MAX_HEAP: 1024m
     MIGRATION_JOB_CLASS: com.hubspot.orion.OrionLiquibaseMigrationJob
 
-zkGroup: mesos:deploy:v3
+zkGroup: mesos:deploy:hs_staging:v3
+team: hs-paas-build-deploy
 
 procfile:
   dbmigrate:
