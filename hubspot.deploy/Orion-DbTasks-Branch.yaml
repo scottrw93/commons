@@ -7,13 +7,13 @@ artifactBuildMetadata:
   module: OrionService
   branch: staging
 
-buildResolution:	
-  qa: "LATEST_BUILD"	
-  prod: "NO_BUILD"	
+buildResolution:
+  qa: "LATEST_BUILD"
+  prod: "NO_BUILD"
 
-slack:	
-- channelName: "#paas-b-d-notifs"	
- 
+slack:
+- channelName: "#paas-b-d-notifs"
+
 env:
   all:
     JAR_NAME: ./target/OrionService-executable.jar
