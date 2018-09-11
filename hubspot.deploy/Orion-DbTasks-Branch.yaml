@@ -16,7 +16,6 @@ slack:
 
 env:
   all:
-    JAR_NAME: ./target/OrionService-executable.jar
     JVM_MAX_HEAP: 1024m
     MIGRATION_JOB_CLASS: com.hubspot.orion.OrionLiquibaseMigrationJob
 
@@ -26,13 +25,13 @@ team: hs-paas-build-deploy
 procfile:
   dbmigrate:
     type: ON_DEMAND
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME $MIGRATION_JOB_CLASS db migrate
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -cp ./target/\* $MIGRATION_JOB_CLASS db migrate
   fast-forward:
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME $MIGRATION_JOB_CLASS db fast-forward --all
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -cp ./target/\* $MIGRATION_JOB_CLASS db fast-forward --all
     type: ON_DEMAND
   dbstatus:
     type: ON_DEMAND
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME $MIGRATION_JOB_CLASS db status
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -cp ./target/\* $MIGRATION_JOB_CLASS db status
   dry-run:
     type: ON_DEMAND
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME $MIGRATION_JOB_CLASS db migrate -n
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -cp ./target/\* $MIGRATION_JOB_CLASS db migrate -n
