@@ -1,36 +1,32 @@
 type: procfile
 
-appRoot: /orion/v3-staging
+includeConfigs:
+  - Orion-common
+
+appRoot: /orion/v3
 
 artifactBuildMetadata:
   repository: Orion
   module: OrionService
-  branch: staging
-  
-buildResolution:
-  qa: "LATEST_BUILD"
-  prod: "NO_BUILD"
-
-slack:
-- channelName: "#paas-b-d-notifs"
 
 env:
   all:
     JAR_NAME: ./target/OrionService-executable.jar
     JVM_MAX_HEAP: 1024m
+    MIGRATION_JOB_CLASS: com.hubspot.orion.OrionLiquibaseMigrationJob
 
-zkGroup: mesos:deploy:hs_staging:v3
-
-team: hs-paas-build-deploy
+zkGroup: mesos:deploy:v3
 
 procfile:
   dbmigrate:
     type: ON_DEMAND
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME db migrate $CONFIG_YAML
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME $MIGRATION_JOB_CLASS db migrate
   fast-forward:
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME db fast-forward --all $CONFIG_YAML
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME $MIGRATION_JOB_CLASS db fast-forward --all
     type: ON_DEMAND
   dbstatus:
     type: ON_DEMAND
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME db status $CONFIG_YAML
-
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME $MIGRATION_JOB_CLASS db status
+  dry-run:
+    type: ON_DEMAND
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME $MIGRATION_JOB_CLASS db migrate -n
