@@ -32,15 +32,6 @@ logging:
 vaultAccessGroup: hs-paas-build-deploy
 
 blazarConfiguration:
-  executor:
-    # Remove blazarApiDomain and blazarApiContextPath when we migrate to new executor
-    blazarApiDomain: "https://build.hubteamqa.com"
-    blazarApiContextPath: "/blazar/v2"
-    blazarApiBaseUrl: "https://build.hubteamqa.com/blazar/v2"
-
-  # Only build certain projects in QA
-  whitelist: ['multiple-bender-packages', 'BlazarSmokeTests', 'jgoodwin-test-poms', 'blazar-test-hs-static', 'blazar-test-asset-bender', 'Blazar-IPB-Root', 'Blazar-IPB-Child1', 'Blazar-IPB-Child2']
-  blacklist: []
   signalFx:
     authToken: RCvMukb4vXpVhKo_kI0HrQ
     defaultDataSourceName: BlazarV2QaService
@@ -66,12 +57,6 @@ blazarConfiguration:
       organizations:
         - HubSpot
 
-  zookeeper:
-    quorum: zk1.mesos_qa.iad02.hubinfraqa.com:2181,zk2.mesos_qa.iad02.hubinfraqa.com:2181,zk3.mesos_qa.iad02.hubinfraqa.com:2181
-    namespace: "blazarv2qa"
-    sessionTimeoutMillis: 60000
-    connectTimeoutMillis: 5000
-
   database:
     driverClass: com.mysql.jdbc.Driver
 
@@ -82,29 +67,10 @@ blazarConfiguration:
  
   singularityClusters:
     Singularity3x3:
-      safeToBuildWithoutNetworkLockDown: false
       host: singularity-iad.hubteamqa.com
       path: /singularity-iad/api
-      request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
       slaveHttpPort: 5051
-    # Singularity3x3_exclusive:
-    #  safeToBuildWithoutNetworkLockDown: false
-    #  host: singularity-iad.hubteamqa.com
-    #  path: /singularity-iad/api
-    #  request: BlazarExecutorJava-blazar-executor-java
-    #  slaveHttpPort: 5051
-    #  repositories: ['git.hubteam.com-HubSpot-BlazarSmokeTests']
-    #  buildStrategy: EXCLUSIVE_WHITELIST
-    # Singularity-GCP-chs01:
-    #   host: bootstrap.hubteamqa.com
-    #   path: /singularity/gcp-chs01/api
-    #   request: BlazarExecutorJavaTest-chs01-blazar-executor-java
-    #   slaveHttpPort: 5051
-    #   credentials:
-    #     headerName: X-HubSpot-User
-    #     token: jgoodwin
     SingularityProd3x4:
       host: singularity-iad.hubteam.com
       path: /singularity-iad/api
-      request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
       slaveHttpPort: 5051
