@@ -17,7 +17,7 @@ artifactBuildMetadata:
 
 servers:
   qa:
-    - fuzzy-snipe.iad03.hubspot-networks.net
+    - just-vulture.iad03.hubspot-networks.net
   prod:
     - able-lynx.iad02.hubspot-networks.net
     - fat-poodle.iad02.hubspot-networks.net
