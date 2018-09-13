@@ -70,7 +70,3 @@ blazarConfiguration:
       host: singularity-iad.hubteamqa.com
       path: /singularity-iad/api
       slaveHttpPort: 5051
-    SingularityProd3x4:
-      host: singularity-iad.hubteam.com
-      path: /singularity-iad/api
-      slaveHttpPort: 5051
