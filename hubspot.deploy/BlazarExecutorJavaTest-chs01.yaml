@@ -44,6 +44,10 @@ docker:
     - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
       containerPath: '/mnt/mesos/tmp/'
       mode: RW
+    allowSpotInstances: true
+    override:
+      prod:
+        allowSpotInstances: false
 
 # makes the log stay as service.log 5ever
 skipLogrotateAndCompress: true
