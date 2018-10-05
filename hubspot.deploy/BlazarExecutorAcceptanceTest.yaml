@@ -39,7 +39,6 @@ tests:
     #    containerPath: '/mnt/mesos/tmp/'
     #    mode: RW
 
-# makes the log stay as service.log 5ever
 env:
   all:
     HOST_PWD: "$PWD"
