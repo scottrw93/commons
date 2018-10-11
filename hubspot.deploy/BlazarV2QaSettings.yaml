@@ -66,13 +66,13 @@ blazarConfiguration:
   mavenServiceUrl: https://private.hubapiqa.com/maven/v1/execute
  
   singularityClusters:
-  SingularityTest3x3:
-    host: singularity-test-iad.hubteamqa.com
-    path: /singularity-test-iad/api
-    request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
-    slaveHttpPort: 5051
-  SingularityQa3x3:
-    host: singularity-iad.hubteamqa.com
-    path: /singularity-iad/api
-    request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
-    slaveHttpPort: 5051
+    SingularityTest3x3:
+      host: singularity-test-iad.hubteamqa.com
+      path: /singularity-test-iad/api
+      request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
+      slaveHttpPort: 5051
+    SingularityQa3x3:
+      host: singularity-iad.hubteamqa.com
+      path: /singularity-iad/api
+      request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
+      slaveHttpPort: 5051
