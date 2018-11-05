@@ -32,6 +32,3 @@ servers:
 forcePorts: [5757]
 
 zkGroup: blazar
-
-server:
-  type: "hs-simple"
