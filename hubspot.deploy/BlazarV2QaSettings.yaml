@@ -6,8 +6,31 @@ artifactBuildMetadata:
   repository: Blazar
   module: BlazarService
 
-includeConfigs:
-  - BlazarV2AllServiceCommon
+#add this back in after finishing testing parent-pom
+#includeConfigs:
+#  - BlazarV2AllServiceCommon
+
+###!! remove below stuff after testing !!###
+team: hs-paas-build-deploy
+appRoot: /blazar/v2
+
+trafficSplittingEnabled: false
+
+slack:
+- "#paas-b-d-notifs"
+
+healthcheckUrl: /admin/healthcheck
+
+env:
+  all:
+    VAULT_ACCESS_GROUP: hs-paas-build-deploy
+    HS_ACCESS_GROUP: hs-paas-build-deploy
+    JVM_EXTRA_MEMORY: 1024m
+    EXTRA_ARGS: -Djute.maxbuffer=6291456 -Djava.net.preferIPv4Stack=true
+
+zkGroup: blazar
+
+###!!end!!###
 
 buildResolution:
   qa:
