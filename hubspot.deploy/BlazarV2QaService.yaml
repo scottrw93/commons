@@ -19,16 +19,12 @@ env:
     JAR: target/BlazarService-executable.jar
     VAULT_ACCESS_GROUP: hs-paas-build-deploy
     HS_ACCESS_GROUP: hs-paas-build-deploy
-    EXTRA_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 -Ddw.server.connector.port=5757
-
-singleProcessRunning: true
+    EXTRA_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005
 
 servers:
   qa:
 #    - stale-goose
     - juicy-bongo
   prod: []
-
-forcePorts: [5757]
 
 zkGroup: blazar
