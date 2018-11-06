@@ -19,7 +19,7 @@ trafficSplittingEnabled: false
 slack:
 - "#paas-b-d-notifs"
 
-healthcheckUrl: /admin/healthcheck
+#healthcheckUrl: /admin/healthcheck
 
 env:
   all:
