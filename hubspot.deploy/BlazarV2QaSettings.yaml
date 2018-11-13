@@ -6,11 +6,6 @@ artifactBuildMetadata:
   repository: Blazar
   module: BlazarService
 
-#add this back in after finishing testing parent-pom
-#includeConfigs:
-#  - BlazarV2AllServiceCommon
-
-###!! remove below stuff after testing !!###
 team: hs-paas-build-deploy
 appRoot: /blazar/v2
 
@@ -18,8 +13,6 @@ trafficSplittingEnabled: false
 
 slack:
 - "#paas-b-d-notifs"
-
-#healthcheckUrl: /admin/healthcheck
 
 env:
   all:
@@ -29,8 +22,6 @@ env:
     EXTRA_ARGS: -Djute.maxbuffer=6291456 -Djava.net.preferIPv4Stack=true
 
 zkGroup: blazar
-
-###!!end!!###
 
 buildResolution:
   qa:
@@ -43,59 +34,8 @@ logging:
   loggers:
     "com.hubspot.blazar":
       level: DEBUG
-#    "org.skife.jdbi.v2":
-#      level: TRACE
   appenders:
     - type: console
       logFormat: "%-5p [%d{ISO8601}] [%thread]: %c: %m%n%rEx"
-#    - type: sentry
-#      sentryDsn: https://2f002ad0745546b5b2b529461ca62349:a17da6ad912a4eec926c51a969925863@sentry.io/99138
-#      blazarRelease: "QA"
 
 vaultAccessGroup: hs-paas-build-deploy
-
-blazarConfiguration:
-  signalFx:
-    authToken: RCvMukb4vXpVhKo_kI0HrQ
-    defaultDataSourceName: BlazarV2QaService
-    defaultDimensions:
-      env: qa
-      project: BlazarService
-
-  slack_blazar:
-    # creds for PI-BOT
-    feedbackRoom: paas-b-d-feedback
-    slackApiBaseUrl: https://slack.com/api
-    slackApiToken: xoxb-15972715984-Vk684vJviuZYctLu2Twb54jm
-    username: blazar-bot
-    directMessageConfiguration:
-      ignoredBranches: ["guava-moreobjects"]
-      whitelistedUserEmails: []
-      blacklistedUserEmails: ['rberdeen@hubspot.com']
-
-  github:
-    git.hubteam.com:
-      oauthToken: 23804c65e210905e2b23bc4fd9c54aa4b3207e05
-      setCommitStatus: false
-      organizations:
-        - HubSpot
-
-  database:
-    driverClass: com.mysql.jdbc.Driver
-
-  ui:
-    baseUrl: https://private.hubteamqa.com/blazar
-
-  mavenServiceUrl: https://private.hubapiqa.com/maven/v1/execute
- 
-  singularityClusters:
-    SingularityTest3x3:
-      host: singularity-test-iad.hubteamqa.com
-      path: /singularity-test-iad/api
-      request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
-      slaveHttpPort: 5051
-    SingularityQa3x3:
-      host: singularity-iad.hubteamqa.com
-      path: /singularity-iad/api
-      request: BlazarExecutorBranch-LatestWailmerImage-blazar-executor-java
-      slaveHttpPort: 5051
