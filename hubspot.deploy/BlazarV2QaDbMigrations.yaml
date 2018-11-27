@@ -39,7 +39,7 @@ procfile:
     cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob migrate -n
   migrationClearLock:
     type: ON_DEMAND
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob locks
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob locks --force-release
   migrationFastForward:
     type: ON_DEMAND
     cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarLiquibaseMigrationJob fast-forward --all --include manual
