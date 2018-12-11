@@ -23,7 +23,7 @@ procfile:
   # Cleans up old branch metadata
   inactiveBranchMetadataCleanCommand:
     type: ON_DEMAND
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService inactive_branch_metadata_clean $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService inactive_branch_metadata_clean
 
 servers:
   qa:
