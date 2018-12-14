@@ -6,7 +6,7 @@ procfile:
   # Cleans archived repos
   cleanMetadataCommand:
     type: SCHEDULED_JOB
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService clean_repo_metadata $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService clean_repo_metadata
     schedule: "0 2 * * *"
     override:
       qa:
@@ -14,7 +14,7 @@ procfile:
   # Deletes old queue items
   eventQueueCleanCommand:
     type: SCHEDULED_JOB
-    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService event_queue_clean $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService event_queue_clean
     schedule: "0 0 * * *"
     override:
       qa:
