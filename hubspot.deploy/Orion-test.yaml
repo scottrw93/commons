@@ -1,0 +1,41 @@
+type: procfile
+
+includeConfigs:
+  - Orion-common
+
+appRoot: /orion/v3-test
+
+buildResolution:
+  qa: NO_BUILD
+  prod: LATEST_BUILD
+
+loadBalancers:
+ - bootstrap
+
+artifactBuildMetadata:
+  repository: Orion
+  module: OrionService
+  branch: deploys_to_deployments
+
+env:
+  all:
+    JAR_NAME: ./target/OrionService-executable.jar
+    JVM_MAX_HEAP: 1024m
+    HS_ACCESS_GROUP: hs-paas-build-deploy
+    VAULT_ACCESS_GROUP: hs-paas-build-deploy
+
+vaultAccessGroup: hs-paas-build-deploy
+
+zkGroup: mesos:deploy:hs_staging:v3
+
+procfile:
+  web:
+    cmd: java-wrapper -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
+    type: SERVICE
+logging:
+  level: DEBUG
+  loggers:
+    com.hubspot.orion.poller: DEBUG
+
+http:
+  maxIdleTime: 200s
