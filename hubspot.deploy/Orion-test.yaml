@@ -28,6 +28,8 @@ vaultAccessGroup: hs-paas-build-deploy
 
 zkGroup: mesos:deploy:hs_staging:v3
 
+trafficSplittingEnabled: false
+
 procfile:
   web:
     cmd: java-wrapper -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
