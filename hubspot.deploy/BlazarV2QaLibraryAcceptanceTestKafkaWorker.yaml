@@ -14,5 +14,5 @@ env:
 
 procfile:
   BlazarLibraryAcceptanceTestKafkaWorker:
-    cmd: java-wrapper -jar $JOB_JAR library-acceptance-test-worker
+    cmd: java-wrapper -jar $JOB_JAR --library-acceptance-test-worker
     type: KAFKA_WORKER
