@@ -1,0 +1,18 @@
+type: procfile
+team: hs-paas-build-deploy
+
+zkGroup: blazar
+
+artifactBuildMetadata:
+  organization: HubSpotProtected
+  repository: Blazar
+  module: BlazarLibraryAcceptanceTestWorker
+
+env:
+  all:
+    JOB_JAR: ./target/BlazarLibraryAcceptanceTestWorker-executable.jar
+
+procfile:
+  BlazarLibraryAcceptanceTestKafkaWorker:
+    cmd: java-wrapper -jar $JOB_JAR library-acceptance-test-worker
+    type: KAFKA_WORKER
