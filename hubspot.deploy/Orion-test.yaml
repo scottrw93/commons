@@ -26,7 +26,7 @@ env:
 
 vaultAccessGroup: hs-paas-build-deploy
 
-zkGroup: mesos:deploy:hs_staging:v3
+zkGroup: mesos:deploy:hs_staging:v3:test
 
 trafficSplittingEnabled: false
 
