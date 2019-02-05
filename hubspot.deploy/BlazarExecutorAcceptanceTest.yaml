@@ -24,7 +24,6 @@ tests:
     cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutorAcceptanceTests-executable.jar $CONFIG_YAML"
     schedule: 0/5 * * * *
     # network: BRIDGE
-    # daemon: false
     dockerParameters:
       privileged: true
       cap-add: NET_ADMIN
