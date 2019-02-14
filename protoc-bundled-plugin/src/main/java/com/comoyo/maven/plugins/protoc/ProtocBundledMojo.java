@@ -19,12 +19,10 @@ package com.comoyo.maven.plugins.protoc;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +40,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.project.MavenProject;
+import org.apache.maven.project.MavenProjectHelper;
 import org.apache.maven.repository.RepositorySystem;
 
 
@@ -112,6 +111,13 @@ public class ProtocBundledMojo extends AbstractMojo
      * @readonly
      */
     private MavenProject project;
+
+  /**
+   * A helper used to add resources to the project.
+   *
+   * @component role="org.apache.maven.project.MavenProjectHelper"
+   */
+  protected MavenProjectHelper projectHelper;
 
     /**
      * Used to look up Artifacts in the remote repository.
@@ -200,7 +206,69 @@ public class ProtocBundledMojo extends AbstractMojo
      */
     private File protocExec;
 
-    /*
+  /**
+   * This is the directory into which the (optional) descriptor set file will be created.
+   *
+   * @parameter property="descriptorSetOutputDirectory"
+   * default-value="${project.build.directory}/generated-resources/protoc/descriptor-sets"
+   * required="true"
+   */
+  private File descriptorSetOutputDirectory;
+
+  /**
+   * The descriptor set file name. Only used if {@code writeDescriptorSet} is set to {@code true}.
+   *
+   * @parameter property="descriptorSetFileName"
+   * default-value="${project.build.finalName}.protobin"
+   */
+  protected String descriptorSetFileName;
+
+  /**
+   * If set to {@code true}, the compiler will generate a binary descriptor set file for the
+   * specified {@code .proto} files
+   *
+   * @parameter property="writeDescriptorSet"
+   * default-value="false"
+   */
+  protected boolean writeDescriptorSet;
+
+  /**
+   * If set to {@code true}, AND writeDescriptorSet set to true, the compiler will attach descriptor
+   * set as a build artifact
+   *
+   * @parameter property="attachDescriptorSet"
+   * default-value="false"
+   */
+  protected boolean attachDescriptorSet;
+
+  /**
+   * If {@code true} and {@code writeDescriptorSet} has been set, the compiler will include
+   * all dependencies in the descriptor set making it "self-contained".
+   *
+   * @parameter property="includeDependenciesInDescriptorSet"
+   * default-value="false"
+   */
+  protected boolean includeDependenciesInDescriptorSet;
+
+
+  /**
+   * If {@code true} and {@code writeDescriptorSet} has been set, the compiler will include
+   * all dependencies in the descriptor set making it "self-contained".
+   *
+   * @parameter property="includeSourceInfoInDescriptorSet"
+   * default-value="false"
+   */
+  protected boolean includeSourceInfoInDescriptorSet;
+
+  /**
+   * If generated descriptor set is to be attached to the build, specifies an optional classifier.
+   *
+   * @parameter property="descriptorSetClassifier"
+   * required="false"
+   */
+  protected String descriptorSetClassifier;
+
+  /*
      * A global static lock to disallow concurrent download and more
      * importantly concurrent write of the protoc compiler when the plugin
      * is called multiple times in parallel.
@@ -388,11 +456,26 @@ public class ProtocBundledMojo extends AbstractMojo
                 command.add("--proto_path=" + importDir.getAbsolutePath());
             }
             command.add("--java_out=" + outputDir);
-            command.add(input.getAbsolutePath());
-            final Process proc
-                = new ProcessBuilder(command.toArray(new String[command.size()]))
-                .redirectErrorStream(true)
-                .start();
+          if (writeDescriptorSet) {
+            descriptorSetOutputDirectory.mkdirs();
+            final File descriptorSetFile = new File(descriptorSetOutputDirectory, descriptorSetFileName);
+            getLog().info("Will write descriptor set to:" + descriptorSetFile.getAbsolutePath());
+            command.add("--descriptor_set_out=" + descriptorSetFile);
+            if (includeDependenciesInDescriptorSet) {
+              getLog().info("Including imported protos in descriptor set");
+              command.add("--include_imports");
+            }
+            if (includeSourceInfoInDescriptorSet) {
+              getLog().info("Including source info in descriptor set");
+              command.add("--include_source_info");
+            }
+          }
+
+          command.add(input.getAbsolutePath());
+          final Process proc
+              = new ProcessBuilder(command.toArray(new String[command.size()]))
+              .redirectErrorStream(true)
+              .start();
             final BufferedReader procOut
                 = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             while (true) {
@@ -464,12 +547,15 @@ public class ProtocBundledMojo extends AbstractMojo
         }
         if (compileAllFiles("main", inputDirectories, importDirectories, outputDirectory)) {
             project.addCompileSourceRoot(outputDirectory.getAbsolutePath());
+            if (writeDescriptorSet && attachDescriptorSet) {
+                attachDescriptorSet();
+            }
         }
 
-        if (testInputDirectories.length == 0) {
-            testInputDirectories = new File[]{new File(project.getBasedir(), "src/test/protobuf")};
-        }
-        final File[] testImportDirectories;
+      if (testInputDirectories.length == 0) {
+        testInputDirectories = new File[]{new File(project.getBasedir(), "src/test/protobuf")};
+      }
+      final File[] testImportDirectories;
         if (testImportDependencies.length > 0) {
             testImportDirectories = extractDependencyProtos(testImportDependencies);
         } else {
@@ -478,19 +564,27 @@ public class ProtocBundledMojo extends AbstractMojo
         if (compileAllFiles("test", testInputDirectories, testImportDirectories, testOutputDirectory)) {
             project.addTestCompileSourceRoot(testOutputDirectory.getAbsolutePath());
         }
+
+
     }
 
-    private File[] extractDependencyProtos(String[] dependencies) throws MojoExecutionException {
-        getLog().debug("Extracting protos for dependencies: " + Arrays.toString(dependencies));
-        File outputDirectory = Paths
-                .get(project.getBuild().getDirectory())
-                .resolve("generated-resources")
-                .resolve("dependency-protobufs")
-                .toFile();
-        getLog().debug("Output directory: " + outputDirectory);
-        List<String> artifactPatterns = Arrays.asList(dependencies);
-        return new DependencyProtobufExtractor(project, outputDirectory, artifactPatterns, getLog()).extract();
-    }
+  private void attachDescriptorSet() {
+    final File descriptorSetFile = new File(descriptorSetOutputDirectory, descriptorSetFileName);
+    getLog().info("attaching proto descriptor set with classifier " + descriptorSetClassifier);
+    projectHelper.attachArtifact(project, "pb", descriptorSetClassifier, descriptorSetFile);
+  }
+
+  private File[] extractDependencyProtos(String[] dependencies) throws MojoExecutionException {
+    getLog().debug("Extracting protos for dependencies: " + Arrays.toString(dependencies));
+    File outputDirectory = Paths
+        .get(project.getBuild().getDirectory())
+        .resolve("generated-resources")
+        .resolve("dependency-protobufs")
+        .toFile();
+    getLog().debug("Output directory: " + outputDirectory);
+    List<String> artifactPatterns = Arrays.asList(dependencies);
+    return new DependencyProtobufExtractor(project, outputDirectory, artifactPatterns, getLog()).extract();
+  }
 
     public void setPluginDescriptor(PluginDescriptor pluginDescriptor) {
         this.pluginDescriptor = pluginDescriptor;
