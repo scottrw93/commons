@@ -22,6 +22,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -267,6 +268,16 @@ public class ProtocBundledMojo extends AbstractMojo
    * required="false"
    */
   protected String descriptorSetClassifier;
+
+
+  /**
+   * If set to {@code true}, then the specified protobuf source files from this project will be attached
+   * as resources to the build, for subsequent inclusion into the final artifact.
+   *
+   * @parameter property="attachProtoSources"
+   * default-value="false"
+   */
+  protected boolean attachProtoSources;
 
   /*
      * A global static lock to disallow concurrent download and more
@@ -549,6 +560,12 @@ public class ProtocBundledMojo extends AbstractMojo
             project.addCompileSourceRoot(outputDirectory.getAbsolutePath());
             if (writeDescriptorSet && attachDescriptorSet) {
                 attachDescriptorSet();
+            }
+            if (attachProtoSources) {
+               for (File inputDirectory : inputDirectories) {
+                   getLog().info("Attaching proto sources from: " + inputDirectory.getAbsolutePath());
+                   projectHelper.addResource(project, inputDirectory.getAbsolutePath(), Collections.singletonList("**/*.proto"), Collections.emptyList());
+               }
             }
         }
 
