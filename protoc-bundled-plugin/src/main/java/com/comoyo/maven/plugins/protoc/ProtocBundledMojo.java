@@ -279,6 +279,17 @@ public class ProtocBundledMojo extends AbstractMojo
    */
   protected boolean attachProtoSources;
 
+
+  /**
+   * Used to set the artifact type of the generated and attached descriptor set
+   *
+   * @parameter property="attachedDescriptorSetArtifactType"
+   * default-value="protobin"
+   * required="true"
+   */
+  protected String attachedDescriptorSetArtifactType;
+
+
   /*
      * A global static lock to disallow concurrent download and more
      * importantly concurrent write of the protoc compiler when the plugin
@@ -587,8 +598,8 @@ public class ProtocBundledMojo extends AbstractMojo
 
   private void attachDescriptorSet() {
     final File descriptorSetFile = new File(descriptorSetOutputDirectory, descriptorSetFileName);
-    getLog().info("attaching proto descriptor set with classifier " + descriptorSetClassifier);
-    projectHelper.attachArtifact(project, "pb", descriptorSetClassifier, descriptorSetFile);
+    getLog().info("attaching proto descriptor set with artifact type '" + attachedDescriptorSetArtifactType + "' and classifier '" + descriptorSetClassifier + "'");
+    projectHelper.attachArtifact(project, attachedDescriptorSetArtifactType, descriptorSetClassifier, descriptorSetFile);
   }
 
   private File[] extractDependencyProtos(String[] dependencies) throws MojoExecutionException {
