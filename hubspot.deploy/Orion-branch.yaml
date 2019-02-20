@@ -26,7 +26,7 @@ servers:
 env:
   all:
     JAR_NAME: ./target/OrionService-executable.jar
-    JVM_MAX_HEAP: 1024m
+    JVM_MAX_HEAP: 2048m
     HS_ACCESS_GROUP: hs-paas-build-deploy
     VAULT_ACCESS_GROUP: hs-paas-build-deploy
 
