@@ -8,17 +8,12 @@ team: hs-faas-infra
 loadBalancers:
 - privatehubteam
 
-servers:
-  qa:
-  - s3.amazonaws.com:443
-  prod:
-  - s3.amazonaws.com:443
-
 nginx:
   proxyConfig: |
 
     location ~* ^/blazar-artifacts/(.*) {
       set $url_full "$hs_env/$1";
+      set $s3host s3.amazonaws.com;
 
       proxy_pass_header Server;
       proxy_set_header Host hubspot-blazar-artifacts.s3.amazonaws.com;
@@ -34,6 +29,6 @@ nginx:
       proxy_set_header       Authorization "AWS $s3_hubspot_blazar_artifacts_access_key:$aws_signature";
       proxy_set_header       x-amz-date $now;
 
-      proxy_pass             https://blazarartifactsroutes;
+      proxy_pass             https://$s3host;
     }
 
