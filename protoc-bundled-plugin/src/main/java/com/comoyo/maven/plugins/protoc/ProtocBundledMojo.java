@@ -567,10 +567,13 @@ public class ProtocBundledMojo extends AbstractMojo
             }
         }
         if (singleProtocInvocation) {
-          getLog().info("Compiling all input files" + inputFiles + " to " + outputDir + " [" + tag + "]");
           if (!inputFiles.isEmpty()) {
+            getLog().info("Compiling all input files" + inputFiles + " to " + outputDir + " [" + tag + "]");
             compileFile(validInputDirs, inputFiles, outputDir, importDirs);
             seen = true;
+          }
+          else {
+            getLog().debug("No input files to compile");
           }
         }
         return seen;
