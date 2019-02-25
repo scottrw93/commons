@@ -290,6 +290,17 @@ public class ProtocBundledMojo extends AbstractMojo
   protected String attachedDescriptorSetArtifactType;
 
 
+  /**
+   * Used to run protoc once for all files if true.
+   * Otherwise once per input file. Useful to set this to true if attaching descriptor sets,
+   * to prevent each protoc run from clobbering the descriptor set from the previous run.
+   *
+   * @parameter property="singleProtocInvocation"
+   * default-value="false"
+   */
+  protected boolean singleProtocInvocation;
+
+
   /*
      * A global static lock to disallow concurrent download and more
      * importantly concurrent write of the protoc compiler when the plugin
@@ -463,18 +474,19 @@ public class ProtocBundledMojo extends AbstractMojo
      * @param dir   base dir for input file, used to resolve includes
      * @param input   input file to compile
      */
-    private void compileFile(File inputDir, File input, File outputDir, File[] importDirs)
+    private void compileFile(List<File> inputDirs, List<File> input, File outputDir, File[] importDirs)
         throws MojoExecutionException
     {
         try {
             List<String> command = new ArrayList<String>();
             command.add(protocExec.toString());
-            command.add("--proto_path=" + inputDir.getAbsolutePath());
+            for (File inputDir : inputDirs) {
+              command.add("--proto_path=" + inputDir.getAbsolutePath());
+            }
             for (File importDir : importDirs) {
                 if (!importDir.exists()) {
                     continue;
                 }
-
                 command.add("--proto_path=" + importDir.getAbsolutePath());
             }
             command.add("--java_out=" + outputDir);
@@ -492,8 +504,9 @@ public class ProtocBundledMojo extends AbstractMojo
               command.add("--include_source_info");
             }
           }
-
-          command.add(input.getAbsolutePath());
+          for (File inputFile : input) {
+            command.add(inputFile.getAbsolutePath());
+          }
           final Process proc
               = new ProcessBuilder(command.toArray(new String[command.size()]))
               .redirectErrorStream(true)
@@ -529,21 +542,39 @@ public class ProtocBundledMojo extends AbstractMojo
         final IOFileFilter filter = new SuffixFileFilter(".proto");
 
         boolean seen = false;
+        List<File> validInputDirs = new ArrayList<>();
+        List<File> inputFiles = new ArrayList<>();
         for (File inputDir : inputDirs) {
             if (!inputDir.exists()) {
                 continue;
             }
+            validInputDirs.add(inputDir);
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
             }
-            getLog().info("Compiling " + inputDir + " to " + outputDir + " [" + tag + "]");
             Iterator<File> files
-                = FileUtils.iterateFiles(inputDir, filter, TrueFileFilter.INSTANCE);
+              = FileUtils.iterateFiles(inputDir, filter, TrueFileFilter.INSTANCE);
             while (files.hasNext()) {
                 final File input = files.next();
-                compileFile(inputDir, input, outputDir, importDirs);
-                seen = true;
+                if (!singleProtocInvocation) {
+                  getLog().info("Compiling " + inputDir + " to " + outputDir + " [" + tag + "] one file at a time");
+                  compileFile(Collections.singletonList(inputDir), Collections.singletonList(input), outputDir, importDirs);
+                  seen = true;
+                }
+                else {
+                  inputFiles.add(input);
+              }
             }
+        }
+        if (singleProtocInvocation) {
+          if (!inputFiles.isEmpty()) {
+            getLog().info("Compiling all input files" + inputFiles + " to " + outputDir + " [" + tag + "]");
+            compileFile(validInputDirs, inputFiles, outputDir, importDirs);
+            seen = true;
+          }
+          else {
+            getLog().debug("No input files to compile");
+          }
         }
         return seen;
     }
