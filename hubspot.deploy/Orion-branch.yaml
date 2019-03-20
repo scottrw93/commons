@@ -1,5 +1,7 @@
 type: procfile
 
+description: Deploy Config to be used for deploying Orion branches including staging. We use 'Orion' for deploying master 
+
 includeConfigs:
   - Orion-common
 
