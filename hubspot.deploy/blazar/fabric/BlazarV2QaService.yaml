@@ -24,8 +24,7 @@ env:
 
 servers:
   qa:
-#    - stale-goose
-    - juicy-bongo
+    - funny-guppy
   prod: []
 
 zkGroup: blazar
