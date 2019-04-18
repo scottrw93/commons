@@ -23,3 +23,4 @@ buildResolution:
     strategy: LATEST_BUILD
   prod:
     strategy: NO_BUILD
+
