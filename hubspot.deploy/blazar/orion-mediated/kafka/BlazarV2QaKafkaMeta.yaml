@@ -1,0 +1,8 @@
+type: meta
+
+team: hs-paas-build-deploy
+
+projects:
+- BlazarV2QaLibraryAcceptanceTestKafkaWorker
+#- BlazarV2QaSirJesterWorker
+
