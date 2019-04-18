@@ -21,11 +21,11 @@ servers:
   qa:
     - spicy-swift.iad03.hubspot-networks.net
   prod:
-    - able-lynx.iad02.hubspot-networks.net
-    - fat-poodle.iad02.hubspot-networks.net
-    - raspy-calf.iad02.hubspot-networks.net
-    - well-chow.iad02.hubspot-networks.net
-    - hot-ghost.iad02.hubspot-networks.net
+    - sure-humpback.iad02.hubspot-networks.net
+    - firm-star.iad02.hubspot-networks.net
+    - itchy-mammoth.iad02.hubspot-networks.net
+    - social-beer.iad02.hubspot-networks.net
+    - fine-jay.iad02.hubspot-networks.net
 
 env:
   all:
