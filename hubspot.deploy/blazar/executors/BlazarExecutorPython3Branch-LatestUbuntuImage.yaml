@@ -74,3 +74,4 @@ servers:
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
+  
