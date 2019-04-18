@@ -19,8 +19,7 @@ env:
 
 servers:
   qa:
-    - stale-goose
-    # - juicy-bongo
+    - spiny-dogfish
   prod: []
 
 # Blazar Specific Settings
