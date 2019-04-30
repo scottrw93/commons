@@ -21,7 +21,3 @@ servers:
   qa:
     - spiny-dogfish
   prod: []
-
-# Blazar Specific Settings
-blazarConfiguration:
-  webhookOnly: true

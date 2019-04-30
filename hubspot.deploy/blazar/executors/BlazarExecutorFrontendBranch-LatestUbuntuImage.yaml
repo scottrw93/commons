@@ -1,13 +1,7 @@
 type: procfile
 
-artifactBuildMetadata:
-  organization: HubSpotProtected
-  repository: Blazar
-  module: BlazarExecutor
-
-accessGroup: hs-paas-build-deploy
-
-team: hs-paas-build-deploy
+includeConfigs:
+  - BlazarExecutorBranch-common
 
 docker:
   blazar-executor-java:
@@ -48,34 +42,3 @@ docker:
       containerPath: '/mnt/mesos/tmp/'
       mode: RW
     allowSpotInstances: true
-
-# makes the log stay as service.log 5ever
-skipLogrotateAndCompress: true
-env:
-  all:
-    HOST_PWD: "$PWD"
-    CGROUP_PARENT: "mesos/$CGROUPS_GUID"
-    HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-paas-build-deploy)"
-
-postDeployTests:
-  mesos:
-    all:
-    - BlazarExecutorAcceptanceTest
-
-
-
-servers:
-  qa:
-  - mesos:
-      numCpus: 2
-      memoryMb: 2560
-      placement: OPTIMISTIC
-
-  prod:
-  - mesos:
-      numCpus: 2
-      memoryMb: 2560
-      placement: OPTIMISTIC
-
-emailSettings:
-  DEPLOYABLE_INSTANCE_FINISHED: []
