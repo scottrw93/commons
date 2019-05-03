@@ -22,6 +22,6 @@ nginx:
       access_by_lua_block {
         require("resty.aws").s3_set_headers(ngx.var.s3_hubspot_blazar_artifacts_access_key, ngx.var.s3_hubspot_blazar_artifacts_secret_key, ngx.var.s3host, ngx.var.uri)
       }
-      proxy_pass             https://$s3host;
+      proxy_pass             https://$s3host/$url_full;
     }
 
