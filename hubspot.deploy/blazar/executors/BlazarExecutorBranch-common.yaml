@@ -29,6 +29,9 @@ servers:
       memoryMb: 2560
       placement: OPTIMISTIC
   prod: []
+  
+buildResolution:
+  prod: NO_BUILD
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
