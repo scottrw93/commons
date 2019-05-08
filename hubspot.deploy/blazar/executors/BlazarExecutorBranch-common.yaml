@@ -30,8 +30,5 @@ servers:
       placement: OPTIMISTIC
   prod: []
 
-buildResolution:
-  prod: NO_BUILD
-
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
