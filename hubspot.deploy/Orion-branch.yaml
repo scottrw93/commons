@@ -33,6 +33,8 @@ env:
     JVM_MAX_HEAP: 2048m
     HS_ACCESS_GROUP: hs-paas-build-deploy
     VAULT_ACCESS_GROUP: hs-paas-build-deploy
+  qa:
+    EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0
 
 vaultAccessGroup: hs-paas-build-deploy
 
@@ -40,7 +42,7 @@ zkGroup: mesos:deploy:hs_staging:v3
 
 procfile:
   web:
-    cmd: java-wrapper -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_JVM_ARGS -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
     type: SERVICE
 logging:
   level: DEBUG
