@@ -6,7 +6,6 @@ artifactBuildMetadata:
   organization: HubSpotProtected
   repository: Blazar
   module: BlazarService
-  branch: staging
 
 includeConfigs:
 - BlazarV2AllServiceCommon
