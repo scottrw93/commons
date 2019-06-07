@@ -13,7 +13,7 @@ docker:
     dockerParameters:
       privileged: true
       cap-add: NET_ADMIN
-      mount: "type=tmpfs,destination=/usr/share/hubspot/build/workspace,tmpfs-mode=777,tmpfs-size=4000000000" # max size 4GB
+      tmpfs: "/usr/share/hubspot/build/workspace:exec"
     volumes:
     - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
       containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
