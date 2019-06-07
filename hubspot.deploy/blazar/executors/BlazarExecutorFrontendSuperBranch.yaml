@@ -4,7 +4,7 @@ includeConfigs:
   - BlazarExecutorBranch-common
 
 docker:
-  blazar-executor:
+  blazar-executor-java:
     type: ON_DEMAND
     cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
     network: BRIDGE
@@ -13,7 +13,6 @@ docker:
     dockerParameters:
       privileged: true
       cap-add: NET_ADMIN
-      tmpfs: "/usr/share/hubspot/build/workspace:exec"
     volumes:
     - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
       containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
@@ -30,6 +29,9 @@ docker:
     - hostPath: /usr/share/hubspot/mesos/blazar_cache
       containerPath: /usr/share/hubspot/mesos/blazar_cache
       mode: RW
+    - hostPath: '$PWD/app/build-workspace'
+      containerPath: /usr/share/hubspot/build/workspace
+      mode: RW
     - hostPath: /var/run/docker.sock
       containerPath: /var/run/host-docker.sock
       mode: RW
@@ -39,4 +41,3 @@ docker:
     - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
       containerPath: '/mnt/mesos/tmp/'
       mode: RW
-    allowSpotInstances: true
