@@ -9,6 +9,7 @@ projects:
 - BlazarExecutorAndroidBranch-LatestUbuntuImage
 - BlazarExecutorBranch-LatestWailmerImage
 - BlazarExecutorFrontendBranch-LatestUbuntuImage
+- BlazarExecutorFrontendNonSpotBranch
 - BlazarExecutorMavenBranch-LatestCentosImage
 - BlazarExecutorPython3Branch-LatestUbuntuImage
 
