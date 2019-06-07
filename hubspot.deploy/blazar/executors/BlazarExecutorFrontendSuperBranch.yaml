@@ -4,7 +4,7 @@ includeConfigs:
   - BlazarExecutorBranch-common
 
 docker:
-  blazar-executor-java:
+  blazar-executor:
     type: ON_DEMAND
     cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
     network: BRIDGE
