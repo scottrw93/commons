@@ -17,7 +17,7 @@ docker:
     type: ON_DEMAND
     cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar $EXTRA_EXECUTOR_ARGS"
     network: BRIDGE
-    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-pt-buildscripts-send-artifact-executor:2
+    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-pt-buildscripts-send-artifact-executor:3
     addDefaultVolumes: false
     dockerParameters:
       privileged: true
