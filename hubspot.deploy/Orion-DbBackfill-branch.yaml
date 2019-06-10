@@ -24,4 +24,4 @@ zkGroup: mesos:deploy:hs_staging:v3
 procfile:
   backfillDeployConfigData:
     type: ON_DEMAND
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME backfillDeployConfigData $CONFIG_YAML
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME backfillDeployConfigData
