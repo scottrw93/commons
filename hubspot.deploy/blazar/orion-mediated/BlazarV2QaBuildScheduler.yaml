@@ -6,7 +6,8 @@ artifactBuildMetadata:
   module: BlazarBuildScheduler
 
 env:
-  JVM_TMPDIR: /tmp
+  all:
+    JVM_TMPDIR: /tmp
 
 procfile:
   service:
