@@ -5,6 +5,9 @@ artifactBuildMetadata:
   repository: Blazar
   module: BlazarBuildScheduler
 
+env:
+  JVM_TMPDIR: /tmp
+
 procfile:
   service:
     type: WORKER
