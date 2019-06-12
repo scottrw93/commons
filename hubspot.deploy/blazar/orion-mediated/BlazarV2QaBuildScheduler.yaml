@@ -4,10 +4,10 @@ artifactBuildMetadata:
   organization: HubSpotProtected
   repository: Blazar
   module: BlazarBuildScheduler
-  
+
 procfile:
   service:
-    type: SERVICE
+    type: WORKER
     cmd: java-wrapper -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar target/BlazarBuildScheduler-executable.jar -BlazarBuildScheduler
 
 servers:
