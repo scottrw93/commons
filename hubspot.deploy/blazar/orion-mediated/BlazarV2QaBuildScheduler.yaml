@@ -9,6 +9,9 @@ procfile:
   service:
     type: WORKER
     cmd: java-wrapper -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar target/BlazarBuildScheduler-executable.jar -BlazarBuildScheduler
+    resources:
+      memoryMb: 4096
+      reservedEcus: 8
 
 servers:
   qa:
