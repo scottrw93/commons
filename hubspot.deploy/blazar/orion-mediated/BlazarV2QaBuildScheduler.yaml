@@ -1,0 +1,25 @@
+type: procfile
+
+artifactBuildMetadata:
+  organization: HubSpotProtected
+  repository: Blazar
+  module: BlazarBuildScheduler
+  
+procfile:
+  service:
+    type: SERVICE
+    cmd: java-wrapper -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar target/BlazarBuildScheduler-executable.jar -BlazarBuildScheduler
+
+servers:
+  qa:
+  - kubernetes:
+      instances: 1
+
+buildResolution:
+  qa:
+    strategy: LATEST_BUILD
+  prod:
+    strategy: NO_BUILD
+
+vaultAccessGroup: hs-paas-build-deploy
+team: hs-paas-build-deploy
