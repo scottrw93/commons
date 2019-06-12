@@ -30,3 +30,4 @@ buildResolution:
 
 vaultAccessGroup: hs-paas-build-deploy
 team: hs-paas-build-deploy
+zkGroup: blazar
