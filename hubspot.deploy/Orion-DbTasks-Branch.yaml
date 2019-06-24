@@ -5,7 +5,7 @@ appRoot: /orion/v3-staging
 artifactBuildMetadata:
   repository: Orion
   module: OrionService
-  branch: staging
+  branch: qa-deploys
 
 buildResolution:
   qa: "LATEST_BUILD"
