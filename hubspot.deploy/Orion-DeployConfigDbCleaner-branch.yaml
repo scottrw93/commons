@@ -6,7 +6,7 @@ includeConfigs:
 artifactBuildMetadata:
   repository: Orion
   module: OrionDeployConfigDbCleaner
-  branch: staging
+  branch: qa-deploys
   
 buildResolution:
   qa: "LATEST_BUILD"
