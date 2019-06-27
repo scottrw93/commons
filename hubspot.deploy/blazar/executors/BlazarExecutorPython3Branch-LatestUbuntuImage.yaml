@@ -42,3 +42,4 @@ docker:
       containerPath: '/mnt/mesos/tmp/'
       mode: RW
     allowSpotInstances: true
+    
