@@ -9,7 +9,6 @@ artifactBuildMetadata:
 
 buildResolution:
   qa: "LATEST_BUILD"
-  prod: "NO_BUILD"
 
 slack:
 - channelName: "#paas-b-d-notifs"
