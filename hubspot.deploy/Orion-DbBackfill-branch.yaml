@@ -7,7 +7,7 @@ appRoot: /orion/v3-staging
 
 artifactBuildMetadata:
   repository: Orion
-  module: OrionService
+  module: OrionBackfillJobs
   branch: qa-deploys
   
 buildResolution:
@@ -16,7 +16,7 @@ buildResolution:
 
 env:
   all:
-    JAR_NAME: ./target/OrionService-executable.jar
+    JAR_NAME: ./target/OrionBackfillJobs-executable.jar
     JVM_MAX_HEAP: 1024m
 
 zkGroup: mesos:deploy:hs_staging:v3
