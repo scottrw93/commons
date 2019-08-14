@@ -24,7 +24,7 @@ env:
 servers:
   qa:
   - kubernetes:
-      instances: 1
+      instances: 3
   prod: []
 
 zkGroup: blazar
