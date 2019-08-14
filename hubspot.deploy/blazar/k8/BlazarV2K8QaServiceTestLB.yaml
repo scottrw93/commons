@@ -19,5 +19,5 @@ servers:
 nginx:
   proxyConfig: |
     location /blazar/v2-test {
-      proxy_pass http://blazarv2k8qaservicelb;
+      proxy_pass http://blazarv2k8qaservicetestlb;
     }
