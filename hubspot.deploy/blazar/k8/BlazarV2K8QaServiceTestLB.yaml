@@ -1,3 +1,5 @@
+type: load_balancer
+
 appRoot: /blazar/v2-test
 
 team: hs-paas-build-deploy
