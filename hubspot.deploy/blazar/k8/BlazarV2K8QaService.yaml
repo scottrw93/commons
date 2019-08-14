@@ -1,4 +1,11 @@
 type: procfile
+
+loadBalancers:
+  - bootstrap
+  - build
+  - privateapi
+  - privatehubteam
+
 includeConfigs:
   - BlazarV2QaSettings
 
