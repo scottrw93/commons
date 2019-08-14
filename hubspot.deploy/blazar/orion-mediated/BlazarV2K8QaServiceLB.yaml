@@ -1,0 +1,23 @@
+type: load_balancer
+
+appRoot: /blazar/v2
+
+team: hs-paas-build-deploy
+
+loadBalancers:
+  - bootstrap
+  - build
+  - privateapi
+  - privatehubteam
+
+servers:
+  qa:
+  - app-service.app-blazarv2k8qaservice-web.svc.iad03.k8s.run:8080
+  prod:
+  - app-service.app-blazarv2k8qaservice-web.svc.iad02.k8s.run:8080
+
+nginx:
+  proxyConfig: |
+    location /blazar/v2 {
+      proxy_pass http://blazarv2k8qaservicelb/blazar/v2;
+    }
