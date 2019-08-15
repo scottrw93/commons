@@ -13,8 +13,12 @@ loadBalancers:
 servers:
   qa:
   - app-service.app-blazarv2k8qaservice-web.svc.iad03.k8s.run:8080
+
+buildResolution:
+  qa:
+    strategy: LATEST_BUILD
   prod:
-  - app-service.app-blazarv2k8qaservice-web.svc.iad02.k8s.run:8080
+    strategy: NO_BUILD
 
 nginx:
   proxyConfig: |
