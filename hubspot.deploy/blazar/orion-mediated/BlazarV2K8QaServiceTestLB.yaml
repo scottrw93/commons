@@ -14,12 +14,6 @@ servers:
   qa:
   - app-service.app-blazarv2k8qaservice-web.svc.iad03.k8s.run:8080
 
-buildResolution:
-  qa:
-    strategy: LATEST_BUILD
-  prod:
-    strategy: NO_BUILD
-
 nginx:
   proxyConfig: |
     location /blazar/v2-test {
