@@ -22,7 +22,7 @@ nginx:
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Scheme $scheme;
       proxy_set_header X-Request-Start "${msec}";
-      set $hs_service_name "orion-branch";
+      set $hs_service_name "orion-branch-web";
       proxy_connect_timeout 55;
       proxy_read_timeout 60;
       proxy_pass http://$orionbranchhost;
