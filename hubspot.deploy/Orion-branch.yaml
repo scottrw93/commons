@@ -19,7 +19,8 @@ artifactBuildMetadata:
 
 servers:
   qa:
-    - spicy-swift.iad03.hubspot-networks.net
+    - KUBERNETES:
+      instances: 1
   prod:
     - sure-humpback.iad02.hubspot-networks.net
     - firm-star.iad02.hubspot-networks.net
