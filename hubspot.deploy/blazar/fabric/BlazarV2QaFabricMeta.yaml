@@ -1,8 +1,0 @@
-type: meta
-
-team: hs-paas-build-deploy
-
-projects:
-- BlazarV2QaService
-- BlazarV2QaWebhookService
-
