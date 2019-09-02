@@ -19,5 +19,5 @@ env:
 
 servers:
   qa:
-    - spiny-dogfish
+    - sour-hagfish
   prod: []
