@@ -20,7 +20,7 @@ zkGroup: BlazarAcceptanceTests
 tests:
   test1:
     testType: USER_DEFINED
-    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-acceptancetests:209
+    image: docker.hubteam.com/hubspot/git.hubteam.com-hubspotprotected-wailmer-master-acceptancetests:412
     cmd: "/usr/bin/java8 -jar /mnt/mesos/sandbox/app/target/BlazarExecutorAcceptanceTests-executable.jar $CONFIG_YAML"
     schedule: 0/5 * * * *
     # network: BRIDGE
