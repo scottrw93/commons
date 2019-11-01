@@ -24,6 +24,11 @@ procfile:
   inactiveBranchMetadataCleanCommand:
     type: ON_DEMAND
     cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService inactive_branch_metadata_clean
+    
+  # Rediscovers modules in branches containing a multi module
+  rediscoverMultiModuleRepos:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -cp ./target/\* com.hubspot.blazar.BlazarService rediscover_multi_module
 
 servers:
   qa:
