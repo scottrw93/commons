@@ -36,7 +36,11 @@ procfile:
 
   backfillRepositoryBuildRequests:
     type: ON_DEMAND
-    cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME backfill_repo_build
+    cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME backfill_repo_build 
+    
+  backfillInterprojectBuildRequests:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME backfill_inter_project_build
     
   # Rediscovers modules in branches containing a multi module
   rediscoverMultiModuleRepos:
