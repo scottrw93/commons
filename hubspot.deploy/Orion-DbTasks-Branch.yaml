@@ -9,9 +9,21 @@ artifactBuildMetadata:
 
 buildResolution:
   qa: "LATEST_BUILD"
+  prod: "NO_BUILD"
 
 slack:
-- channelName: "#paas-b-d-notifs"
+- channelName: "#paas-build-deploy-notifications"
+  all:
+    preDeploy: MUTE
+    success: NOTIFY
+    failure: NOTIFY
+    notifyForBlockerEvents: NOTIFY
+    deployedNotRun: MUTE
+  qa:
+    success: MUTE
+    failure: MUTE
+    notifyForBlockerEvents: MUTE
+
 
 env:
   all:

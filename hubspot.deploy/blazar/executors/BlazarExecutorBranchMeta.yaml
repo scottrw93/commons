@@ -2,9 +2,6 @@ type: meta
 
 team: hs-paas-build-deploy
 
-slack:
-- "#paas-b-d-notifs"
-
 projects:
 - BlazarExecutorAndroidBranch-LatestUbuntuImage
 - BlazarExecutorBranch-LatestWailmerImage
