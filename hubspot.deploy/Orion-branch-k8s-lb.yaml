@@ -5,7 +5,17 @@ appRoot: /orion/v3-staging
 team: hs-paas-build-deploy
 
 slack:
-- channelName: "#paas-b-d-notifs"
+- channelName: "#paas-build-deploy-notifications"
+  all:
+    preDeploy: MUTE
+    success: NOTIFY
+    failure: NOTIFY
+    notifyForBlockerEvents: NOTIFY
+    deployedNotRun: MUTE
+  qa:
+    success: MUTE
+    failure: MUTE
+    notifyForBlockerEvents: MUTE
 
 loadBalancers:
 - privatehubteam

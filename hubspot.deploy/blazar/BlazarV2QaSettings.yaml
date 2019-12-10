@@ -12,7 +12,19 @@ appRoot: /blazar/v2
 trafficSplittingEnabled: false
 
 slack:
-- "#paas-b-d-notifs"
+- channelName: "#paas-build-deploy-notifications"
+  all:
+    preDeploy: MUTE
+    success: NOTIFY
+    failure: NOTIFY
+    notifyForBlockerEvents: NOTIFY
+    deployedNotRun: MUTE
+  qa:
+    success: MUTE
+    failure: MUTE
+    notifyForBlockerEvents: MUTE
+
+
 
 env:
   all:
