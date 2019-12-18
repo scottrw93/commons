@@ -42,6 +42,10 @@ procfile:
     type: ON_DEMAND
     cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME backfill_inter_project_build
     
+  orionbotPibotSlackChannelSync:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME orionbot_pibot_sync
+    
   # Rediscovers modules in branches containing a multi module
   rediscoverMultiModuleRepos:
     type: ON_DEMAND
