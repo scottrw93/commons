@@ -53,5 +53,5 @@ logging:
 http:
   maxIdleTime: 200s
 
-healthcheckStartupDelaySeconds: 20
-healthcheckStartupTimeoutSeconds: 90
+healthcheckStartupDelaySeconds: 30
+healthcheckStartupTimeoutSeconds: 100
