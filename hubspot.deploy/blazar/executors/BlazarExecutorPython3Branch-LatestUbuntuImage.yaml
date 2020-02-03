@@ -1,7 +1,7 @@
 type: procfile
 
 includeConfigs:
-  - BlazarExecutorBranch-common
+- BlazarExecutorBranch-common
 
 docker:
   blazar-executor-python3:
@@ -42,4 +42,5 @@ docker:
       containerPath: '/mnt/mesos/tmp/'
       mode: RW
     allowSpotInstances: true
-    
+
+    healthcheckMode: NONE

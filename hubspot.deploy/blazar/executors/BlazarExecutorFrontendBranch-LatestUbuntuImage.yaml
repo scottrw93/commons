@@ -1,7 +1,7 @@
 type: procfile
 
 includeConfigs:
-  - BlazarExecutorBranch-common
+- BlazarExecutorBranch-common
 
 docker:
   blazar-executor-java:
@@ -24,7 +24,7 @@ docker:
       containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.protected.real
       mode: RO
     - hostPath: /etc/slimfast.properties
-      containerPath: /etc/slimfast.properties                                    
+      containerPath: /etc/slimfast.properties
       mode: RO
     - hostPath: /usr/share/hubspot/mesos/blazar_cache
       containerPath: /usr/share/hubspot/mesos/blazar_cache
@@ -43,3 +43,4 @@ docker:
       mode: RW
     allowSpotInstances: true
 
+    healthcheckMode: NONE
