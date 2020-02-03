@@ -12,6 +12,7 @@ procfile:
     cmd: .deploy_virtualenv/bin/opt-out
     type: ON_DEMAND
 
+    healthcheckMode: NONE
 servers:
   qa:
   - mesos
