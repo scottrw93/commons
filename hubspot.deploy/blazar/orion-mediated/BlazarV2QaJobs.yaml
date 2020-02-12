@@ -46,6 +46,10 @@ procfile:
   rediscoverMultiModuleRepos:
     type: ON_DEMAND
     cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME rediscover_multi_module
+    
+  backfillNotificationFirewall:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME notification_firewall_backfill
 
 servers:
   qa:
