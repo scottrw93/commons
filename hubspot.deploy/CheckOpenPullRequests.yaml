@@ -1,0 +1,20 @@
+artifactBuildMetadata:
+  repository: InfraSlackTools
+  module: slack-commands-jobs
+
+type: procfile
+
+team: hs-paas-build-deploy
+
+zkGroup: slack:commands:jobs
+
+env:
+  all:
+    JAR_NAME: ./target/slack-commands-jobs-executable.jar
+
+procfile:
+  placeholder:
+    cmd: java-wrapper -jar $JAR_NAME postPrsForTeams
+    type: SCHEDULED_JOB
+    schedule: '0 13 * * 1-5' # 8am (or 9) ET on Monday - Friday https://crontab.guru/#0_13_*_*_1-5
+    
