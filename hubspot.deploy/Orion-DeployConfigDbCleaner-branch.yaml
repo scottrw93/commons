@@ -14,7 +14,7 @@ buildResolution:
   
 env:
   all:
-    JAR_NAME: ./target/OrionDeployConfigDbCleaner-executable.jar
+    JAR_NAME: ./target/OrionDeployConfigDbCleaner-executable.jar clean
     JVM_MAX_HEAP: 1024m
 
 zkGroup: mesos:deploy:hs_staging:v3
