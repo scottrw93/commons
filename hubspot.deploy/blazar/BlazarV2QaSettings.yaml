@@ -7,7 +7,6 @@ artifactBuildMetadata:
   module: BlazarService
 
 team: hs-paas-build-deploy
-appRoot: /blazar/v2
 
 trafficSplittingEnabled: false
 
@@ -23,8 +22,6 @@ slack:
     success: MUTE
     failure: MUTE
     notifyForBlockerEvents: MUTE
-
-
 
 env:
   all:

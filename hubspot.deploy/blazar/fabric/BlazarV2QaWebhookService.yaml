@@ -6,6 +6,8 @@ loadBalancers:
 includeConfigs:
   - BlazarV2QaSettings
 
+appRoot: /blazar/v2
+
 procfile:
   web: 
     cmd: java-wrapper $EXTRA_ARGS -jar $JAR server $CONFIG_YAML
