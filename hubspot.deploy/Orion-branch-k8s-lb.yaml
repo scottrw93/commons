@@ -24,7 +24,7 @@ loadBalancers:
 nginx:
   proxyConfig: |
     location  /orion/v3-staging {
-      set $orionbranchhost 'app-service.app-orion-branch-web.svc.iad02.k8s.run:8080';
+      set $orionbranchhost 'service-mainline.app-orion-branch-web.svc.iad02.k8s.run:8080';
       if ($hs_env = "qa") { set $orionbranchhost 'service-mainline.app-orion-branch-web.svc.iad03.k8s.run:8080'; }
       proxy_pass_header Server;
       proxy_set_header Host $http_host;
