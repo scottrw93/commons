@@ -22,11 +22,8 @@ servers:
     - kubernetes:
         instances: 1
   prod:
-    - sure-humpback.iad02.hubspot-networks.net
-    - firm-star.iad02.hubspot-networks.net
-    - itchy-mammoth.iad02.hubspot-networks.net
-    - social-beer.iad02.hubspot-networks.net
-    - fine-jay.iad02.hubspot-networks.net
+    - kubernetes:
+        instances: 5
 
 env:
   all:
