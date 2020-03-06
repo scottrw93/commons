@@ -20,6 +20,7 @@ slack:
 loadBalancers:
 - privatehubteam
 - bootstrap
+- build
 
 nginx:
   proxyConfig: |
