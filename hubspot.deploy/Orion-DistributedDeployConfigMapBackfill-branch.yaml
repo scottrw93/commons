@@ -2,8 +2,6 @@ type: procfile
 
 includeConfigs:
   - Orion-common
-  
-appRoot: /orion/v3-staging
 
 artifactBuildMetadata:
   repository: Orion
