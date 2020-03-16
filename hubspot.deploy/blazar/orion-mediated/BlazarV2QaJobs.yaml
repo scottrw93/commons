@@ -46,6 +46,10 @@ procfile:
   rediscoverMultiModuleRepos:
     type: ON_DEMAND
     cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME rediscover_multi_module
+    
+  rediscoverModulesForActiveProjects:
+    type: ON_DEMAND
+    cmd: java-wrapper $EXTRA_ARGS -jar $JAR_NAME rediscover_modules_for_active_projects
 
 servers:
   qa:
