@@ -54,3 +54,8 @@ http:
 
 healthcheckStartupDelaySeconds: 20
 healthcheckStartupTimeoutSeconds: 360
+
+postDeployTests:
+  qa:
+    mesos:
+      - OrionAcceptanceTests
