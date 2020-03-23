@@ -1,0 +1,33 @@
+type: procfile
+
+artifactBuildMetadata:
+  repository: Orion
+  module: OrionBackfillJobs
+
+slack:
+- channelName: "#paas-build-deploy-notifications"
+  all:
+    preDeploy: MUTE
+    success: NOTIFY
+    failure: NOTIFY
+    notifyForBlockerEvents: NOTIFY
+    deployedNotRun: MUTE
+  qa:
+    success: MUTE
+    failure: MUTE
+    notifyForBlockerEvents: MUTE
+
+
+env:
+  all:
+    JVM_MAX_HEAP: 1024m
+    JAR_NAME: ./target/OrionBackfillJobs-executable.jar
+
+zkGroup: mesos:deploy:hs_staging:v3
+team: hs-paas-build-deploy
+
+procfile:
+  backfill-traffic-stats:
+    type: ON_DEMAND
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME --backfill-traffic-stats
+
