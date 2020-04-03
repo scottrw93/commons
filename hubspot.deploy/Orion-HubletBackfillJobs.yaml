@@ -30,4 +30,7 @@ procfile:
   backfill-traffic-stats:
     type: ON_DEMAND
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME --backfill-traffic-stats
+  backfill-deployments:
+    type: ON_DEMAND
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME --backfill-deployments
 
