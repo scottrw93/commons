@@ -59,4 +59,4 @@ postDeployTests:
   qa:
     mesos:
       - OrionAcceptanceTests
-      - OrionBotAcceptanceTests
+      - ORIONBOT_AcceptanceTests
