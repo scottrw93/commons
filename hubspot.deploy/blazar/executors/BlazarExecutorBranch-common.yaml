@@ -7,7 +7,7 @@ artifactBuildMetadata:
 
 accessGroup: hs-paas-build-deploy
 
-team: hs-paas-build-deploy
+team: hs-paas-build
 
 # makes the log stay as service.log 5ever
 skipLogrotateAndCompress: true
