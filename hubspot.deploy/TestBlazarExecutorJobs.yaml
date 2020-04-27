@@ -4,9 +4,14 @@ artifactBuildMetadata:
   organization: HubSpotProtected
   repository: Blazar
   module: BlazarJobs
+  branch: ashtarbev-ipb-time-job
 
 includeConfigs:
   - BlazarCommon
+
+buildResolution:
+  qa: NO_BUILD
+  prod: LATEST_BUILD
 
 procfile:
   time_inter_project_build_logic:
