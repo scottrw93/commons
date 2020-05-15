@@ -1,0 +1,91 @@
+artifactBuildMetadata:
+  organization: HubSpotProtected
+  repository: Blazar
+  module: BlazarExecutor
+
+type: procfile
+team: hs-paas-build
+
+slack:
+  - channelName: "#paas-build-deploy-notifications"
+    all:
+      preDeploy: MUTE
+      success: NOTIFY
+      failure: NOTIFY
+      notifyForBlockerEvents: NOTIFY
+      deployedNotRun: MUTE
+
+docker:
+  blazar-executor-java:
+    type: ON_DEMAND
+    cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar $EXTRA_EXECUTOR_ARGS"
+    network: BRIDGE
+    image: image: docker.hubteam.com/wailmer/gmarques/updating-android-sdkmanager/blazar-executor-android-ubuntu:latest
+    addDefaultVolumes: false
+    healthcheckMode: NONE
+    dockerParameters:
+      privileged: true
+      cap-add: NET_ADMIN
+    volumes:
+    - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
+      containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
+      mode: RO
+    - hostPath: /etc/hubspot.bootstrap.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
+      mode: RO
+    - hostPath: /etc/hubspot.protected.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.protected.real
+      mode: RO
+    - hostPath: /etc/slimfast.properties
+      containerPath: /etc/slimfast.properties
+      mode: RO
+    - hostPath: /usr/share/hubspot/mesos/blazar_cache
+      containerPath: /usr/share/hubspot/mesos/blazar_cache
+      mode: RW
+    - hostPath: '$PWD/app/build-workspace'
+      containerPath: /usr/share/hubspot/build/workspace
+      mode: RW
+    - hostPath: /var/run/docker.sock
+      containerPath: /var/run/host-docker.sock
+      mode: RW
+    - hostPath: '$PWD/var-lib-docker'
+      containerPath: /var/lib/docker
+      mode: RO
+    - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
+      containerPath: '/mnt/mesos/tmp/'
+      mode: RW
+    allowSpotInstances: true
+
+
+# makes the log stay as service.log 5ever
+skipLogrotateAndCompress: true
+env:
+  all:
+    HOST_PWD: "$PWD"
+    CGROUP_PARENT: "mesos/$CGROUPS_GUID"
+    HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-paas-build-deploy)"
+    TMPDIR: /tmp
+
+priorityLevel: 0.9
+postDeployTests:
+  all:
+    mesos:
+    - BlazarExecutorAcceptanceTest
+
+
+servers:
+  qa:
+  - mesos:
+      numCpus: 4
+      memoryMb: 2560
+      placement: OPTIMISTIC
+  prod:
+  - mesos:
+      numCpus: 4
+      memoryMb: 2560
+      placement: OPTIMISTIC
+
+emailSettings:
+  DEPLOYABLE_INSTANCE_FINISHED: []
+  DEPLOYABLE_INSTANCE_FAILED: []
+  DEPLOYABLE_INSTANCE_KILLED: []
