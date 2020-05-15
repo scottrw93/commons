@@ -20,7 +20,7 @@ docker:
     type: ON_DEMAND
     cmd: "/usr/bin/java -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar $EXTRA_EXECUTOR_ARGS"
     network: BRIDGE
-    image: image: docker.hubteam.com/wailmer/gmarques/updating-android-sdkmanager/blazar-executor-android-ubuntu:latest
+    image: docker.hubteam.com/wailmer/gmarques/updating-android-sdkmanager/blazar-executor-android-ubuntu:latest
     addDefaultVolumes: false
     healthcheckMode: NONE
     dockerParameters:
