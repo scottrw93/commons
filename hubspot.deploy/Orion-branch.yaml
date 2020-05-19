@@ -1,18 +1,18 @@
 type: procfile
 
-description: Deploy Config to be used for deploying Orion branches including staging. We use 'Orion' for deploying master 
+description: Deploy Config to be used for deploying Orion branches including staging. We use 'Orion' for deploying master
 
 includeConfigs:
-  - Orion-common
+- Orion-common
 
 appRoot: /orion/v3-staging
 
 trafficSplittingEnabled: false
 
 loadBalancers:
- - bootstrap
- - build
- - privatehubteam
+- bootstrap
+- build
+- privatehubteam
 
 artifactBuildMetadata:
   repository: Orion
@@ -21,11 +21,11 @@ artifactBuildMetadata:
 
 servers:
   qa:
-    - kubernetes:
-        instances: 1
+  - kubernetes:
+      instances: 1
   prod:
-    - kubernetes:
-        instances: 5
+  - kubernetes:
+      instances: 5 
 
 env:
   all:
@@ -52,11 +52,9 @@ logging:
 http:
   maxIdleTime: 200s
 
-healthcheckStartupDelaySeconds: 20
-healthcheckStartupTimeoutSeconds: 360
-
 postDeployTests:
   qa:
     mesos:
-      - OrionAcceptanceTests
-      - ORIONBOT_AcceptanceTests
+    - OrionAcceptanceTests
+    - ORIONBOT_AcceptanceTests
+healthcheckStartupTimeout: 380s
