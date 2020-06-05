@@ -25,7 +25,7 @@ servers:
       instances: 1
   prod:
   - kubernetes:
-      instances: 10
+      instances: 5
 
 env:
   all:
