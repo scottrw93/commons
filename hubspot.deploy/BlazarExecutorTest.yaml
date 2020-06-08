@@ -87,13 +87,8 @@ servers:
       numCpus: 4
       memoryMb: 2560
       placement: OPTIMISTIC
-      instances: 400
-  prod:
-  - mesos:
-      numCpus: 4
-      memoryMb: 2560
-      placement: OPTIMISTIC
-      instances: 400
+      instances: 1
+  prod: []
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
