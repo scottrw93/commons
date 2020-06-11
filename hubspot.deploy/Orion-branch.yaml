@@ -53,8 +53,10 @@ http:
   maxIdleTime: 200s
 
 postDeployTests:
-  qa:
+  all:
     mesos:
     - OrionAcceptanceTests
+  qa:
+    mesos:
     - ORIONBOT_AcceptanceTests
 healthcheckStartupTimeout: 380s
