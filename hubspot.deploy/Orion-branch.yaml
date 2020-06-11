@@ -56,7 +56,5 @@ postDeployTests:
   all:
     mesos:
     - OrionAcceptanceTests
-  qa:
-    mesos:
     - ORIONBOT_AcceptanceTests
 healthcheckStartupTimeout: 380s
