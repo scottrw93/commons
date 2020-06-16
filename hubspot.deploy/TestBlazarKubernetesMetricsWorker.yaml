@@ -11,7 +11,7 @@ includeConfigs:
 procfile:
   service:
     type: WORKER
-    cmd: java-wrapper -jar target/BlazarJobs-executable.jar -BlazarKubernetesMetricsWorker
+    cmd: java-wrapper -jar target/BlazarJobs-executable.jar --BlazarKubernetesMetricsWorker
 
 zkGroup: blazar:jobs
 
