@@ -1,0 +1,22 @@
+type: procfile
+
+artifactBuildMetadata:
+  organization: HubSpotProtected
+  repository: Blazar
+  module: BlazarJobs
+
+includeConfigs:
+  - BlazarCommon
+
+procfile:
+  service:
+    type: WORKER
+    cmd: java-wrapper -jar target/BlazarJobs-executable.jar -BlazarKubernetesMetricsWorker
+
+zkGroup: blazar:jobs
+
+servers:
+  qa:
+    - mesos
+  prod:
+    - mesos
