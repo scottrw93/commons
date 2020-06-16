@@ -7,11 +7,16 @@ artifactBuildMetadata:
 
 includeConfigs:
   - BlazarCommon
+  
+env:
+  all:
+    JAVA_JAR: target/BlazarJobs-executable.jar
+    RUNNER_CLASS: com.hubspot.blazar.worker.kube.BlazarKubernetesMetricsRunner
 
 procfile:
   service:
     type: WORKER
-    cmd: java-wrapper -jar target/BlazarJobs-executable.jar --BlazarKubernetesMetricsWorker
+    cmd: java-wrapper -cp $JAVA_JAR $RUNNER_CLASS --BlazarKubernetesMetricsWorker
 
 zkGroup: blazar:jobs
 
