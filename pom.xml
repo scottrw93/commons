@@ -14,7 +14,7 @@
   <name>Comoyo Commons Multi-Module POM</name>
   <groupId>com.hubspot</groupId>
   <artifactId>comoyo-commons-parent</artifactId>
-  <version>1.5-SNAPSHOT</version>
+  <version>1.5-hubspot-SNAPSHOT</version>
   <description>Collection of utility components</description>
 
   <url>https://github.com/comoyo/commons</url>
