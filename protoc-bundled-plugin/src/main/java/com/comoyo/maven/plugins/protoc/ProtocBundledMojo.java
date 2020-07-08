@@ -150,6 +150,14 @@ public class ProtocBundledMojo extends AbstractMojo
     private String protobufVersion;
 
     /**
+     * Protoc coordinates for compilation.  If omitted,
+     * the artifacts from this project are used.
+     *
+     * @parameter property="protocArtifact"
+     */
+    private String protocArtifact;
+
+    /**
      * Directories containing *.proto files to compile.
      *
      * @parameter
@@ -309,7 +317,7 @@ public class ProtocBundledMojo extends AbstractMojo
      * This is a workaround for a bug in Maven versions <= 3.2.3.
      */
     private static final Object protocDownloadLock = new Object();
-    
+
     private static final Map<String, String> osNamePrefix = new HashMap<String, String>();
     private static final Map<String, String> osArchCanon = new HashMap<String, String>();
     static {
@@ -370,18 +378,11 @@ public class ProtocBundledMojo extends AbstractMojo
     /**
      * Return reference to suitable protoc binary artifact, download
      * from remote repository if necessary.
-     *
-     * @param protocName   protoc specifier
      */
-    private File resolveProtocArtifact(String protocName)
+    private File resolveProtocArtifact()
         throws MojoExecutionException
     {
-        Artifact artifact
-            = repositorySystem.createArtifactWithClassifier(
-                pluginDescriptor.getGroupId(),
-                pluginDescriptor.getArtifactId(),
-                pluginDescriptor.getVersion(),
-                "exe", protocName);
+        Artifact artifact = determineProtocArtifact();
 
         getLog().info("Using protoc " + artifact);
         ArtifactResolutionRequest request = new ArtifactResolutionRequest()
@@ -406,6 +407,36 @@ public class ProtocBundledMojo extends AbstractMojo
         File file = protocArtifact.getFile();
         file.setExecutable(true, false);
         return file;
+    }
+
+    private Artifact determineProtocArtifact() throws MojoExecutionException {
+        if (protocArtifact == null) {
+            return repositorySystem.createArtifactWithClassifier(
+                pluginDescriptor.getGroupId(),
+                pluginDescriptor.getArtifactId(),
+                pluginDescriptor.getVersion(),
+                "exe",
+                determineProtocForSystem()
+            );
+        } else {
+            String[] parts = protocArtifact.split(":");
+            if (parts.length == 5) {
+                String version = parts[4];
+                if (protobufVersion != null && !protobufVersion.equals(version)) {
+                    getLog().warn(String.format("protobufVersion %s doesn't match protoc version %s", protobufVersion, version));
+                }
+
+                return repositorySystem.createArtifactWithClassifier(
+                    parts[0],
+                    parts[1],
+                    version,
+                    parts[2],
+                    parts[3]
+                );
+            } else {
+                throw new MojoExecutionException("Expected protocArtifact to be of the form groupId:artifactId:packaging:classifier:version");
+            }
+        }
     }
 
     /**
@@ -445,10 +476,10 @@ public class ProtocBundledMojo extends AbstractMojo
         final String protobufArtifactVersion
             = getArtifactVersion("com.google.protobuf", "protobuf-java");
 
-        if (protobufVersion == null) {
+        if (protobufVersion == null && protocArtifact == null) {
             if (protobufArtifactVersion == null) {
                 throw new MojoExecutionException(
-                    "protobufVersion not specified and unable to derive version "
+                    "Neither protocArtifact nor protobufVersion was specified and unable to derive version "
                         + "from protobuf-java dependency");
             }
             protobufVersion = protobufArtifactVersion;
@@ -464,8 +495,7 @@ public class ProtocBundledMojo extends AbstractMojo
             }
         }
 
-        final String protocName = determineProtocForSystem();
-        protocExec = resolveProtocArtifact(protocName);
+        protocExec = resolveProtocArtifact();
     }
 
     /**
@@ -663,6 +693,10 @@ public class ProtocBundledMojo extends AbstractMojo
 
     public void setProtobufVersion(String protobufVersion) {
         this.protobufVersion = protobufVersion;
+    }
+
+    public void setProtocArtifact(String protocArtifact) {
+        this.protocArtifact = protocArtifact;
     }
 
     public void setInputDirectories(File[] inputDirectories) {
