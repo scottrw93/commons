@@ -54,9 +54,7 @@ http:
 
 nginx:
   extraConfigs:
-  - |
-  rewrite ^/orion/v3-staging/deployrequests$
-    /orion-deploy/v3-staging/deployrequests break;
+  - rewrite ^/orion/v3-staging/deployrequests$ /orion-deploy/v3-staging/deployrequests break;
 
 postDeployTests:
   all:
