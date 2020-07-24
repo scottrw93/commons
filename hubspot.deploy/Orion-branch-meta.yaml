@@ -1,0 +1,7 @@
+type: meta
+
+strict: true
+
+projects:
+  - Orion-branch
+  - Orion-branch-worker
