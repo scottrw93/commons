@@ -28,6 +28,7 @@ servers:
       numCpus: 2
       memoryMb: 2560
       placement: OPTIMISTIC
+      instances: 400
   prod: []
   
 buildResolution:
