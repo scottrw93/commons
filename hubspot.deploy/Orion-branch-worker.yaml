@@ -22,7 +22,7 @@ artifactBuildMetadata:
 servers:
   qa:
   - kubernetes:
-      instances: 2
+      instances: 1
   prod:
   - kubernetes:
       instances: 5
