@@ -46,6 +46,10 @@ procfile:
     type: SERVICE
     resources:
       numCpus: 8
+    override:
+      qa:
+        resources:
+          numCpus: 20
 logging:
   level: DEBUG
   loggers:
