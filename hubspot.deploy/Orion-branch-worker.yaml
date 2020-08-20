@@ -35,7 +35,7 @@ env:
     VAULT_ACCESS_GROUP: hs-paas-deploy
   qa:
     EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0
-    JVM_MAX_HEAP: 4096m
+    JVM_MAX_HEAP: 6144m
 
 vaultAccessGroup: hs-paas-deploy
 
@@ -51,7 +51,6 @@ procfile:
       qa:
         resources:
           numCpus: 20
-          memory: 6144m
 logging:
   level: DEBUG
   loggers:
