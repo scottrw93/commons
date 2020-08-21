@@ -30,12 +30,11 @@ servers:
 env:
   all:
     JAR_NAME: ./target/OrionService-executable.jar
-    JVM_MAX_HEAP: 2048m
+    JVM_MAX_HEAP: 8192m
     HS_ACCESS_GROUP: hs-paas-deploy
     VAULT_ACCESS_GROUP: hs-paas-deploy
   qa:
-    EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9999
-    JVM_MAX_HEAP: 6144m
+    EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9999 -XX:ActiveProcessorCount=12
 
 vaultAccessGroup: hs-paas-deploy
 
@@ -46,11 +45,7 @@ procfile:
     cmd: java-wrapper $EXTRA_JVM_ARGS -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
     type: SERVICE
     resources:
-      numCpus: 8
-    override:
-      qa:
-        resources:
-          numCpus: 20
+      numCpus: 16
 logging:
   level: DEBUG
   loggers:
