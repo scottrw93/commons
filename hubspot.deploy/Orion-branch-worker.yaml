@@ -16,7 +16,7 @@ loadBalancers:
 
 artifactBuildMetadata:
   repository: Orion
-  module: OrionService
+  module: OrionDeployWorker
   branch: qa-deploys
 
 servers:
