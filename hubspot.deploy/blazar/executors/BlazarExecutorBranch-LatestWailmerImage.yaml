@@ -14,6 +14,9 @@ docker:
       privileged: true
       cap-add: NET_ADMIN
     volumes:
+    - hostPath: /lib/modules
+      containerPath: /lib/modules
+      mode: RO
     - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
       containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
       mode: RO
