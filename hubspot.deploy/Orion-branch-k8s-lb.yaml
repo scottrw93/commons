@@ -2,7 +2,7 @@ type: load_balancer
 
 appRoot: /orion/v3-staging
 
-team: hs-paas-build-deploy
+team: hs-paas-deploy
 
 slack:
 - channelName: "#paas-build-deploy-notifications"

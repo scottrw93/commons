@@ -24,7 +24,7 @@ env:
     JAR_NAME: ./target/OrionBackfillJobs-executable.jar
 
 zkGroup: mesos:deploy:hs_staging:v3
-team: hs-paas-build-deploy
+team: hs-paas-deploy
 
 procfile:
   backfill-traffic-stats:
