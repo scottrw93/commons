@@ -44,3 +44,6 @@ procfile:
   dry-run:
     type: ON_DEMAND
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -cp ./target/\* $MIGRATION_JOB_CLASS migrate -n
+
+hublets:
+  - NA1

@@ -81,6 +81,9 @@ postDeployTests:
     mesos:
     - BlazarExecutorAcceptanceTest
 
+hublets:
+  - NA1
+
 servers:
   qa:
   - mesos:

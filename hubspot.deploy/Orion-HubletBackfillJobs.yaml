@@ -34,3 +34,6 @@ procfile:
     type: ON_DEMAND
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME --backfill-deployments
 
+
+hublets:
+  - NA1

@@ -19,6 +19,9 @@ artifactBuildMetadata:
   module: OrionService
   branch: qa-deploys
 
+hublets:
+  - NA1
+
 servers:
   qa:
   - kubernetes:

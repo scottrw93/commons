@@ -24,3 +24,6 @@ procfile:
     type: SCHEDULED_JOB
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME
     quartzSchedule: "0 40 5 * * ?"
+
+hublets:
+  - NA1

@@ -20,6 +20,9 @@ procfile:
 
 zkGroup: blazar:jobs
 
+hublets:
+  - NA1
+
 servers:
   qa:
     - mesos

@@ -50,3 +50,6 @@ docker:
     allowSpotInstances: true
 
     healthcheckMode: NONE
+
+hublets:
+  - NA1
