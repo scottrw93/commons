@@ -1,0 +1,60 @@
+type: procfile
+
+description: Deploy Config to be used for testing possible Orion support for a full blown testing env. We use 'Orion' for deploying master
+
+includeConfigs:
+- Orion-common
+
+appRoot: /orion-deploy/v3-test
+
+trafficSplittingEnabled: false
+
+loadBalancers:
+- bootstrap
+- build
+- privatehubteam
+
+artifactBuildMetadata:
+  repository: Orion
+  module: OrionDeployWorker
+  branch: qa-deploys
+
+hublets:
+  - NA1
+
+servers:
+  qa:
+  - kubernetes:
+      instances: 1
+  prod:
+  - kubernetes:
+      instances: 5
+
+env:
+  all:
+    JAR_NAME: ./target/OrionDeployWorker-executable.jar
+    JVM_MAX_HEAP: 8192m
+    HS_ACCESS_GROUP: hs-paas-deploy
+    VAULT_ACCESS_GROUP: hs-paas-deploy
+  qa:
+    EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9999 -XX:ActiveProcessorCount=12
+
+vaultAccessGroup: hs-paas-deploy
+
+zkGroup: mesos:deploy:hs_staging:v3
+
+procfile:
+  web:
+    cmd: java-wrapper $EXTRA_JVM_ARGS -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
+    type: SERVICE
+    resources:
+      numCpus: 16
+logging:
+  level: DEBUG
+  loggers:
+    com.hubspot.orion.poller: DEBUG
+
+http:
+  maxIdleTime: 200s
+
+healthcheckStartupTimeout: 380s
