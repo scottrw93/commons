@@ -41,7 +41,7 @@ env:
 
 vaultAccessGroup: hs-paas-deploy
 
-zkGroup: mesos:deploy:hs_staging:v3
+zkGroup: mesos:deploy:hs_test:v3
 
 procfile:
   web:
