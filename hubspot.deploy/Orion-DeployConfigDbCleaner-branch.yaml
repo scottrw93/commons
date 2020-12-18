@@ -14,7 +14,7 @@ buildResolution:
   
 env:
   all:
-    JAR_NAME: ./target/OrionDeployConfigDbCleaner-executable.jar clean
+    JAR_NAME: ./target/OrionDeployConfigDbCleaner-executable.jar
     JVM_MAX_HEAP: 1024m
 
 zkGroup: mesos:deploy:hs_staging:v3
@@ -22,8 +22,12 @@ zkGroup: mesos:deploy:hs_staging:v3
 procfile:
   cleanerJob:
     type: SCHEDULED_JOB
-    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME clean
     quartzSchedule: "0 40 5 * * ?"
+  cleanSoftDeleted:
+    type: SCHEDULED_JOB
+    cmd: java-wrapper -Djava.net.preferIpv4Stack=true -jar $JAR_NAME clean-soft-deleted
+    quartzSchedule: "0 30 */1 * * ?"
 
 hublets:
   - NA1
