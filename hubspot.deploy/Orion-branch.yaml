@@ -63,4 +63,5 @@ postDeployTests:
     - OrionAcceptanceTests
     - ORIONBOT_AcceptanceTests
     - ScheduledProdDeployTests
+    - ScheduledProdRevertTests
 healthcheckStartupTimeout: 380s
