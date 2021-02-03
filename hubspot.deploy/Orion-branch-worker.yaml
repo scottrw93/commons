@@ -33,7 +33,7 @@ servers:
 env:
   all:
     JAR_NAME: ./target/OrionDeployWorker-executable.jar
-    JVM_MAX_HEAP: 8192m
+    JVM_MAX_HEAP: 12288m
     HS_ACCESS_GROUP: hs-paas-deploy
     VAULT_ACCESS_GROUP: hs-paas-deploy
   qa:
