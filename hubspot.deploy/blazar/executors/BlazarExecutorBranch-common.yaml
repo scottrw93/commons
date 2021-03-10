@@ -4,7 +4,6 @@ artifactBuildMetadata:
   organization: HubSpotProtected
   repository: Blazar
   module: BlazarExecutor
-  branch: executor-diagnostic-logs
 
 accessGroup: hs-paas-build-deploy
 
