@@ -25,3 +25,5 @@ nginx:
       proxy_pass             https://$s3host/$url_full;
     }
 
+hublets:
+  - NA1
