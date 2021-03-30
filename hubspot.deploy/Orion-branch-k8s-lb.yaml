@@ -2,6 +2,9 @@ type: load_balancer
 
 appRoot: /orion/v3-staging
 
+hublets:
+  - NA1
+
 team: hs-paas-deploy
 
 slack:
