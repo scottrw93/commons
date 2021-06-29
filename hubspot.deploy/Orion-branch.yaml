@@ -38,6 +38,7 @@ env:
     VAULT_ACCESS_GROUP: hs-paas-deploy
   qa:
     EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9999 -XX:ActiveProcessorCount=8
+    FAILURE_INJECTION_AGENT: "true"
 
 vaultAccessGroup: hs-paas-deploy
 
