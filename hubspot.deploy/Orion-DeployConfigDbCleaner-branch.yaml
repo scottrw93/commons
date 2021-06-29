@@ -23,7 +23,8 @@ procfile:
   cleanerJob:
     type: SCHEDULED_JOB
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME clean
-    quartzSchedule: "0 40 5 * * ?"
+    # Hourly from 7:30-15:30 EST on Monday-Friday, all year long
+    quartzSchedule: "0 30 11-17 ? * 2-6 *"
   cleanSoftDeleted:
     type: SCHEDULED_JOB
     cmd: java-wrapper -Djava.net.preferIpv4Stack=true -jar $JAR_NAME clean-soft-deleted
