@@ -53,7 +53,7 @@ procfile:
     cmd: java-wrapper $EXTRA_JVM_ARGS -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
     type: SERVICE
     resources:
-      numCpus: 16
+      numCpus: 4
 logging:
   level: DEBUG
   loggers:
