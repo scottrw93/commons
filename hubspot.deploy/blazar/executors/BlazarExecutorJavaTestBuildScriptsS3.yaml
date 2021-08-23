@@ -5,7 +5,7 @@ artifactBuildMetadata:
   repository: Blazar
   module: BlazarExecutor
 
-accessGroup: hs-paas-deploy
+accessGroup: hs-paas-build-deploy
 
 team: hs-paas-build
 
