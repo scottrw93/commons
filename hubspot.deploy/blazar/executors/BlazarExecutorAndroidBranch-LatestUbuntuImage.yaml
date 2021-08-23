@@ -43,3 +43,6 @@ docker:
       mode: RW
     allowSpotInstances: true
     healthcheckMode: NONE
+
+hublets:
+  - NA1

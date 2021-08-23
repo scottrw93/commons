@@ -29,7 +29,7 @@ env:
     MIGRATION_JOB_CLASS: com.hubspot.orion.OrionLiquibaseMigrationJob
 
 zkGroup: mesos:deploy:hs_staging:v3
-team: hs-paas-build-deploy
+team: hs-paas-deploy
 
 procfile:
   dbmigrate:
@@ -44,3 +44,6 @@ procfile:
   dry-run:
     type: ON_DEMAND
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -cp ./target/\* $MIGRATION_JOB_CLASS migrate -n
+
+hublets:
+  - NA1

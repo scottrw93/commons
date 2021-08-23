@@ -23,7 +23,7 @@ docker:
     type: ON_DEMAND
     cmd: "java11 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar $EXTRA_EXECUTOR_ARGS"
     network: BRIDGE
-    image: docker.hubteam.com/wailmer/ww_buildscriptfors3/blazar-executor-base-java11:1
+    image: docker.hubteam.com/wailmer/ww-testingBuildEndPoint/executor:latest
     addDefaultVolumes: false
     healthcheckMode: NONE
     dockerParameters:
@@ -81,12 +81,16 @@ postDeployTests:
     mesos:
       - BlazarExecutorAcceptanceTest
 
+hublets:
+  - NA1
+
 servers:
   qa:
     - mesos:
         numCpus: 4
         memoryMb: 2560
         placement: OPTIMISTIC
+        instances: 5
   prod:
     - mesos:
         numCpus: 4

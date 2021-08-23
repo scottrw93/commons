@@ -1,0 +1,9 @@
+type: meta
+
+team: hs-paas-deploy
+
+strict: true
+
+projects:
+  - Orion-branch
+  - Orion-branch-worker

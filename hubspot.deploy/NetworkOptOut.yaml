@@ -13,6 +13,9 @@ procfile:
     type: ON_DEMAND
 
     healthcheckMode: NONE
+hublets:
+  - NA1
+
 servers:
   qa:
   - mesos

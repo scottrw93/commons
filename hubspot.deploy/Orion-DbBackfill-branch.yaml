@@ -23,3 +23,6 @@ procfile:
   backfillDeployConfigData:
     type: ON_DEMAND
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME backfillDeployConfigData
+
+hublets:
+  - NA1

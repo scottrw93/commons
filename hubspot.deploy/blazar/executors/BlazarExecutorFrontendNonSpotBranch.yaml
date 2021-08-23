@@ -43,3 +43,6 @@ docker:
       mode: RW
 
     healthcheckMode: NONE
+
+hublets:
+  - NA1
