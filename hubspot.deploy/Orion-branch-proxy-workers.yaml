@@ -1,0 +1,6 @@
+type: meta
+
+team: hs-paas-deploy
+
+projects:
+  - Orion-branch-mesos-worker
