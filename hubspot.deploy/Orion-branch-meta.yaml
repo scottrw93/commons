@@ -7,3 +7,4 @@ strict: true
 projects:
   - Orion-branch
   - Orion-branch-worker
+  - Orion-branch-proxy-workers
