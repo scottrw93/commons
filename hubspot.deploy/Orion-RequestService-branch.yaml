@@ -1,0 +1,68 @@
+type: procfile
+
+description: Deploy Config to be used for deploying Orion branches including staging. We use 'Orion' for deploying master
+
+includeConfigs:
+- Orion-common
+
+appRoot: /orion/v4-staging/deployer
+
+trafficSplittingEnabled: false
+
+loadBalancers:
+- bootstrap
+- build
+- privatehubteam
+
+artifactBuildMetadata:
+  repository: Orion
+  module: OrionRequestService
+  branch: qa-deploys
+
+hublets:
+  - NA1
+
+servers:
+  qa:
+  - kubernetes:
+      instances: 1
+  prod:
+  - kubernetes:
+      instances: 5
+
+env:
+  all:
+    JAR_NAME: ./target/OrionRequestService-executable.jar
+    JVM_MAX_HEAP: 6144m
+    HS_ACCESS_GROUP: hs-paas-deploy
+    VAULT_ACCESS_GROUP: hs-paas-deploy
+  qa:
+    EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9999 -XX:ActiveProcessorCount=8
+    FAILURE_INJECTION_AGENT: "true"
+
+vaultAccessGroup: hs-paas-deploy
+
+zkGroup: mesos:deploy:hs_staging:v3
+
+procfile:
+  web:
+    cmd: java-wrapper $EXTRA_JVM_ARGS -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
+    type: SERVICE
+    resources:
+      numCpus: 8
+logging:
+  level: DEBUG
+  loggers:
+    com.hubspot.orion.poller: DEBUG
+
+http:
+  maxIdleTime: 200s
+
+postDeployTests:
+  all:
+    mesos:
+    - OrionAcceptanceTests
+    - ORIONBOT_AcceptanceTests
+    - ScheduledProdDeployTests
+    - ScheduledProdRevertTests
+healthcheckStartupTimeout: 380s
