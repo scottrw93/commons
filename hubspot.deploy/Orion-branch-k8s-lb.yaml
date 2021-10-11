@@ -43,7 +43,7 @@ nginx:
     }
     location  /orion/v3-staging/deployrequests {
       set $orionbranchrequestshost 'service-mainline.app-orion-branch-web.svc.iad02.k8s.run:8080';
-      if ($hs_env = "qa") { set $orionbranchrequestshost 'service-mainline.app-orion-requestservice-branch-web.svc.iad03.k8s.run:8080'; }
+      if ($hs_env = "qa") { set $orionbranchrequestshost 'service-mainline.app-orion-requestservice-branch-web.svc.iad03.k8s.run:8080/orion/v4-staging/deployrequests'; }
       proxy_pass_header Server;
       proxy_set_header Host $http_host;
       proxy_set_header X-HubSpot-Trace $x_hubspot_trace;
