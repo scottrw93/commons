@@ -8,3 +8,4 @@ projects:
   - Orion-branch
   - Orion-branch-worker
   - Orion-branch-proxy-workers
+  - Orion-RequestService-branch
