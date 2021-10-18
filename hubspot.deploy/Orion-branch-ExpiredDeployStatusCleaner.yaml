@@ -14,5 +14,5 @@ env:
 
 procfile:
   ExpiredDeployStatusCleaner:
-    type: ON_DEMAND
+    type: WORKER
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME expired-deploy-status-worker
