@@ -1,0 +1,18 @@
+type: procfile
+
+includeConfigs:
+  - Orion-common
+
+artifactBuildMetadata:
+  repository: Orion
+  module: OrionExpiredDeployStatusCleaner
+
+env:
+  all:
+    JAR_NAME: ./target/OrionExpiredDeployStatusCleaner-executable.jar
+    JVM_MAX_HEAP: 1024m
+
+procfile:
+  ExpiredDeployStatusCleaner:
+    type: ON_DEMAND
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME expired-deploy-status-worker
