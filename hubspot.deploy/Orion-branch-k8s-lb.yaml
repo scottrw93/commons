@@ -41,7 +41,7 @@ nginx:
       proxy_read_timeout 60;
       proxy_pass http://$orionbranchhost;
     }
-    location  /orion/v3-staging/deployrequests {
+    location  ^/orion/v3-staging/deployrequests(.*)$ {
       set $orionbranchrequestshost 'service-mainline.app-orion-requestservice-branch-web.svc.iad02.k8s.run:8080';
       if ($hs_env = "qa") { set $orionbranchrequestshost 'service-mainline.app-orion-requestservice-branch-web.svc.iad03.k8s.run:8080'; }
       proxy_pass_header Server;
@@ -53,6 +53,5 @@ nginx:
       set $hs_service_name "orion-branch-web";
       proxy_connect_timeout 55;
       proxy_read_timeout 60;
-      rewrite ^/orion/v3-staging/deployrequests(.*) /orion/v4-staging/deployer/deployrequests$1;
-      proxy_pass http://$orionbranchrequestshost;
+      proxy_pass http://$orionbranchrequestshost/orion/v4-staging/deployer/deployrequests$1;
     }
