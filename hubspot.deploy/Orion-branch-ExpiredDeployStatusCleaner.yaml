@@ -6,6 +6,7 @@ includeConfigs:
 artifactBuildMetadata:
   repository: Orion
   module: OrionExpiredDeployStatusCleaner
+  branch: qa-deploys
 
 env:
   all:
