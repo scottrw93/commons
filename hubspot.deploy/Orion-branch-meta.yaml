@@ -9,3 +9,4 @@ projects:
   - Orion-branch-worker
   - Orion-branch-proxy-workers
   - Orion-RequestService-branch
+  - Orion-branch-ExpiredDeployStatusCleaner
