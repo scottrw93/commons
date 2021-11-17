@@ -46,7 +46,7 @@ zkGroup: mesos:deploy:hs_staging:v3
 
 procfile:
   web:
-    cmd: java-wrapper $EXTRA_JVM_ARGS -Djute.maxbuffer=3145728 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
+    cmd: java-wrapper $EXTRA_JVM_ARGS -Djute.maxbuffer=10485760 -Djava.net.preferIPv4Stack=true -jar $JAR_NAME server $CONFIG_YAML
     type: SERVICE
     resources:
       numCpus: 8
