@@ -17,3 +17,7 @@ procfile:
   ExpiredDeployStatusCleaner:
     type: WORKER
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME expired-deploy-status-worker
+    override:
+      prod:
+        resources:
+          instances: 10
