@@ -69,4 +69,7 @@ postDeployTests:
     - ORIONBOT_AcceptanceTests
     - ScheduledProdDeployTests
     - ScheduledProdRevertTests
+  prod:
+    mesos:
+      - LargeDeployableTreeDeployTest
 healthcheckStartupTimeout: 380s
