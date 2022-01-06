@@ -21,3 +21,6 @@ procfile:
       prod:
         resources:
           instances: 10
+  ExpiredTokenCleaner:
+    type: WORKER
+    cmd: java-wrapper -Djava.net.preferIPv4Stack=true -jar $JAR_NAME expired-token-worker
