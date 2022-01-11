@@ -24,6 +24,7 @@ loadBalancers:
 - privatehubteam
 - bootstrap
 - build
+- privateapi
 
 nginx:
   proxyConfig: |
