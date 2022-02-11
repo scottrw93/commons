@@ -16,6 +16,8 @@ servers:
       memoryMb: 2560
       placement: OPTIMISTIC
       instances: 2
+      requiredHostAttributes:
+        name: na1-novel-muffler
   
 buildResolution:
   prod: LATEST_BUILD
