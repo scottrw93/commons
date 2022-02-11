@@ -10,6 +10,8 @@ servers:
       memoryMb: 2560
       placement: OPTIMISTIC
       instances: 2
+      requiredHostAttributes:
+        name: na1-lazy-terrapin
   prod:
   - mesos:
       numCpus: 2
