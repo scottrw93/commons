@@ -11,7 +11,7 @@ servers:
       placement: OPTIMISTIC
       instances: 2
   prod:
-    - mesos:
+  - mesos:
       numCpus: 2
       memoryMb: 2560
       placement: OPTIMISTIC
