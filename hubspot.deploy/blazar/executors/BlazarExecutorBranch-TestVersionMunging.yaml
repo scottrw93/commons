@@ -12,10 +12,10 @@ servers:
       instances: 2
   prod:
   - mesos:
-    numCpus: 2
-    memoryMb: 2560
-    placement: OPTIMISTIC
-    instances: 2
+      numCpus: 2
+      memoryMb: 2560
+      placement: OPTIMISTIC
+      instances: 2
   
 buildResolution:
   prod: LATEST
