@@ -26,7 +26,7 @@ servers:
       numCpus: 2
       memoryMb: 2560
       placement: OPTIMISTIC
-      instances: 2
+      instances: 10
       requiredHostAttributes:
         name: na1-lazy-terrapin
   prod:
@@ -34,7 +34,7 @@ servers:
       numCpus: 2
       memoryMb: 2560
       placement: OPTIMISTIC
-      instances: 2
+      instances: 10
       requiredHostAttributes:
         name: na1-novel-muffler
   
