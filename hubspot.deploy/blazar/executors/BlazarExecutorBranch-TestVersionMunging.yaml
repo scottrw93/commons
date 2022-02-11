@@ -18,7 +18,7 @@ servers:
       instances: 2
   
 buildResolution:
-  prod: LATEST
+  prod: LATEST_BUILD
 
 docker:
   blazar-executor-java:
