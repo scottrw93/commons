@@ -3,6 +3,23 @@ type: procfile
 includeConfigs:
 - BlazarExecutorBranch-common
 
+servers:
+  qa:
+  - mesos:
+      numCpus: 2
+      memoryMb: 2560
+      placement: OPTIMISTIC
+      instances: 2
+  prod:
+    - mesos:
+      numCpus: 2
+      memoryMb: 2560
+      placement: OPTIMISTIC
+      instances: 2
+  
+buildResolution:
+  prod: LATEST
+
 docker:
   blazar-executor-java:
     type: ON_DEMAND
