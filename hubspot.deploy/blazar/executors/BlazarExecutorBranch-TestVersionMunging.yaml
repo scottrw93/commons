@@ -27,16 +27,12 @@ servers:
       memoryMb: 2560
       placement: OPTIMISTIC
       instances: 10
-      requiredHostAttributes:
-        name: na1-upbeat-cow
   prod:
   - mesos:
       numCpus: 2
       memoryMb: 2560
       placement: OPTIMISTIC
       instances: 10
-      requiredHostAttributes:
-        name: na1-meet-cow
   
 buildResolution:
   prod: LATEST_BUILD
