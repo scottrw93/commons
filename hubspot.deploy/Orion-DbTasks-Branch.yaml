@@ -9,20 +9,6 @@ buildResolution:
   qa: "LATEST_BUILD"
   prod: "NO_BUILD"
 
-slack:
-- channelName: "#paas-build-deploy-notifications"
-  all:
-    preDeploy: MUTE
-    success: NOTIFY
-    failure: NOTIFY
-    notifyForBlockerEvents: NOTIFY
-    deployedNotRun: MUTE
-  qa:
-    success: MUTE
-    failure: MUTE
-    notifyForBlockerEvents: MUTE
-
-
 env:
   all:
     JVM_MAX_HEAP: 1024m
@@ -46,4 +32,4 @@ procfile:
     cmd: java-wrapper -Djava.net.preferIPv4Stack=true -cp ./target/\* $MIGRATION_JOB_CLASS migrate -n
 
 hublets:
-  - NA1
+- NA1

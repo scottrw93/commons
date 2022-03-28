@@ -3,22 +3,9 @@ type: load_balancer
 appRoot: /orion/v4-staging
 
 hublets:
-  - NA1
+- NA1
 
 team: hs-paas-deploy
-
-slack:
-- channelName: "#paas-build-deploy-notifications"
-  all:
-    preDeploy: MUTE
-    success: NOTIFY
-    failure: NOTIFY
-    notifyForBlockerEvents: NOTIFY
-    deployedNotRun: MUTE
-  qa:
-    success: MUTE
-    failure: MUTE
-    notifyForBlockerEvents: MUTE
 
 loadBalancers:
 - privatehubteam
