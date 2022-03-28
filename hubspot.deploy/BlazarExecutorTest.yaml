@@ -9,15 +9,6 @@ accessGroup: hs-paas-build-deploy
 
 team: hs-paas-build
 
-slack:
-  - channelName: "#paas-build-deploy-notifications"
-    all:
-      preDeploy: MUTE
-      success: NOTIFY
-      failure: NOTIFY
-      notifyForBlockerEvents: NOTIFY
-      deployedNotRun: MUTE
-
 docker:
   blazar-executor-java:
     type: ON_DEMAND
@@ -82,7 +73,7 @@ postDeployTests:
     - BlazarExecutorAcceptanceTest
 
 hublets:
-  - NA1
+- NA1
 
 servers:
   qa:

@@ -1,4 +1,3 @@
-
 type: procfile
 
 artifactBuildMetadata:
@@ -9,15 +8,6 @@ artifactBuildMetadata:
 accessGroup: hs-paas-build-deploy
 
 team: hs-paas-build
-
-slack:
-  - channelName: "#paas-build-deploy-notifications"
-    all:
-      preDeploy: MUTE
-      success: NOTIFY
-      failure: NOTIFY
-      notifyForBlockerEvents: NOTIFY
-      deployedNotRun: MUTE
 
 docker:
   blazar-executor-java:
@@ -33,39 +23,39 @@ docker:
     volumes:
       # Files mounted to /usr/share/hubspot/vault/*.real
       # are copied to /usr/share/hubspot/vault/* and then made world writeable
-      - hostPath: /lib/modules
-        containerPath: /lib/modules
-        mode: RO
-      - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
-        containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
-        mode: RO
-      - hostPath: /usr/share/hubspot/vault/hs-apollo
-        containerPath: /usr/share/hubspot/vault/hs-apollo.real
-        mode: RO
-      - hostPath: /etc/hubspot.bootstrap.properties
-        containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
-        mode: RO
-      - hostPath: /etc/hubspot.protected.properties
-        containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.protected.real
-        mode: RO
-      - hostPath: /etc/slimfast.properties
-        containerPath: /etc/slimfast.properties
-        mode: RO
-      - hostPath: /usr/share/hubspot/mesos/blazar_cache
-        containerPath: /usr/share/hubspot/mesos/blazar_cache
-        mode: RW
-      - hostPath: '$PWD/app/build-workspace'
-        containerPath: /usr/share/hubspot/build/workspace
-        mode: RW
-      - hostPath: /var/run/docker.sock
-        containerPath: /var/run/host-docker.sock
-        mode: RW
-      - hostPath: '$PWD/var-lib-docker'
-        containerPath: /var/lib/docker
-        mode: RO
-      - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
-        containerPath: '/mnt/mesos/tmp/'
-        mode: RW
+    - hostPath: /lib/modules
+      containerPath: /lib/modules
+      mode: RO
+    - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
+      containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
+      mode: RO
+    - hostPath: /usr/share/hubspot/vault/hs-apollo
+      containerPath: /usr/share/hubspot/vault/hs-apollo.real
+      mode: RO
+    - hostPath: /etc/hubspot.bootstrap.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
+      mode: RO
+    - hostPath: /etc/hubspot.protected.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.protected.real
+      mode: RO
+    - hostPath: /etc/slimfast.properties
+      containerPath: /etc/slimfast.properties
+      mode: RO
+    - hostPath: /usr/share/hubspot/mesos/blazar_cache
+      containerPath: /usr/share/hubspot/mesos/blazar_cache
+      mode: RW
+    - hostPath: '$PWD/app/build-workspace'
+      containerPath: /usr/share/hubspot/build/workspace
+      mode: RW
+    - hostPath: /var/run/docker.sock
+      containerPath: /var/run/host-docker.sock
+      mode: RW
+    - hostPath: '$PWD/var-lib-docker'
+      containerPath: /var/lib/docker
+      mode: RO
+    - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
+      containerPath: '/mnt/mesos/tmp/'
+      mode: RW
     allowSpotInstances: true
 
 
@@ -83,24 +73,24 @@ priorityLevel: 0.9
 postDeployTests:
   all:
     mesos:
-      - BlazarExecutorAcceptanceTest
+    - BlazarExecutorAcceptanceTest
 
 hublets:
-  - NA1
+- NA1
 
 servers:
   qa:
-    - mesos:
-        numCpus: 4
-        memoryMb: 2560
-        placement: OPTIMISTIC
-        instances: 6
+  - mesos:
+      numCpus: 4
+      memoryMb: 2560
+      placement: OPTIMISTIC
+      instances: 6
   prod:
-    - mesos:
-        numCpus: 4
-        memoryMb: 2560
-        placement: OPTIMISTIC
-        instances: 6
+  - mesos:
+      numCpus: 4
+      memoryMb: 2560
+      placement: OPTIMISTIC
+      instances: 6
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
