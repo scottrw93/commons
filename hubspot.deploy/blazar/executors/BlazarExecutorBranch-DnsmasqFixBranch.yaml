@@ -1,0 +1,52 @@
+type: procfile
+
+includeConfigs:
+- BlazarExecutorBranch-common
+
+docker:
+  blazar-executor-java:
+    type: ON_DEMAND
+    cmd: "bash /etc/start-executor.sh $EXTRA_EXECUTOR_ARGS"
+    network: BRIDGE
+    image: docker.hubteam.com/wailmer/blazar-dnsmasq-fix/blazar-executor-base-java11:1
+    addDefaultVolumes: false
+    dockerParameters:
+      privileged: true
+      cap-add: NET_ADMIN
+    volumes:
+    - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
+      containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
+      mode: RO
+    - hostPath: /usr/share/hubspot/vault/hs-apollo
+      containerPath: /usr/share/hubspot/vault/hs-apollo.real
+      mode: RO
+    - hostPath: /etc/hubspot.bootstrap.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.properties.real
+      mode: RO
+    - hostPath: /etc/hubspot.protected.properties
+      containerPath: /usr/share/hubspot/internal/hubspot.bootstrap.protected.real
+      mode: RO
+    - hostPath: /etc/slimfast.properties
+      containerPath: /etc/slimfast.properties
+      mode: RO
+    - hostPath: /usr/share/hubspot/mesos/blazar_cache
+      containerPath: /usr/share/hubspot/mesos/blazar_cache
+      mode: RW
+    - hostPath: '$PWD/app/build-workspace'
+      containerPath: /usr/share/hubspot/build/workspace
+      mode: RW
+    - hostPath: /var/run/docker.sock
+      containerPath: /var/run/host-docker.sock
+      mode: RW
+    - hostPath: '$PWD/var-lib-docker'
+      containerPath: /var/lib/docker
+      mode: RO
+    - hostPath: '/usr/share/hubspot/mesos/blazar_cache/blazar-tmp'
+      containerPath: '/mnt/mesos/tmp/'
+      mode: RW
+    allowSpotInstances: true
+
+    healthcheckMode: NONE
+
+hublets:
+  - NA1
