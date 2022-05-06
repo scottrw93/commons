@@ -8,7 +8,7 @@ docker:
     type: ON_DEMAND
     cmd: "bash /etc/start-executor.sh $EXTRA_EXECUTOR_ARGS"
     network: BRIDGE
-    image: docker.hubteam.com/wailmer/blazar-dnsmasq-fix/blazar-executor-base-java11:2
+    image: docker.hubteam.com/wailmer/blazar-dnsmasq-fix/blazar-executor-base-java11:4
     addDefaultVolumes: false
     dockerParameters:
       privileged: true
