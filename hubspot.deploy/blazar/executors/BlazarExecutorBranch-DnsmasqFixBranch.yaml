@@ -6,9 +6,9 @@ includeConfigs:
 docker:
   blazar-executor-java:
     type: ON_DEMAND
-    cmd: "dnsmasq; echo 'nameserver 127.0.0.1' > /etc/blazar-resolv.conf; mount --bind /ect/blazar-resolv.conf /etc/resolv.conf; java11 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar $EXTRA_EXECUTOR_ARGS"
+    cmd: "bash /etc/start-executor.sh $EXTRA_EXECUTOR_ARGS"
     network: BRIDGE
-    image: docker.hubteam.com/wailmer/blazar-executor-base-java11:632
+    image: docker.hubteam.com/wailmer/blazar-dnsmasq-fix/blazar-executor-base-java11:1
     addDefaultVolumes: false
     dockerParameters:
       privileged: true
