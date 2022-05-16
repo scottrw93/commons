@@ -35,9 +35,6 @@ docker:
     - hostPath: '$PWD/app/build-workspace'
       containerPath: /usr/share/hubspot/build/workspace
       mode: RW
-    - hostPath: /var/run/docker.sock
-      containerPath: /var/run/host-docker.sock
-      mode: RW
     - hostPath: '$PWD/var-lib-docker'
       containerPath: /var/lib/docker
       mode: RO

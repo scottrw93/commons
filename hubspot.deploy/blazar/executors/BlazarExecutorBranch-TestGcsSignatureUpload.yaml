@@ -33,7 +33,7 @@ servers:
       memoryMb: 2560
       placement: OPTIMISTIC
       instances: 10
-  
+
 buildResolution:
   prod: LATEST_BUILD
 
@@ -71,9 +71,6 @@ docker:
       mode: RW
     - hostPath: '$PWD/app/build-workspace'
       containerPath: /usr/share/hubspot/build/workspace
-      mode: RW
-    - hostPath: /var/run/docker.sock
-      containerPath: /var/run/host-docker.sock
       mode: RW
     - hostPath: '$PWD/var-lib-docker'
       containerPath: /var/lib/docker
