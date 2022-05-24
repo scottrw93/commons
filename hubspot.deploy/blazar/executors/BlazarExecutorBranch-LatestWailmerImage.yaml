@@ -6,7 +6,7 @@ includeConfigs:
 docker:
   blazar-executor-java:
     type: ON_DEMAND
-    cmd: "java11 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
+    cmd: "/etc/start-executor.sh /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar"
     network: BRIDGE
     image: docker.hubteam.com/wailmer/blazar-executor-base-java11:latest
     addDefaultVolumes: false
