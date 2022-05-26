@@ -12,9 +12,9 @@ team: hs-paas-build
 docker:
   blazar-executor-java:
     type: ON_DEMAND
-    cmd: "java11 -jar /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar $EXTRA_EXECUTOR_ARGS"
+    cmd: "/etc/start-executor.sh /mnt/mesos/sandbox/app/target/BlazarExecutor-executable.jar $EXTRA_EXECUTOR_ARGS"
     network: BRIDGE
-    image: docker.hubteam.com/wailmer/blazar-executor-base-java11:654
+    image: docker.hubteam.com/wailmer/revert-294-fix-docker-dns/blazar-executor-base-java11:1
     addDefaultVolumes: false
     healthcheckMode: NONE
     dockerParameters:
