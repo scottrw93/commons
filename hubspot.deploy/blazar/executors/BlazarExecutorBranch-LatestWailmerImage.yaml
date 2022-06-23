@@ -17,8 +17,8 @@ docker:
     - hostPath: /lib/modules
       containerPath: /lib/modules
       mode: RO
-    - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
-      containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
+    - hostPath: /usr/share/hubspot/vault/hs-build
+      containerPath: /usr/share/hubspot/vault/hs-build.real
       mode: RO
     - hostPath: /usr/share/hubspot/vault/hs-apollo
       containerPath: /usr/share/hubspot/vault/hs-apollo.real
