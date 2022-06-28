@@ -1,6 +1,6 @@
 type: meta
 
-team: hs-paas-build
+team: hs-build
 
 projects:
 - BlazarExecutorAndroidBranch-LatestUbuntuImage

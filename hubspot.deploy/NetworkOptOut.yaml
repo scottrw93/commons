@@ -3,7 +3,7 @@ artifactBuildMetadata:
   module: network-opt-out
 
 type: procfile
-team: hs-paas-build-deploy
+team: hs-build
 
 description: Take out the rubbish
 

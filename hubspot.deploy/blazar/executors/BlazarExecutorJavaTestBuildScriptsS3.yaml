@@ -5,9 +5,9 @@ artifactBuildMetadata:
   repository: Blazar
   module: BlazarExecutor
 
-accessGroup: hs-paas-build-deploy
+accessGroup: hs-build
 
-team: hs-paas-build
+team: hs-build
 
 docker:
   blazar-executor-java:
@@ -23,8 +23,8 @@ docker:
     volumes:
       # Files mounted to /usr/share/hubspot/vault/*.real
       # are copied to /usr/share/hubspot/vault/* and then made world writeable
-    - hostPath: /usr/share/hubspot/vault/hs-paas-build-deploy
-      containerPath: /usr/share/hubspot/vault/hs-paas-build-deploy.real
+    - hostPath: /usr/share/hubspot/vault/hs-build
+      containerPath: /usr/share/hubspot/vault/hs-build.real
       mode: RO
     - hostPath: /usr/share/hubspot/vault/hs-apollo
       containerPath: /usr/share/hubspot/vault/hs-apollo.real
@@ -59,7 +59,7 @@ env:
   all:
     HOST_PWD: "$PWD"
     CGROUP_PARENT: "mesos/$CGROUPS_GUID"
-    HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-paas-build-deploy)"
+    HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-build)"
     TMPDIR: /tmp
 
 priorityLevel: 0.9
