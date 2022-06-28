@@ -1,4 +1,4 @@
-team: hs-paas-build-deploy
+team: hs-build
 type: load_balancer
 appRoot: /vault
 
