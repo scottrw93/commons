@@ -6,7 +6,7 @@ bash k8s_run_and_get_jstacks.sh app-blazarbuildscheduler-service deployment-main
 ```
 
 These scripts are handy when a thread dump is needed for k8s apps. It will automagically take 3 thread dumps,
-archive them and download them. Make sure to use/be authenticated the correct cluster before invoking the scripts
+archive them and download them. Make sure to use/be authenticated to the correct cluster before invoking the scripts
 
 
 
