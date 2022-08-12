@@ -18,13 +18,13 @@ env:
     HS_PAAS_BUILD_DEPLOY_VAULT_KEY: "$(cat /usr/share/hubspot/vault/hs-build)"
 
 servers:
-  qa:
+  prod:
   - mesos:
       numCpus: 2
       memoryMb: 2560
       placement: OPTIMISTIC
       instances: 400
-  prod: []
+  qa: []
 
 emailSettings:
   DEPLOYABLE_INSTANCE_FINISHED: []
