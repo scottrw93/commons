@@ -25,7 +25,7 @@ hublets:
 servers:
   qa:
   - kubernetes:
-      instances: 1
+      instances: 2
   prod:
   - kubernetes:
       instances: 5
