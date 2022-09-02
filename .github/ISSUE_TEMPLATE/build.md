@@ -5,4 +5,4 @@ title: Issue title
 labels: 'Build'
 ---
 
-@HubSpot/paas-build
+@HubSpot/build
