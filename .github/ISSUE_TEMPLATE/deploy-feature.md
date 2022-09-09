@@ -1,5 +1,5 @@
 ---
-name: 🐛 Deploy team (Orion) feature or change request
+name: 🚀 Deploy team (Orion) feature or change request
 about: Create a change request
 title: Feature title
 labels: 'Orion', 'New', 'Feature'
