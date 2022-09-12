@@ -1,6 +1,6 @@
 ---
-name: 🚀 Deploy team (Orion) feature or change request
-about: Create a change request
+name: Deploy team (Orion) feature or change request
+about: Create a change request for the deploy team
 title: Feature title
 labels: 'Orion', 'New', 'Feature'
 ---
