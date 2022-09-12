@@ -1,6 +1,6 @@
 ---
-name: 🐛 Deploy team (Orion) issue
-about: Create an issue for the deploy team
+name: Deploy team (Orion) issue
+about: Create an issue/bug for the deploy team
 title: Issue title
 labels: 'Orion', 'New', 'Bug'
 ---
