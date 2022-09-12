@@ -1,8 +1,7 @@
 ---
-name: Deploy team (Orion) feature or change request
+name: Deploy team feature or change request
 about: Create a change request for the deploy team
-title: Feature title
-labels: 'Orion', 'New', 'Feature'
+labels: Orion, New, Feature
 ---
 
 <!-- Note: Feel free to remove sections that aren't relevant or add sections that would be helpful -->
