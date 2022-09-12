@@ -1,8 +1,7 @@
 ---
-name: Deploy team (Orion) issue
-about: Create an issue/bug for the deploy team
-title: Issue title
-labels: 'Orion', 'New', 'Bug'
+name: Deploy team issue or bug
+about: Create an issue for the deploy team
+labels: Orion, New, Bug
 ---
 
 <!-- Note: Feel free to remove sections that aren't relevant or add sections that would be helpful.
