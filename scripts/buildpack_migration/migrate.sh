@@ -6,11 +6,16 @@ rm -rf Buildpacks
 git clone git@git.hubteam.com:HubSpotProtected/Buildpacks.git > /dev/null 2>&1
 
 cat to-migrate.txt | while read line; do
-    echo $line
     host=$(echo $line | awk '{print $1}')
     org=$(echo $line | awk '{print $2}')
     repo=$(echo $line | awk '{print $3}')
     path=$(echo $line | awk '{print $4}')
+
+    # if [ -z "${path}" ]; then
+    #     path=$(echo $repo | gsed 's/Blazar-Buildpack-//I' | gsed 's/ios/ios/I' |  gsed -r 's/([a-z0-9])([A-Z])/\1_\L\2/g' | gsed s/_/-/g | awk '{print tolower($0)}')
+    # fi
+    # echo "$host $org $repo $path"
+    # continue
 
     cd repos
     git clone git@$host:$org/$repo.git > /dev/null 2>&1
