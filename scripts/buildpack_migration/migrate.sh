@@ -1,6 +1,7 @@
 #!/bin/sh
 
-mkdir -p repos
+rm -rf repos
+mkdir repos
 rm -rf Buildpacks
 git clone git@git.hubteam.com:HubSpotProtected/Buildpacks.git > /dev/null 2>&1
 
@@ -12,9 +13,6 @@ cat to-migrate.txt | while read line; do
     path=$(echo $line | awk '{print $4}')
 
     cd repos
-    if [ -d "$repo" ]; then
-        rm -rf $repo
-    fi
     git clone git@$host:$org/$repo.git > /dev/null 2>&1
     cd $repo
 
