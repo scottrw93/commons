@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 rm -rf repos
 mkdir repos
 rm -rf Buildpacks
@@ -20,6 +22,7 @@ cat to-migrate.txt | while read line; do
     cd repos
     git clone git@$host:$org/$repo.git > /dev/null 2>&1
     cd $repo
+    git fetch --all > /dev/null 2>&1
 
     default_branch=$(git rev-parse --abbrev-ref HEAD)
     default_buildpack_location=$(find . -name .blazar-buildpack.yaml -type f)
@@ -27,32 +30,42 @@ cat to-migrate.txt | while read line; do
     buildpack_repo_dir="../../Buildpacks"
 
     rm -rf $buildpack_repo_dir/$path
-    mkdir $buildpack_repo_dir/$path
+    mkdir -p $buildpack_repo_dir/$path
 
-    # avoid using master and swap to main
-    if [[ "$default_branch" == "master" ]]; then
-        branch="main"
+    if [[ "$default_branch" == "master" || "$default_branch" == "main" ]]; then
+        echo "Copying $default_buildpack_location to $buildpack_repo_dir/$path"
+        mkdir -p $buildpack_repo_dir/$path
+        cp $default_buildpack_location $buildpack_repo_dir/$path/.blazar-buildpack.yaml
     else
-        branch=$default_branch
+        echo "Copying $default_buildpack_location to $buildpack_repo_dir/$path/$branch"
+        mkdir -p $buildpack_repo_dir/$path/$branch
+        cp $default_buildpack_location $buildpack_repo_dir/$path/$branch/.blazar-buildpack.yaml
     fi
 
-    echo "Copying $default_buildpack_location to $buildpack_repo_dir/$path/$branch"
-    mkdir $buildpack_repo_dir/$path/$branch
-    cp $default_buildpack_location $buildpack_repo_dir/$path/$branch/.blazar-buildpack.yaml
+    if [[ "$repo" == "Blazar-Buildpack-Java" ]]; then
+        for branch in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/); do
+            if [[ "$branch" == "origin/$default_branch" || "$branch" == "origin/master" ]]; then
+                continue
+            fi
+            git checkout $branch > /dev/null 2>&1
+            branch=$(echo $branch | sed s/origin\\///g)
+            buildpack_location=$(find . -name .blazar-buildpack.yaml -type f)
+            if [ -z "${buildpack_location}" ]; then
+                echo "No buildpack $repo/$branch on branch, skipped"
+                continue
+            fi
 
-    for branch in $(git branch); do
-        if [[ "$branch" == "$default_branch" ]]; then
-            continue
-        fi
+            buildpack_sha=$(sha1sum $buildpack_location | awk '{print $1}')
 
-        buildpack_location=$(find . -name .blazar-buildpack.yaml -type f)
-        buildpack_sha=$(sha1sum $buildpack_location | awk '{print $1}')
-
-        if [[ "$buildpack_sha" != "$default_buildpack_sha" ]]; then
-            echo "Copying $buildpack_location to $buildpack_repo_dir/$path/$branch"
-            mkdir $buildpack_repo_dir/$path/$branch
-            cp $buildpack_location $buildpack_repo_dir/$path/$branch/.blazar-buildpack.yaml
-        fi
-    done
+            if [[ "$buildpack_sha" != "$default_buildpack_sha" ]]; then
+                echo "Copying $buildpack_location to $buildpack_repo_dir/$path/$branch"
+                mkdir -p $buildpack_repo_dir/$path/$branch
+                cp $buildpack_location $buildpack_repo_dir/$path/$branch/.blazar-buildpack.yaml
+            else
+                echo "$repo/$branch is same as main, skipped"
+            fi
+        done
+    fi
     cd ../..
 done
+echo "JOB COMPLETED WITH SUCCESS"
